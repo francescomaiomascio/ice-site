@@ -25,21 +25,11 @@ export default function Project() {
         through which users operate the ICE ecosystem.
       </p>
 
-      <p>
-        ICE Studio focuses on usability, workflows, and human–system interaction.
-        It acts as the entry point to the underlying cognitive runtime.
-      </p>
-
       <h3>ICE Engine</h3>
       <p>
         <strong>Integrated Cognitive Engine.</strong> ICE Engine represents the
         core runtime responsible for orchestration, lifecycle management,
         execution control, and system coordination.
-      </p>
-
-      <p>
-        The engine is designed to be modular, extensible, and capable of running
-        both locally and in distributed environments.
       </p>
 
       <h3>ICE AI</h3>
@@ -48,46 +38,22 @@ export default function Project() {
         models, embeddings, knowledge processing, and reasoning pipelines.
       </p>
 
-      <p>
-        This domain defines how intelligent behaviors are composed, coordinated,
-        and executed within the ICE ecosystem.
-      </p>
-
       <h3>ICEP</h3>
       <p>
         <strong>Integrated Cognitive Engine Protocol.</strong> ICEP defines the
-        communication and control protocol used by ICE components to discover,
-        pair, negotiate capabilities, and exchange runtime information.
-      </p>
-
-      <p>
-        ICEP is designed to be transport-agnostic and usable in both local and
-        remote scenarios.
+        communication and control protocol used by ICE components.
       </p>
 
       <h3>ICENet</h3>
       <p>
-        ICENet represents the network layer built on top of ICEP. It provides
-        discovery, pairing, topology management, and secure communication between
-        ICE nodes.
-      </p>
-
-      <p>
-        ICENet enables distributed ICE deployments while preserving local-first
-        principles.
+        ICENet represents the network layer built on top of ICEP.
       </p>
 
       <h2>Project Status</h2>
 
       <p>
-        The ICE ecosystem is currently in a <strong>foundational / pre-MVP</strong>{" "}
-        phase. Architecture, lifecycle, and core abstractions are being
-        stabilized before formal modular separation and public releases.
-      </p>
-
-      <p>
-        Current development focuses on achieving a functional, end-to-end system
-        before extracting individual domains into standalone modules.
+        The ICE ecosystem is currently in a{" "}
+        <strong>foundational / pre-MVP</strong> phase.
       </p>
     </section>
   );
