@@ -1,42 +1,33 @@
-import Link from "next/link";
-
 export default function HomePage() {
   return (
     <>
-      {/* Identity */}
-      <section className="container">
-        <h1>ICE Lab</h1>
-
-        <p>
-          ICE Lab is a research and engineering laboratory focused on the design
-          of integrated cognitive systems.
-        </p>
+      <section className="hero">
+        <div className="hero-inner">
+          <h1>ICE Lab</h1>
+          <p>
+            Integrated cognitive systems research lab.
+          </p>
+        </div>
       </section>
 
-      <div className="divider" />
-
-      {/* Scope */}
-      <section className="container soft">
-        <p>
-          The project explores how environments, runtime engines, protocols, and
-          intelligent agents can be composed into a coherent, local-first
+      <section className="container narrow statement-section">
+        <p className="statement">
+          The project explores how environments, runtime engines, protocols,
+          and intelligent agents can be composed into a coherent, local-first
           cognitive ecosystem.
         </p>
       </section>
 
-      <div className="divider" />
-
-      {/* Navigation */}
-      <section className="container">
+      <section className="container narrow">
         <ul>
           <li>
-            <Link href="/project">Explore projects</Link>
+            <a href="/projects">Explore the projects</a>
           </li>
           <li>
-            <Link href="/docs">Read the documentation</Link>
+            <a href="/docs">Read the documentation</a>
           </li>
           <li>
-            <Link href="/status">View project status</Link>
+            <a href="/status">View current status</a>
           </li>
         </ul>
       </section>
