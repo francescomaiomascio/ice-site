@@ -3,6 +3,11 @@ export default function HomePage() {
     <>
       <section className="hero">
         <div className="hero-inner">
+          <img
+            src="/theme/icons/brands/png/256.png"
+            alt="ICE Lab logo"
+            className="hero-logo"
+          />
           <h1>ICE Lab</h1>
           <p>
             Integrated cognitive systems research lab.
