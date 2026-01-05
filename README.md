@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ICE Website
 
-## Getting Started
+[![ICE Ecosystem](https://img.shields.io/badge/ICE-Ecosystem-8FB9FF?style=flat)](#)
+[![Docs](https://img.shields.io/badge/docs-ICE--Docs-8FB9FF?style=flat)](https://github.com/francescomaiomascio/ice-docs)
+[![Status](https://img.shields.io/badge/status-legacy--placeholder-6B7280?style=flat)](#)
+[![License](https://img.shields.io/badge/license-MIT-7A7CFF?style=flat)](#)
 
-First, run the development server:
+ICE Website is the **web presence** of the ICE ecosystem.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This repository hosts a Next.js–based website used to present ICE concepts,
+project information, and early documentation links.  
+The current structure reflects an **early and transitional phase** of the
+project.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A redesign and restructuring are expected as the ICE ecosystem matures.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Purpose
 
-## Learn More
+ICE Website exists to:
 
-To learn more about Next.js, take a look at the following resources:
+- Provide a public web entry point for ICE
+- Host high-level project pages (about, status, download, docs)
+- Experiment with visual identity and layout
+- Serve as a placeholder for future web presence
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This repository does **not** represent the final ICE website.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Scope
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Current and experimental areas include:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js application structure
+- Static informational pages
+- Theme and styling integration
+- Early branding and layout experiments
+- Temporary documentation routing
+
+The structure is subject to significant change.
+
+---
+
+## Design Notes
+
+- The site is considered legacy and transitional
+- Content and routing may change without notice
+- Styling and theming are shared with early ICE assets
+- No stability or long-term guarantees are provided
+
+This repository prioritizes **continuity over polish**.
+
+---
+
+## Usage
+
+ICE Website is intended for **public visibility**, not for application logic.
+
+It may reference:
+- ICE Docs
+- ICE Studio
+- ICE repositories and assets
+
+Deployment strategy and hosting are expected to evolve.
+
+---
+
+## Status
+
+This project is in a **legacy / placeholder state**.
+A future redesign is planned.
+
+---
+
+## License
+
+This project is licensed under the terms of the MIT license.
+See the `LICENSE` file for details.
