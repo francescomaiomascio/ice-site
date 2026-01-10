@@ -4,25 +4,34 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <>
-      {/* HERO */}
-      <Section id="hero" variant="hero">
-        <img
-          src="/theme/icons/brands/png/256.png"
-          alt="Profile photo"
-          className="hero-avatar"
-        />
+    {/* HERO */}
+    <Section id="hero" variant="hero">
+  <div className="hero-content">
+    <div className="hero-identity">
+      <img
+        src="https://drive.google.com/uc?export=view&id=1vWxflDsTqL0xvGQ5ajEdbQhdu4qdWqNC"
+        alt="Francesco Maiomascio"
+        className="hero-avatar"
+      />
+    </div>
 
-        <h1>Francesco Maiomascio</h1>
+    <header className="hero-header">
+      <h1>Francesco Maiomascio</h1>
 
-        <p className="hero-subtitle">
-          Runtime architect & cognitive systems researcher.
-        </p>
+      <p className="hero-subtitle">
+        Runtime architect & cognitive systems researcher
+      </p>
+    </header>
 
-        <p className="hero-tagline">
-          Designing systems where execution is explicit, governed,
-          and intelligible over time.
-        </p>
-      </Section>
+    <div className="hero-thesis">
+      <p>
+        Designing systems where execution is explicit, governed,
+        and intelligible over time.
+      </p>
+    </div>
+  </div>
+</Section>
+
 
       {/* STATEMENT */}
       <Section id="statement" width="narrow">

@@ -148,3 +148,28 @@ body {
   padding-top: var(--space-xl);
   padding-bottom: var(--space-xl);
 }
+
+
+/* =========================
+   HERO BASE (TEMP)
+   ========================= */
+
+.hero-content {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-identity {
+  margin-bottom: var(--space-md);
+}
+
+.hero-avatar {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;      /* 🔴 rotonda */
+  display: block;
+  margin: 0 auto;
+}
