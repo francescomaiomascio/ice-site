@@ -1,0 +1,27 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.site-header,
+.site-footer {
+  width: 100%;
+}
+
+.site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.site-nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+}
+
+.site-main {
+  min-height: calc(100vh - 120px);
+  padding: 2rem;
+}
