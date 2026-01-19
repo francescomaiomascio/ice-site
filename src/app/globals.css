@@ -18,21 +18,15 @@ body {
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  overflow: hidden;
+  overflow: hidden; /* scroll solo su site-main */
 }
 
 
 /* =========================================================
-   LAYOUT TOKENS
+   TOKENS (LAYOUT ONLY)
    ========================================================= */
 
 :root {
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 2rem;
-  --space-lg: 3rem;
-  --space-xl: 5rem;
-
   --header-height: 64px;
   --footer-height: 48px;
 }
@@ -43,168 +37,101 @@ body {
    ========================================================= */
 
 .site-root {
-  height: 100vh;
   position: relative;
+  height: 100vh;
 }
 
 
 /* =========================================================
-   HEADER (FIXED)
+   HEADER / FOOTER (FIXED)
    ========================================================= */
 
 .site-header {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  inset: 0 0 auto 0;
   height: var(--header-height);
   z-index: 100;
 }
 
-
-/* =========================================================
-   FOOTER (FIXED, ANCORATO COME HEADER)
-   ========================================================= */
-
 .site-footer {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  inset: auto 0 0 0;
   height: var(--footer-height);
   z-index: 100;
-  font-size: 0.75rem;
-  opacity: 0.6;
 }
 
 .site-footer-inner {
-  max-width: none;
-  margin: 0;
-  padding: 0 var(--space-md);
   height: 100%;
   display: flex;
   align-items: center;
-
   justify-content: flex-end;
-  text-align: right;
 }
 
 
 /* =========================================================
-   NAV
-   ========================================================= */
-
-.site-nav {
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 var(--space-md);
-}
-
-.site-brand-wrap {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
-.site-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 999px;
-  object-fit: cover;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.site-brand {
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.site-nav a {
-  margin-left: var(--space-sm);
-  text-decoration: none;
-  opacity: 0.8;
-}
-
-.site-nav a:hover {
-  opacity: 1;
-}
-
-
-/* =========================================================
-   MAIN CONTENT
+   SCROLL CONTAINER (CORE)
    ========================================================= */
 
 .site-main {
   position: absolute;
   top: var(--header-height);
-  right: 0;
   bottom: var(--footer-height);
   left: 0;
+  right: 0;
+
   overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
 
-
 /* =========================================================
-   SECTIONS
+   SECTIONS = 1 VIEWPORT EACH
    ========================================================= */
 
 .section {
   width: 100%;
-}
+  height: 100%;
+  min-height: 100%;
 
-.section-inner {
-  margin: 0 auto;
-  padding: var(--space-xl) var(--space-md);
-}
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 
-.section + .section {
-  margin-top: var(--space-lg);
-}
-
-
-
-/* =========================================================
-   WIDTH VARIANTS
-   ========================================================= */
-
-.section--full .section-inner {
-  max-width: none;
-}
-
-.section--wide .section-inner {
-  max-width: 1200px;
-}
-
-.section--narrow .section-inner {
-  max-width: 1100px;
-}
-
-
-/* =========================================================
-   HERO (RISPETTA VIEWPORT)
-   ========================================================= */
-
-.section--hero {
-  min-height: calc(100vh - var(--header-height) - var(--footer-height));
   display: flex;
   align-items: center;
-}
+  justify-content: center;
 
-.section--hero .section-inner {
-  padding-top: var(--space-xl);
-  padding-bottom: var(--space-xl);
+  position: relative;
 }
 
 
 /* =========================================================
-   HERO CONTENT
+   HERO LAYOUT
    ========================================================= */
 
-.hero-content {
+.section--hero .section-inner {
+  width: 100%;
+  max-width: none;
+
+  padding-inline: clamp(2rem, 6vw, 10rem);
+  padding-block: clamp(4rem, 12vh, 9rem);
+
+  display: grid;
+  grid-template-rows: 1.2fr auto 1fr;
+}
+
+.section--hero .section-hero-content {
+  grid-row: 2;
+  width: 100%;
+}
+
+
+/* =========================================================
+   GENERIC CONTENT WRAPPER
+   ========================================================= */
+
+.section-inner {
   max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
+  width: 100%;
+  padding: 0 2rem;
 }

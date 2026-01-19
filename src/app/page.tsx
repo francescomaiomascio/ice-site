@@ -12,6 +12,7 @@ export default function HomePage() {
 
             <p className="hero-subtitle">
               Research and engineering of runtime-centric intelligent systems.
+              Execution, governance, and long-term intelligibility by design.
             </p>
           </header>
 
