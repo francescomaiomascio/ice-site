@@ -1,97 +1,86 @@
-# ICE Website
+# Francesco Maiomascio — Personal Website
 
-[![ICE Ecosystem](https://img.shields.io/badge/ICE-Ecosystem-8FB9FF?style=flat)](#)
-[![Status](https://img.shields.io/badge/status-active-6B7280?style=flat)](#)
-[![License](https://img.shields.io/badge/license-MIT-7A7CFF?style=flat)](#)
+This repository contains the source code for the personal website of
+**Francesco Maiomascio**.
 
-This repository contains the **public website** for the ICE ecosystem and the
-personal web presence of **Francesco Maiomascio**.
+The site serves as a public-facing space for:
+- systems thinking and architectural research
+- long-term technical projects
+- essays, notes, and documentation
+- public presentation of ongoing work
 
-It serves as the main external entry point for:
-- ICE vision and system overview
-- Project status and documentation access
-- Public-facing presentation of ongoing work
-
-The site is built with **Next.js** and deployed via **Cloudflare Pages**.
+The website is intentionally independent from any single project or product.
 
 ---
 
-## Role of this Repository
+## Relationship to ICE
 
-This repository is intentionally **not an application** and not part of the ICE
-runtime or execution stack.
+The ICE ecosystem is one of the major bodies of work presented on this site.
 
-Its role is to:
+ICE content appears here as:
+- documentation
+- architectural overviews
+- project navigation
+- public explanations
 
-- Provide a stable public-facing surface for ICE
-- Act as a navigational hub to ICE projects and documentation
-- Present a coherent identity across systems, research, and tooling
-- Evolve independently from ICE internal repositories
+This repository does **not** define, constrain, or govern ICE.
 
-The website is treated as an **interface**, not as a product.
+ICE remains defined exclusively by its own repositories
+(e.g. ICE Foundation, Runtime, Engine).
+
+This site acts only as an **interface and communication layer**.
 
 ---
 
-## Structure Overview
+## Scope of This Repository
 
-At a high level, the site is organized around two layers:
+This repository contains:
 
-- **Personal / Profile layer**  
-  Presentation of the author, background, and systems thinking approach.
+- website source code
+- layout and routing
+- presentation logic
+- static content and copy
+- links to external repositories
 
-- **ICE layer**  
-  Public-facing pages dedicated to the ICE ecosystem:
-  concepts, projects, documentation links, and status.
+It does **not** contain:
 
-This separation is intentional and reflected in routing and layout.
+- ICE runtime code
+- execution logic
+- architectural authority
+- governance rules
 
 ---
 
 ## Design Philosophy
 
-The website follows these principles:
+The site follows a few guiding principles:
 
-- Clarity over decoration  
-- Structure before aesthetics  
-- Navigation before content volume  
-- Long-term coherence over short-term polish  
+- clarity over marketing
+- structure over decoration
+- long-term coherence over short-term polish
+- explanation over promotion
 
-Visual design, layout, and content are expected to **iterate continuously**
-as the ICE ecosystem evolves.
+Content and structure are expected to evolve.
 
 ---
 
 ## Technology
 
-- **Framework:** Next.js (App Router)
-- **Deployment:** Cloudflare Pages
-- **Styling:** Shared ICE theme assets (via submodule)
-- **Rendering:** Static export for maximum reliability and portability
+- Framework: Next.js
+- Deployment: Cloudflare Pages
+- Rendering: Static / hybrid
+- Styling: custom and shared assets
 
-No backend services or runtime logic are hosted here.
+No backend services or runtime systems are hosted here.
 
 ---
 
 ## Status
 
-The website is **active and evolving**.
+This website is **active and evolving**.
 
-Content, layout, and structure will change as:
-- ICE components mature
-- Documentation stabilizes
-- Public communication needs grow
-
-Breaking changes to structure are acceptable.
-
----
-
-## Related Projects
-
-- ICE Core repositories
-- ICE Documentation
-- ICE Studio (future)
-
-Links are intentionally centralized here.
+Content, layout, and structure may change without notice
+as projects mature and ideas are refined.
 
 ---
 
