@@ -1,85 +1,75 @@
-The site serves as a public-facing space for:
-- systems thinking and architectural research
-- long-term technical projects
-- essays, notes, and documentation
-- public presentation of ongoing work
+# site
 
-The website is intentionally independent from any single project or product.
+Personal hub and public proof surface.
 
----
+This repository powers **maiomascio.dev**: a stable, readable entry point that maps my work across GitHub, Medium, and product artifacts—without turning the website into a “project homepage” for any single repo.
 
-## Relationship to ICE
-
-The ICE ecosystem is one of the major bodies of work presented on this site.
-
-ICE content appears here as:
-- documentation
-- architectural overviews
-- project navigation
-- public explanations
-
-This repository does **not** define, constrain, or govern ICE.
-
-ICE remains defined exclusively by its own repositories
-(e.g. ICE Foundation, Runtime, Engine).
-
-This site acts only as an **interface and communication layer**.
+The goal is simple: make the work navigable.
 
 ---
 
-## Scope of This Repository
+## What this site is
 
-This repository contains:
-
-- website source code
-- layout and routing
-- presentation logic
-- static content and copy
-- links to external repositories
-
-It does **not** contain:
-
-- ICE runtime code
-- execution logic
-- architectural authority
-- governance rules
+- A public interface for **systems work**: identity, authority, traceability, execution structure.
+- A curated index of projects, writing series, and artifacts.
+- A long-lived surface that provides context and routing (not hype).
 
 ---
 
-## Design Philosophy
+## What this site is not
 
-The site follows a few guiding principles:
+- Not a blog platform (publishing happens on Medium).
+- Not a product platform (sales happen on Gumroad).
+- Not an “ICE control panel” (ICE remains defined by its own repos).
+- No backend, no accounts, no tracking-driven UX assumptions.
+
+---
+
+## Primary entry points
+
+- GitHub (work log): https://github.com/francescomaiomascio  
+- ICE (systems work): https://github.com/francescomaiomascio/ice-foundation  
+- Medium (writing): https://medium.com/@framaiomascio  
+- Gumroad (artifacts): https://francescomaiomascio.gumroad.com/
+
+(Links are intentionally explicit: the website routes; the canonical content lives on those platforms.)
+
+---
+
+## Repository scope
+
+This repo contains:
+- site source code
+- routing and UI structure
+- static copy and curated links
+- lightweight components for project/writing/product maps
+
+It does not contain:
+- runtime code or “core” logic for ICE
+- governance authority for any project
+- standards or enforcement logic
+
+---
+
+## Design stance
 
 - clarity over marketing
 - structure over decoration
-- long-term coherence over short-term polish
-- explanation over promotion
-
-Content and structure are expected to evolve.
+- navigation over noise
+- durability over trend
 
 ---
 
-## Technology
+## Tech
 
 - Framework: Next.js
 - Deployment: Cloudflare Pages
-- Rendering: Static / hybrid
-- Styling: custom and shared assets
+- Rendering: static / hybrid (as needed)
 
-No backend services or runtime systems are hosted here.
-
----
-
-## Status
-
-This website is **active and evolving**.
-
-Content, layout, and structure may change without notice
-as projects mature and ideas are refined.
+No backend services are required.
 
 ---
 
 ## License
 
-MIT License.  
-See the `LICENSE` file for details.
+MIT — see `LICENSE`.
