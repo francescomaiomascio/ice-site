@@ -4,8 +4,16 @@ import "@/theme/site.css";
 import { SiteLayout } from "../components/layout/SiteLayout";
 
 export const metadata: Metadata = {
-  title: "MothX Labs",
+  title: "Francesco Maiomascio",
   description: "Research and engineering of runtime-centric intelligent systems.",
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon.ico" },
+      { url: "/favicon.jpg" },
+    ],
+    shortcut: "/favicon.ico",
+  },
 };
 
 
