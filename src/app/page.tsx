@@ -17,47 +17,64 @@ export default function HomePage() {
       title: "Projects",
       description: "Artifacts",
       detail: "Executable systems, standards, and artifacts.",
+      tone: "projects",
     },
     {
       href: "/writing",
       title: "Writing",
       description: "Thinking",
       detail: "Notes, essays, and governance thinking.",
+      tone: "writing",
     },
     {
       href: "/status",
       title: "Status",
       description: "Now",
       detail: "What is active, blocked, or evolving now.",
+      tone: "status",
     },
     {
       href: "/about",
       title: "About",
       description: "Identity",
       detail: "Background, approach, and research orientation.",
+      tone: "about",
     },
   ];
 
   return (
     <>
-      <Section id="hero" variant="hero">
-        <header>
-          <h1>Francesco Maiomascio</h1>
-          <p>
-            I build governable software systems: identity, authority, traceability.
-            This site is a routing surface for projects and writing.
-          </p>
-        </header>
-      </Section>
+      <section id="hero" className="hero-surface">
+        <div className="hero-content">
+          <div className="hero-layout">
+            <header className="hero-statement">
+              <h1>Governable software systems, built in public.</h1>
+              <p>
+                A public workspace connecting artifacts, thinking, and live system status
+                across platforms.
+              </p>
+            </header>
+
+            <div className="hero-presence" aria-hidden="true" />
+          </div>
+        </div>
+      </section>
 
       <Section id="paths" width="narrow">
         <h2>What you can explore</h2>
         <nav className="nav-cards" aria-label="Primary navigation">
           {primaryPaths.map((item) => (
-            <Link key={item.href} href={item.href} className="nav-card">
-              <span>{item.title}</span>
-              <span>{item.description}</span>
-              <span>{item.detail}</span>
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`nav-card nav-card--${item.tone}`}
+            >
+              <span className="nav-card-bg" aria-hidden="true" />
+              <span className="nav-card-content">
+                <span className="nav-card-meta">{item.description}</span>
+                <span className="nav-card-title">{item.title}</span>
+                <span className="nav-card-detail">{item.detail}</span>
+              </span>
             </Link>
           ))}
         </nav>
