@@ -16,6 +16,7 @@ export function TopBar() {
             priority
           />
           <span className="site-brand-name">Francesco Maiomascio</span>
+          <span className="site-brand-short" aria-hidden="true">FM</span>
         </Link>
 
         <div className="site-nav-links">

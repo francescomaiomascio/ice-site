@@ -46,16 +46,53 @@ export default function HomePage() {
     <>
       <section id="hero" className="hero-surface">
         <div className="hero-content">
-          <div className="hero-layout">
-            <header className="hero-statement">
-              <h1>Governable software systems, built in public.</h1>
-              <p>
-                A public workspace connecting artifacts, thinking, and live system status
-                across platforms.
-              </p>
-            </header>
+          <div className="hero-header">
+            <h1>Governable software systems, built in public.</h1>
+            <h2 className="hero-subhead">
+              A public workspace for designing, operating, and evolving software systems with
+              explicit authority, identity, and traceability.
+            </h2>
+          </div>
 
-            <div className="hero-presence" aria-hidden="true" />
+          <div className="hero-layout">
+            <div className="hero-text">
+              <div className="hero-body">
+                <p>
+                  Software systems are not just code: they are systems of authority, boundaries,
+                  and responsibility. If you cannot define who owns what, how decisions are made,
+                  and how changes flow, you don’t have governance — you have chaos.
+                </p>
+                <p>
+                  This site is not a portfolio. It is an open routing surface connecting live
+                  projects, technical writing, and operational signals — all treated as
+                  first-class artifacts, not marketing material.
+                </p>
+                <p>
+                  Here you can explore executable systems, surface design decisions, and ongoing
+                  work across platforms. Everything is built in the open, with a focus on clarity
+                  over abstraction and control over opacity.
+                </p>
+              </div>
+            </div>
+
+            <div className="hero-visual" aria-hidden="true">
+              <div className="hero-visual-stack">
+                <div className="hero-visual-panel hero-visual-panel--1">
+                  <div className="hero-visual-title">ARCHITECTURE</div>
+                  <div className="hero-visual-sub">Boundaries · Authority · System Design</div>
+                  <div className="hero-visual-sub">Governance · Interfaces · Constraints</div>
+                  <div className="hero-visual-sub">Execution · State · Evolution</div>
+                </div>
+                <div className="hero-visual-panel hero-visual-panel--2">
+                  <div className="hero-visual-title">GOVERNANCE</div>
+                  <div className="hero-visual-sub">Policies · Interfaces · Constraints</div>
+                </div>
+                <div className="hero-visual-panel hero-visual-panel--3">
+                  <div className="hero-visual-title">SIGNALS</div>
+                  <div className="hero-visual-sub">State · Health · Evolution</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
