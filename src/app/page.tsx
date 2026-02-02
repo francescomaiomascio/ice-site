@@ -49,27 +49,31 @@ export default function HomePage() {
           <div className="hero-header">
             <h1>Governable software systems, built in public.</h1>
             <h2 className="hero-subhead">
-              A public workspace for designing, operating, and evolving software systems with
-              explicit authority, identity, and traceability.
+              A public workspace for designing, operating, and evolving software systems
+              with explicit authority, identity, and traceability.
             </h2>
           </div>
 
           <div className="hero-layout">
             <div className="hero-text">
-              <div className="hero-body">
-                <p>
-                  Software systems are not just code: they are systems of authority, boundaries,
-                  and responsibility. If you cannot define who owns what, how decisions are made,
-                  and how changes flow, you don’t have governance — you have chaos.
+              <div className="hero-copy">
+                <p className="hero-lead">Software systems are not just code.</p>
+                <p className="hero-body">
+                  They are systems of authority, boundaries, and responsibility.
+                  If you cannot define who owns what, how decisions are made,
+                  and how change flows, you don’t have governance — you have chaos.
                 </p>
-                <p>
-                  This site is not a portfolio. It is an open routing surface connecting live
-                  projects, technical writing, and operational signals — all treated as
-                  first-class artifacts, not marketing material.
+                <p className="hero-quote">“Structure is the first form of safety.”</p>
+                <p className="hero-body hero-body--soft">
+                  This site is not a portfolio.
+                  It is an open routing surface connecting live projects,
+                  technical writing, and operational signals —
+                  all treated as first-class artifacts, not marketing material.
                 </p>
-                <p>
-                  Here you can explore executable systems, surface design decisions, and ongoing
-                  work across platforms. Everything is built in the open, with a focus on clarity
+                <p className="hero-body hero-body--soft hero-body--end">
+                  Here you can explore executable systems,
+                  surface design decisions, and ongoing work across platforms.
+                  Everything is built in the open, with a focus on clarity
                   over abstraction and control over opacity.
                 </p>
               </div>
