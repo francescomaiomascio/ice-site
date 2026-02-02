@@ -16,19 +16,19 @@ export default function HomePage() {
       href: "/projects",
       title: "Projects",
       description: "Artifacts",
-      detail: "Systems, tools, and standards in active development.",
+      detail: "Executable systems, standards, and artifacts.",
     },
     {
       href: "/writing",
       title: "Writing",
       description: "Thinking",
-      detail: "Notes, essays, and governance frames in progress.",
+      detail: "Notes, essays, and governance thinking.",
     },
     {
       href: "/status",
       title: "Status",
       description: "Now",
-      detail: "Current signals, milestones, and operational state.",
+      detail: "What is active, blocked, or evolving now.",
     },
     {
       href: "/about",
