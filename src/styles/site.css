@@ -163,7 +163,13 @@ li a {
   min-height: 72px;
 }
 
-.site-nav-right {
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-nav-links {
   display: flex;
   gap: 1.25rem;
   flex-wrap: wrap;
