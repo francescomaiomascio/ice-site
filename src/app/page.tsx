@@ -47,6 +47,14 @@ export default function HomePage() {
       <section id="hero" className="hero-surface">
         <div className="hero-content">
           <div className="hero-header">
+          <div className="hero-logo" aria-hidden="true">
+            <iframe
+              className="hero-logo-frame"
+              src="/hero/hero-logo.html"
+              title="ICE curve"
+              scrolling="no"
+            />
+          </div>
             <h1>Governable software systems, built in public.</h1>
             <h2 className="hero-subhead">
               A public workspace for designing, operating, and evolving software systems
@@ -59,9 +67,9 @@ export default function HomePage() {
               <div className="hero-copy">
                 <p className="hero-lead">Software systems are not just code.</p>
                 <p className="hero-body">
-                  They are systems of authority, boundaries, and responsibility.
+                  They are systems of <strong>authority</strong>, boundaries, and responsibility.
                   If you cannot define who owns what, how decisions are made,
-                  and how change flows, you don’t have governance — you have chaos.
+                  and how change flows, you don't have <strong>governance</strong> — you have chaos.
                 </p>
                 <p className="hero-quote">“Structure is the first form of safety.”</p>
                 <p className="hero-body hero-body--soft">
