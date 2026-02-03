@@ -1,5 +1,5 @@
 :root {
-  --hero-content-width: 1100px;
+  --hero-content-width: 1320px;
   --topbar-h: 56px;
   /* Base palette */
   --bg: #0b0f14;
@@ -494,11 +494,12 @@ li a {
   position: relative;
   z-index: 1;
   width: 100%;
-  display: grid;
-  align-content: start;
-  row-gap: clamp(1rem, 3vh, 2.6rem);
+  min-height: calc(100svh - var(--topbar-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding-top: var(--topbar-h);
-  padding-bottom: 0;
+  padding-bottom: 6vh;
 }
 
 .hero-inner-wrap {
@@ -515,14 +516,15 @@ li a {
   max-width: var(--hero-content-width);
   margin-left: auto;
   margin-right: auto;
-  text-align: left;
+  text-align: center;
   display: grid;
-  align-items: start;
-  gap: 0;
+  align-items: center;
+  gap: 0.8rem;
 }
 
 .hero-header h1 {
-  margin: 0;
+  margin-top: 1.6rem;
+  margin-bottom: 0.6rem;
   position: relative;
   z-index: 2;
 }
@@ -531,20 +533,22 @@ li a {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr minmax(0, 480px);
-  gap: clamp(1.4rem, 2.2vw, 3rem);
+  gap: clamp(3.5rem, 7vw, 7.5rem);
   align-items: start;
   max-width: var(--hero-content-width);
   margin-left: auto;
   margin-right: auto;
-  margin-top: clamp(1.6rem, 3vh, 3.2rem);
+  margin-top: clamp(2.5rem, 6vh, 5rem);
 }
 
 .hero-text {
   display: grid;
   gap: 1.2rem;
-  max-width: 75ch;
-  justify-self: start;
-  text-align: left;
+  max-width: 120ch;
+  justify-self: center;
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .hero-subhead {
@@ -552,8 +556,12 @@ li a {
   font-weight: 400;
   color: rgba(215, 225, 240, 0.88);
   font-size: 1.4rem;
-  max-width: 75ch;
-  margin: 0 0 0.8rem;
+  max-width: 92ch;
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.6rem;
+  margin-bottom: 0;
   line-height: 1.6;
   position: relative;
   z-index: 2;
@@ -562,12 +570,15 @@ li a {
 .hero-copy {
   display: grid;
   gap: 1rem;
-  max-width: 75ch;
-  margin: 0;
+  max-width: 120ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-copy p {
   margin: 0;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 1.7;
 }
 
@@ -576,26 +587,37 @@ li a {
   font-weight: 600;
   letter-spacing: -0.01em;
   color: rgba(235, 243, 255, 0.98);
+  text-align: center;
 }
 
 .hero-body {
   color: rgba(198, 212, 232, 0.84);
   font-size: 1.05rem;
-  line-height: 1.75;
+  line-height: 1.55;
+  max-width: 120ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .hero-quote {
   font-size: 1.1rem;
   font-style: italic;
-  text-align: left;
+  text-align: center;
+  max-width: 52ch;
   color: rgba(236, 222, 198, 0.88);
   opacity: 0.85;
-  margin: 1.4rem 0 1.4rem 0;
+  margin: 1.4rem auto;
 }
 
 .hero-body--soft {
   font-size: 1rem;
   color: rgba(206, 218, 234, 0.72);
+  line-height: 1.55;
+  max-width: 120ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .hero-body--end {
@@ -645,7 +667,7 @@ li a {
   display: grid;
   align-content: center;
   gap: 0.6rem;
-  padding: 1.4rem 1.6rem;
+  padding: 1.6rem 1.8rem;
   color: var(--fg-soft);
 }
 
@@ -664,13 +686,13 @@ li a {
 .hero-visual-panel--2 {
   z-index: 2;
   opacity: 0.8;
-  --stack-offset: 20px;
+  --stack-offset: 32px;
 }
 
 .hero-visual-panel--3 {
   z-index: 1;
   opacity: 0.6;
-  --stack-offset: 40px;
+  --stack-offset: 64px;
   background: linear-gradient(
     135deg,
     rgba(18, 52, 46, 0.32),
@@ -734,6 +756,14 @@ li a {
 }
 
 @media (max-width: 1100px) {
+  .hero-text,
+  .hero-copy,
+  .hero-body,
+  .hero-body--soft {
+    max-width: 100ch;
+  }
+
+
   .hero-layout {
     grid-template-columns: 1fr;
     row-gap: 4rem;
@@ -796,25 +826,21 @@ li a {
 .hero-logo {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   padding-top: 0;
   pointer-events: none;
   position: relative;
   z-index: 1;
-  transform: none;
 }
 
 .hero-logo-frame {
-  width: min(920px, 92vw);
-  height: 120px;
+  width: min(560px, 65vw);
+  height: 96px;
   border: 0;
   display: block;
   pointer-events: none;
-  overflow: hidden;
-  transform: none;
-  opacity: 0.95;
+  overflow: visible;
+  opacity: 0.85;
 }
 
 .hero-inner {

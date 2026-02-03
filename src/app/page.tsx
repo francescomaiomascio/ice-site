@@ -68,22 +68,20 @@ export default function HomePage() {
                 <div className="hero-copy">
                   <p className="hero-lead">Software systems are not just code.</p>
                   <p className="hero-body">
-                    They are systems of <strong>authority</strong>, boundaries, and responsibility.
-                    If you cannot define who owns what, how decisions are made,
+                    They are systems of <strong>authority</strong>, boundaries, and responsibility. If you cannot define who owns what, how decisions are made,
+                    <br />
                     and how change flows, you don't have <strong>governance</strong> — you have chaos.
                   </p>
                   <p className="hero-quote">“Structure is the first form of safety.”</p>
                   <p className="hero-body hero-body--soft">
-                    This site is not a portfolio.
-                    It is an open routing surface connecting live projects,
-                    technical writing, and operational signals —
+                    This site is not a portfolio. It is an open routing surface connecting live projects, technical writing, and operational signals —
+                    <br />
                     all treated as first-class artifacts, not marketing material.
                   </p>
                   <p className="hero-body hero-body--soft hero-body--end">
-                    Here you can explore executable systems,
-                    surface design decisions, and ongoing work across platforms.
-                    Everything is built in the open, with a focus on clarity
-                    over abstraction and control over opacity.
+                    Here you can explore executable systems, surface design decisions, and ongoing work across platforms.
+                    <br />
+                    Everything is built in the open, with a focus on clarity over abstraction and control over opacity.
                   </p>
                 </div>
               </div>
