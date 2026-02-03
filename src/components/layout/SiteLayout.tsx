@@ -34,7 +34,7 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div className="site-root">
+    <div className="app-surface">
       <TopBar />
 
       <main

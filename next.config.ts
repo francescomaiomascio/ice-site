@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "readmecodegen.vercel.app",
+        pathname: "/api/social-icon**",
+      },
+    ],
   },
   turbopack: {
     root,

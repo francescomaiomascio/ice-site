@@ -1,26 +1,10 @@
- "use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import avatarSrc from "@/app/img/DSC00498.jpg";
 
 export function TopBar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => {
-      setIsScrolled(window.scrollY > 40);
-    };
-
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header className={`site-header${isScrolled ? " site-header--scrolled" : ""}`}>
+    <header className="site-header">
       <nav className="site-nav site-shell">
         <Link href="/" className="site-brand">
           <Image
@@ -40,7 +24,6 @@ export function TopBar() {
           <Link href="/writing">Writing</Link>
           <Link href="/status">Status</Link>
           <Link href="/about">About</Link>
-
           <a
             href="https://github.com/francescomaiomascio"
             target="_blank"
@@ -57,9 +40,12 @@ export function TopBar() {
             rel="noopener noreferrer"
             aria-label="GitHub"
           >
-            <img
+            <Image
               src="https://readmecodegen.vercel.app/api/social-icon?name=github&theme=dark&size=20"
               alt=""
+              width={22}
+              height={22}
+              unoptimized
             />
           </a>
           <a
@@ -68,9 +54,12 @@ export function TopBar() {
             rel="noopener noreferrer"
             aria-label="LinkedIn"
           >
-            <img
+            <Image
               src="https://readmecodegen.vercel.app/api/social-icon?name=linkedin&theme=dark&size=20"
               alt=""
+              width={22}
+              height={22}
+              unoptimized
             />
           </a>
           <a
@@ -79,9 +68,12 @@ export function TopBar() {
             rel="noopener noreferrer"
             aria-label="X"
           >
-            <img
+            <Image
               src="https://readmecodegen.vercel.app/api/social-icon?name=x&theme=dark&size=20"
               alt=""
+              width={22}
+              height={22}
+              unoptimized
             />
           </a>
           <a
@@ -90,9 +82,12 @@ export function TopBar() {
             rel="noopener noreferrer"
             aria-label="Bluesky"
           >
-            <img
+            <Image
               src="https://readmecodegen.vercel.app/api/social-icon?name=bluesky&theme=dark&size=20"
               alt=""
+              width={22}
+              height={22}
+              unoptimized
             />
           </a>
           <a
@@ -101,9 +96,12 @@ export function TopBar() {
             rel="noopener noreferrer"
             aria-label="Gumroad"
           >
-            <img
+            <Image
               src="https://readmecodegen.vercel.app/api/social-icon?name=gumroad&theme=dark&size=20"
               alt=""
+              width={22}
+              height={22}
+              unoptimized
             />
           </a>
           <a
@@ -112,9 +110,12 @@ export function TopBar() {
             rel="noopener noreferrer"
             aria-label="YouTube"
           >
-            <img
+            <Image
               src="https://readmecodegen.vercel.app/api/social-icon?name=youtube&theme=dark&size=20"
               alt=""
+              width={22}
+              height={22}
+              unoptimized
             />
           </a>
           <a
@@ -123,9 +124,12 @@ export function TopBar() {
             rel="noopener noreferrer"
             aria-label="Stack Overflow"
           >
-            <img
+            <Image
               src="https://readmecodegen.vercel.app/api/social-icon?name=stackoverflow&theme=dark&size=20"
               alt=""
+              width={22}
+              height={22}
+              unoptimized
             />
           </a>
         </div>

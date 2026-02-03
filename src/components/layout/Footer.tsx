@@ -4,16 +4,9 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <div className="site-footer-inner site-shell">
-        <div className="site-footer-copy">
-          <p>
-            © {year} Francesco Maiomascio · Personal hub and public routing surface.
-          </p>
-
-          <p>
-            This site maps projects and writing across platforms.
-            Canonical content lives on external sources.
-          </p>
-        </div>
+        <span className="site-footer-meta">
+          © {year} Francesco Maiomascio
+        </span>
 
         <nav className="site-footer-links" aria-label="Footer">
           <a

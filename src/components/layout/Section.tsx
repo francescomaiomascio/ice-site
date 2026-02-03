@@ -22,6 +22,7 @@ export function Section({
 }: SectionProps) {
   const classes = [
     "section",
+    "snap-section",
     `section--${width}`,
     `section--${variant}`,
     className,
