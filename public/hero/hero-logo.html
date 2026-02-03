@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICE Logo - Canvas</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      display: block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .container {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      display: block;
+    }
+
+    .logo-wrap {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    #iceLogo {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-wrap">
+      <canvas id="iceLogo" width="900" height="160"></canvas>
+    </div>
+  </div>
+
+<script>
+const canvas = document.getElementById("iceLogo");
+const ctx = canvas.getContext("2d");
+
+const DURATION_MS = 1100;
+let startTs = null;
+let progress = 1;
+
+function easeOutCubic(t) {
+  return 1 - Math.pow(1 - t, 3);
+}
+
+function animate(ts) {
+  if (startTs === null) startTs = ts;
+  const elapsed = ts - startTs;
+  const t = Math.min(1, elapsed / DURATION_MS);
+  progress = easeOutCubic(t);
+  render();
+  if (t < 1) requestAnimationFrame(animate);
+}
+
+function render() {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  const width = Math.max(1, Math.round(rect.width));
+
+  const W = width;
+  const H = 120;
+
+  canvas.width = Math.round(W * dpr);
+  canvas.height = Math.round(H * dpr);
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.scale(dpr, dpr);
+
+  const startX = W * (40 / 900);
+  const endX = W - startX;
+  const baselineY = H * (90 / 160);
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Curva ICE
+  ctx.strokeStyle = "rgba(230, 235, 245, 0.92)";
+  ctx.lineWidth = 3.2;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  ctx.shadowColor = "rgba(0, 0, 0, 0.45)";
+  ctx.shadowBlur = 6;
+  ctx.shadowOffsetY = 2;
+
+  ctx.beginPath();
+
+  const LOGO_WIDTH_RATIO = 0.5; // meta del titolo
+  const logoWidth = (endX - startX) * LOGO_WIDTH_RATIO;
+  const logoStartX = startX + ((endX - startX) - logoWidth) / 2;
+  const logoEndX = logoStartX + logoWidth;
+
+  const A = H * 0.26;
+  const lambda = 2.6;
+  const p = 3.2;
+  const omega = 7.4;
+  const T = 6.0;
+
+  const N = 900;
+  const maxI = Math.floor(N * progress);
+  for (let i = 0; i <= maxI; i++) {
+    const u = i / N;          // spazio del logo (0-1)
+    const t = u * T;          // tempo fisico
+
+    const x = logoStartX + u * (logoEndX - logoStartX);
+
+    const attack = Math.min(1, u / 0.12);
+
+    const envelope =
+      attack *
+      Math.exp(-lambda * Math.pow(u, p)) *
+      (1 + 0.75 * Math.exp(-8.0 * u));
+
+    const tail = 1 + 0.015 * Math.sin(6 * Math.PI * u) * Math.pow(Math.max(0, u - 0.85) / 0.15, 2);
+
+    const head = 0.06 * A * Math.exp(-u / 0.025);
+
+    const y =
+      baselineY -
+      head -
+      A * envelope * tail *
+      Math.cos(omega * t);
+
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+
+  ctx.stroke();
+}
+
+const ro = new ResizeObserver(() => {
+  startTs = null;
+  progress = 0;
+  requestAnimationFrame(animate);
+});
+ro.observe(canvas);
+requestAnimationFrame(animate);
+</script>
+
+</body>
+</html>

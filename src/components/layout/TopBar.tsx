@@ -1,10 +1,26 @@
+ "use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import avatarSrc from "@/app/img/DSC00498.jpg";
 
 export function TopBar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 40);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="site-header">
+    <header className={`site-header${isScrolled ? " site-header--scrolled" : ""}`}>
       <nav className="site-nav site-shell">
         <Link href="/" className="site-brand">
           <Image

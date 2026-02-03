@@ -1,4 +1,5 @@
 :root {
+  --hero-content-width: 1100px;
   /* Base palette */
   --bg: #0b0f14;
   --bg-soft: #111827;
@@ -46,9 +47,7 @@ a {
   border-bottom: 1px solid transparent;
 }
 
-a:hover {
-  border-bottom: 1px solid var(--muted);
-}
+
 
 main {
   padding: 0;
@@ -113,7 +112,7 @@ li a {
 
 .container {
   max-width: var(--max-width);
-  margin: 0 auto;
+  margin: 0;
   padding: 6rem 2rem;
 }
 
@@ -151,14 +150,16 @@ li a {
   position: sticky;
   top: 0;
   z-index: 10;
+  height: 76px;
   background: linear-gradient(
     180deg,
-    rgba(10, 12, 18, 0.65),
-    rgba(10, 12, 18, 0.25)
+    rgba(10, 12, 18, 0.35),
+    rgba(10, 12, 18, 0.12)
   );
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(6px);
   border-bottom-left-radius: 14px;
   border-bottom-right-radius: 14px;
+  transition: background 180ms ease, backdrop-filter 180ms ease, box-shadow 180ms ease;
 }
 
 .site-shell {
@@ -171,13 +172,18 @@ li a {
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  min-height: 58px;
+  height: 100%;
+  min-height: 100%;
 }
 
 .site-brand {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+.site-brand:hover {
+  border-bottom-color: transparent;
 }
 
 .site-brand-avatar {
@@ -227,12 +233,36 @@ li a {
   display: block;
   opacity: 0.7;
   filter: drop-shadow(0 0 6px rgba(120, 150, 200, 0.2));
-  transition: opacity 0.2s ease, filter 0.2s ease;
+  transition: transform 180ms ease, opacity 0.2s ease, filter 0.2s ease;
 }
 
 .site-nav-icons a:hover img {
   opacity: 1;
   filter: drop-shadow(0 0 8px rgba(120, 150, 200, 0.35));
+}
+
+.site-nav-icons a:hover {
+  border-bottom-color: transparent;
+}
+
+.site-header--scrolled {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 12, 18, 0.78),
+    rgba(10, 12, 18, 0.55)
+  );
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.site-header--scrolled .site-nav-icons img {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+.site-header:not(.site-header--scrolled) .site-nav-icons img {
+  transform: scale(1.05);
+  opacity: 0.95;
 }
 
 @media (max-width: 720px) {
@@ -457,37 +487,43 @@ li a {
   align-content: start;
   row-gap: clamp(1rem, 3vh, 2.6rem);
   padding:
-    clamp(5.5rem, 14vh, 11rem)
+    clamp(4rem, 10vh, 8rem)
     var(--body-gutter)
     clamp(1.8rem, 4vh, 4rem);
 }
 
 .hero-header {
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
+  max-width: var(--hero-content-width);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
   display: grid;
-  gap: clamp(1.2rem, 2.8vh, 2.6rem);
+  align-items: start;
+  gap: 0;
 }
 
 .hero-header h1 {
   margin: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-layout {
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.7fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
   gap: clamp(1.4rem, 2.2vw, 3rem);
   align-items: start;
-  max-width: 1480px;
-  margin: clamp(0.6rem, 1.8vh, 2rem) auto 0;
+  max-width: var(--hero-content-width);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: clamp(1.6rem, 3vh, 3.2rem);
 }
 
 .hero-text {
   display: grid;
   gap: 1.2rem;
-  max-width: 110ch;
+  max-width: 75ch;
   justify-self: start;
   text-align: left;
 }
@@ -495,17 +531,20 @@ li a {
 .hero-subhead {
   font-size: 1.35rem;
   font-weight: 400;
-  color: var(--muted);
-  max-width: 110ch;
-  margin: 0 auto 0.8rem;
+  color: rgba(215, 225, 240, 0.88);
+  font-size: 1.4rem;
+  max-width: 75ch;
+  margin: 0 0 0.8rem;
   line-height: 1.6;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-copy {
   display: grid;
   gap: 1rem;
-  max-width: 110ch;
-  margin: 0 auto;
+  max-width: 75ch;
+  margin: 0;
 }
 
 .hero-copy p {
@@ -529,10 +568,10 @@ li a {
 .hero-quote {
   font-size: 1.1rem;
   font-style: italic;
-  text-align: center;
+  text-align: left;
   color: rgba(236, 222, 198, 0.88);
   opacity: 0.85;
-  margin: 1.4rem 0;
+  margin: 1.4rem 0 1.4rem 0;
 }
 
 .hero-body--soft {
@@ -549,17 +588,17 @@ li a {
   display: grid;
   justify-items: center;
   justify-self: stretch;
-  align-self: start;
+  align-items: start;
   padding-top: clamp(0rem, 0.2vh, 0.4rem);
 }
 
 .hero-visual-stack {
   position: relative;
-  width: min(620px, 100%);
+  width: 100%;
+  max-width: 560px;
   height: 640px;
   margin-left: auto;
-  margin-right: clamp(4rem, 6vw, 7.5rem);
-  transform: translateX(-80px);
+  margin-right: 0;
   isolation: isolate;
 }
 
@@ -656,6 +695,10 @@ li a {
 }
 
 @media (max-width: 900px) {
+  .hero-logo-frame {
+    height: 80px;
+  }
+
   .hero-layout {
     grid-template-columns: 1fr;
   }
@@ -697,6 +740,12 @@ li a {
   }
 }
 
+@media (max-width: 600px) {
+  .hero-logo-frame {
+    height: 56px;
+  }
+}
+
 @media (max-width: 700px) {
   .hero-visual {
     display: grid;
@@ -720,9 +769,25 @@ li a {
 
 
 .hero-logo {
-  width: 96px;
-  height: auto;
-  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 12px;
+  margin-bottom: 36px;
+  padding-top: 0;
+  pointer-events: none;
+  position: relative;
+  z-index: 1;
+  transform: translateY(-18px);
+}
+
+.hero-logo-frame {
+  width: min(920px, 92vw);
+  height: 120px;
+  border: 0;
+  display: block;
+  pointer-events: none;
+  transform: translate(2.5%, -12px);
   opacity: 0.95;
 }
 
