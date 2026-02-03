@@ -297,7 +297,7 @@ li a {
   bottom: 0;
   padding: 0 var(--body-gutter);
   overflow-y: auto;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   overscroll-behavior: contain;
 }
 
@@ -306,6 +306,8 @@ li a {
   padding: 1.25rem 0 1.75rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   opacity: 0.55;
+  scroll-snap-align: end;
+  scroll-snap-stop: normal;
 }
 
 .nav-cards {

@@ -44,9 +44,8 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
         id="scroll-root"
       >
         {children}
+        <Footer />
       </main>
-
-      <Footer />
     </div>
   );
 }
