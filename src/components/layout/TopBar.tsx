@@ -24,13 +24,6 @@ export function TopBar() {
           <Link href="/writing">Writing</Link>
           <Link href="/status">Status</Link>
           <Link href="/about">About</Link>
-          <a
-            href="https://github.com/francescomaiomascio"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
         </div>
 
         <div className="site-nav-icons" aria-label="Presence">

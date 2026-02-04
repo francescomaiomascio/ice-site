@@ -33,7 +33,7 @@
 
     #iceLogo {
       width: 100%;
-      height: 120px;
+      height: 64px;
       display: block;
     }
   </style>
@@ -41,7 +41,7 @@
 <body>
   <div class="container">
     <div class="logo-wrap">
-      <canvas id="iceLogo" width="900" height="96"></canvas>
+      <canvas id="iceLogo" width="900" height="64"></canvas>
     </div>
   </div>
 
@@ -81,12 +81,12 @@ function render() {
   ctx.scale(dpr, dpr);
 
   const padX = W * 0.04;
-  const padY = H * 0.28;
+  const padY = H * 0.14;
   const innerH = Math.max(1, H - padY * 2);
 
   const startX = padX;
   const endX = W - padX;
-  const baselineY = padY + innerH * (90 / 160);
+  const baselineY = padY + innerH * 0.52;
 
   ctx.clearRect(0, 0, W, H);
 
@@ -106,7 +106,7 @@ function render() {
   const logoStartX = startX + ((endX - startX) - logoWidth) / 2;
   const logoEndX = logoStartX + logoWidth;
 
-  const A = H * 0.18;
+  const A = H * 0.13;
   const lambda = 2.6;
   const p = 3.2;
   const omega = 7.4;
