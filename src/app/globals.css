@@ -37,8 +37,12 @@ body {
   position: absolute;
   inset: 0;
   overflow-y: auto;
+  overscroll-behavior-y: contain;
+  overscroll-behavior-x: auto;
+}
+
+.site-main--snap {
   scroll-snap-type: y mandatory;
-  overscroll-behavior: contain;
 }
 
 
@@ -47,12 +51,14 @@ body {
    ========================================================= */
 
 .snap-section {
-  height: 100svh;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-
   display: flex;
   flex-direction: column;
+}
+
+.site-main--snap .snap-section {
+  min-height: 100svh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .section-inner {
@@ -62,4 +68,21 @@ body {
 
   padding-top: clamp(1.5rem, 4vh, 3rem);
   padding-bottom: clamp(1.5rem, 4vh, 3rem);
+  padding-inline: var(--body-gutter);
+}
+
+.section:last-of-type .section-inner {
+  padding-bottom: calc(clamp(1.5rem, 4vh, 3rem) + 3.5rem);
+}
+
+.section-inner--with-footer {
+  padding-bottom: 0;
+}
+
+.section:last-of-type .section-inner--with-footer {
+  padding-bottom: 0;
+}
+
+.site-main--snap .section-inner--with-footer {
+  min-height: 100svh;
 }

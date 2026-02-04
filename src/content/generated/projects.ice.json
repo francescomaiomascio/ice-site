@@ -1,0 +1,24 @@
+{
+  "id": "ice",
+  "name": "ICE Core",
+  "tagline": "Governable software systems, built in public.",
+  "status": "active",
+  "category": "ice",
+  "github": {
+    "owner": "francescomaiomascio",
+    "repo": "ice-runtime",
+    "url": "https://github.com/francescomaiomascio/ice-runtime",
+    "default_branch": "main"
+  },
+  "links": {
+    "docs": "https://ice.foundation",
+    "homepage": "https://ice.foundation"
+  },
+  "highlights": [],
+  "operational": {
+    "signal": "steady",
+    "blocked": null,
+    "risk": null,
+    "next": "Expanding project feed coverage"
+  }
+}

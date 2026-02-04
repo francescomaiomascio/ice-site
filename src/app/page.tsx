@@ -144,7 +144,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section id="about" className="section--about">
+      <Section id="about" className="section--about" withFooter>
         <div className="preview-section">
           <header className="preview-header">
             <h2>About</h2>

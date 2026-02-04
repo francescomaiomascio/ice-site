@@ -1,0 +1,54 @@
+{
+  "owner": "francescomaiomascio",
+  "projects": [
+    {
+      "id": "ice",
+      "name": "ICE Core",
+      "tagline": "Governable software systems, built in public.",
+      "status": "active",
+      "category": "ice",
+      "github": {
+        "owner": "francescomaiomascio",
+        "repo": "ice-runtime",
+        "url": "https://github.com/francescomaiomascio/ice-runtime",
+        "default_branch": "main"
+      },
+      "links": {
+        "docs": "https://ice.foundation",
+        "homepage": "https://ice.foundation"
+      },
+      "repos": [
+        "ice-runtime",
+        "ice-foundation",
+        "ice-docs",
+        "ice-strap",
+        "ice-engine",
+        "ice-ai",
+        "ice-observability",
+        "ice-consciousness",
+        "ice-protocols",
+        "ice-providers"
+      ]
+    },
+    {
+      "id": "psc",
+      "name": "Project Standard Core",
+      "tagline": "A public standard for project execution and governance.",
+      "status": "stable",
+      "category": "psc",
+      "github": {
+        "owner": "francescomaiomascio",
+        "repo": "project-standard-core-public",
+        "url": "https://github.com/francescomaiomascio/project-standard-core-public",
+        "default_branch": "main"
+      },
+      "links": {
+        "homepage": "https://projectstandardcore.com",
+        "gumroad": "https://francescomaiomascio.gumroad.com"
+      },
+      "repos": [
+        "project-standard-core-public"
+      ]
+    }
+  ]
+}
