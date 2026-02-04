@@ -4,39 +4,13 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <div className="site-footer-inner site-shell">
-        <span className="site-footer-meta">
-          © {year} Francesco Maiomascio
-        </span>
+        <span className="site-footer-meta">© {year} Francesco Maiomascio</span>
 
         <nav className="site-footer-links" aria-label="Footer">
-          <a
-            href="https://github.com/francescomaiomascio"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://medium.com/@francescomaiomascio"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Medium
-          </a>
-          <a
-            href="https://maiomascio.gumroad.com"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Gumroad
-          </a>
-          <a
-            href="https://www.linkedin.com/in/francesco-maiomascio/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            LinkedIn
-          </a>
+          <a href="/status">Status</a>
+          <a href="/security">Security</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/docs">Docs</a>
         </nav>
       </div>
     </footer>

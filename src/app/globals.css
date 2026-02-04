@@ -18,7 +18,7 @@ body {
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  overflow: auto;
+  overflow: hidden; /* lo scroll è SOLO nel main */
 }
 
 
@@ -26,37 +26,40 @@ body {
    APP SHELL
    ========================================================= */
 
-.section {
+.app-surface {
+  position: relative;
+  height: 100svh;
   width: 100%;
-  padding: clamp(3.5rem, 8vw, 6rem) 0;
+  overflow: hidden;
+}
+
+.site-main {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  overscroll-behavior: contain;
 }
 
 
 /* =========================================================
-   HERO LAYOUT
+   SNAP SECTIONS
    ========================================================= */
 
-.section--hero .section-inner {
-  width: 100%;
-  max-width: none;
+.snap-section {
+  height: 100svh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 
-  padding-inline: clamp(2rem, 6vw, 10rem);
-  padding-block: clamp(4rem, 12vh, 9rem);
-
-  display: grid;
-  grid-template-rows: 1.2fr auto 1fr;
+  display: flex;
+  flex-direction: column;
 }
-
-.section--hero .section-hero-content {
-  grid-row: 2;
-  width: 100%;
-}
-
-
-/* =========================================================
-   GENERIC CONTENT WRAPPER
-   ========================================================= */
 
 .section-inner {
-  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  padding-top: clamp(1.5rem, 4vh, 3rem);
+  padding-bottom: clamp(1.5rem, 4vh, 3rem);
 }

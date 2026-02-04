@@ -33,7 +33,7 @@
 
     #iceLogo {
       width: 100%;
-      height: 120px;
+      height: 64px;
       display: block;
     }
   </style>
@@ -41,7 +41,7 @@
 <body>
   <div class="container">
     <div class="logo-wrap">
-      <canvas id="iceLogo" width="900" height="160"></canvas>
+      <canvas id="iceLogo" width="900" height="64"></canvas>
     </div>
   </div>
 
@@ -70,29 +70,34 @@ function render() {
   const dpr = window.devicePixelRatio || 1;
   const rect = canvas.getBoundingClientRect();
   const width = Math.max(1, Math.round(rect.width));
+  const height = Math.max(1, Math.round(rect.height));
 
   const W = width;
-  const H = 120;
+  const H = height;
 
   canvas.width = Math.round(W * dpr);
   canvas.height = Math.round(H * dpr);
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.scale(dpr, dpr);
 
-  const startX = W * (40 / 900);
-  const endX = W - startX;
-  const baselineY = H * (90 / 160);
+  const padX = W * 0.04;
+  const padY = H * 0.14;
+  const innerH = Math.max(1, H - padY * 2);
+
+  const startX = padX;
+  const endX = W - padX;
+  const baselineY = padY + innerH * 0.52;
 
   ctx.clearRect(0, 0, W, H);
 
   // Curva ICE
   ctx.strokeStyle = "rgba(230, 235, 245, 0.92)";
-  ctx.lineWidth = 3.2;
+  ctx.lineWidth = 2.6;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
   ctx.shadowColor = "rgba(0, 0, 0, 0.45)";
-  ctx.shadowBlur = 6;
-  ctx.shadowOffsetY = 2;
+  ctx.shadowBlur = 4;
+  ctx.shadowOffsetY = 1;
 
   ctx.beginPath();
 
@@ -101,7 +106,7 @@ function render() {
   const logoStartX = startX + ((endX - startX) - logoWidth) / 2;
   const logoEndX = logoStartX + logoWidth;
 
-  const A = H * 0.26;
+  const A = H * 0.13;
   const lambda = 2.6;
   const p = 3.2;
   const omega = 7.4;
