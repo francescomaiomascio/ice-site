@@ -1,0 +1,24 @@
+{
+  "id": "psc",
+  "name": "Project Standard Core",
+  "tagline": "A public standard for project execution and governance.",
+  "status": "stable",
+  "category": "psc",
+  "github": {
+    "owner": "francescomaiomascio",
+    "repo": "project-standard-core-public",
+    "url": "https://github.com/francescomaiomascio/project-standard-core-public",
+    "default_branch": "main"
+  },
+  "links": {
+    "homepage": "https://projectstandardcore.com",
+    "gumroad": "https://gumroad.com/"
+  },
+  "highlights": [],
+  "operational": {
+    "signal": "steady",
+    "blocked": null,
+    "risk": null,
+    "next": "Publishing first public milestone"
+  }
+}
