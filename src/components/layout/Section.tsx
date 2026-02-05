@@ -12,6 +12,7 @@ export interface SectionProps {
   className?: string;
   innerClassName?: string;
   withFooter?: boolean;
+  snap?: boolean;
   children: React.ReactNode;
 }
 
@@ -23,11 +24,12 @@ export function Section({
   className = "",
   innerClassName = "",
   withFooter = false,
+  snap = true,
   children,
 }: SectionProps) {
   const classes = [
     "section",
-    "snap-section",
+    snap ? "snap-section" : "",
     `section--${width}`,
     `section--${variant}`,
     className,
