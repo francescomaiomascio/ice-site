@@ -3,7 +3,7 @@
   "projects": [
     {
       "id": "ice",
-      "name": "ICE Core",
+      "name": "ICE",
       "tagline": "Governable software systems, built in public.",
       "status": "active",
       "category": "ice",
