@@ -276,20 +276,33 @@ async function compile() {
     const deduped = dedupeByUrl(highlights);
     stableSortHighlights(deduped);
 
+    const operationalDefaults = {
+      phase: "Bootstrap → Engine → Runtime",
+      surfaces: "Governance, Execution, Observability",
+      signal: "steady",
+      priority: "System mapping",
+      risk: "Interface drift",
+      next: "Pipeline coverage expansion",
+      blocked: null,
+    };
+
     const projectOutput = {
       id: project.id,
       name: project.name,
       tagline: project.tagline,
       status: project.status,
       category: project.category,
+      repos: project.repos || [],
       github: project.github,
       links: project.links || {},
       highlights: deduped.slice(0, 12),
-      operational: project.operational || {
-        signal: "steady",
-        blocked: null,
-        risk: null,
-        next: "Pipeline coverage expansion",
+      operational: {
+        ...operationalDefaults,
+        ...(project.operational || {}),
+      },
+      diagnostics: {
+        repos_scanned: (project.repos || []).length,
+        highlights_found: deduped.length,
       },
     };
 
@@ -302,6 +315,7 @@ async function compile() {
       tagline: project.tagline,
       status: project.status,
       category: project.category,
+      repos: project.repos || [],
       github: project.github,
       links: project.links || {},
       highlights: projectOutput.highlights.slice(0, 3),
