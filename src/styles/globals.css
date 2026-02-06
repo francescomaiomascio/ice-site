@@ -53,6 +53,10 @@ body {
   min-height: 100svh;
 }
 
+.site-main--snap .section--about {
+  min-height: auto;
+}
+
 .site-main--snap .snap-section {
   min-height: 100svh;
   scroll-snap-align: start;
@@ -144,27 +148,245 @@ h2 {
 }
 
 .section--writing {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(15, 20, 28, 0.78),
+      rgba(18, 22, 30, 0.86)
+    ),
+    url("/hero/via-lattea.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  isolation: isolate;
+  margin-top: -1px;
+}
+
+.section--writing::before,
+.section--writing::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section--writing::before {
   background: linear-gradient(
     to bottom,
-    rgba(15, 20, 28, 1),
-    rgba(18, 22, 30, 1)
+    rgba(11, 15, 20, 1) 0%,
+    rgba(11, 15, 20, 0.7) 8%,
+    rgba(11, 15, 20, 0) 18%
   );
+}
+
+.section--writing::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 15, 20, 0) 82%,
+    rgba(11, 15, 20, 0.6) 92%,
+    rgba(11, 15, 20, 0.95) 100%
+  );
+}
+
+.section--writing > * {
+  position: relative;
+  z-index: 1;
 }
 
 .section--status {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(18, 22, 30, 0.78),
+      rgba(11, 15, 20, 0.86)
+    ),
+    url("/hero/vela.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  isolation: isolate;
+  margin-top: -1px;
+}
+
+.section--status::before,
+.section--status::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section--status::before {
   background: linear-gradient(
     to bottom,
-    rgba(18, 22, 30, 1),
-    rgba(11, 15, 20, 1)
+    rgba(11, 15, 20, 1) 0%,
+    rgba(11, 15, 20, 0.7) 8%,
+    rgba(11, 15, 20, 0) 18%
   );
 }
 
-.section--about {
+.section--status::after {
   background: linear-gradient(
     to bottom,
-    rgba(11, 15, 20, 1),
-    rgba(8, 10, 14, 1)
+    rgba(11, 15, 20, 0) 82%,
+    rgba(11, 15, 20, 0.6) 92%,
+    rgba(11, 15, 20, 0.95) 100%
   );
+}
+
+.section--status > * {
+  position: relative;
+  z-index: 1;
+}
+
+.about-page {
+  position: relative;
+}
+
+.about-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/hero/Collinder.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  filter: blur(1.8px) saturate(0.85);
+  transform: scale(1.02);
+  z-index: 0;
+}
+
+.about-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.55) 65%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  z-index: 1;
+}
+
+.about-page .section {
+  position: relative;
+  z-index: 2;
+}
+
+.section--about {
+  background: transparent;
+  position: relative;
+}
+
+.section--about-home {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(11, 15, 20, 0.78),
+      rgba(8, 10, 14, 0.86)
+    ),
+    url("/hero/Collinder.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  isolation: isolate;
+  margin-top: -1px;
+}
+
+.section--about-home::before,
+.section--about-home::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section--about-home::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 15, 20, 1) 0%,
+    rgba(11, 15, 20, 0.7) 8%,
+    rgba(11, 15, 20, 0) 18%
+  );
+}
+
+.section--about-home::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 15, 20, 0) 82%,
+    rgba(11, 15, 20, 0.6) 92%,
+    rgba(11, 15, 20, 0.95) 100%
+  );
+}
+
+.section--about-home > * {
+  position: relative;
+  z-index: 1;
+}
+
+.section--about .section-inner {
+  padding-block: clamp(3rem, 8vh, 5rem);
+}
+
+#about-intro.section--about .section-inner {
+  padding-block: clamp(6rem, 15vh, 10rem);
+}
+
+.section--ice {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(11, 15, 20, 0.82),
+      rgba(8, 10, 14, 0.9)
+    ),
+    url("/hero/black-hole.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  isolation: isolate;
+  margin-top: -1px;
+}
+
+.section--ice::before,
+.section--ice::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section--ice::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 15, 20, 1) 0%,
+    rgba(11, 15, 20, 0.7) 8%,
+    rgba(11, 15, 20, 0) 18%
+  );
+}
+
+.section--ice::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 15, 20, 0) 82%,
+    rgba(11, 15, 20, 0.6) 92%,
+    rgba(11, 15, 20, 0.95) 100%
+  );
+}
+
+.section--ice > * {
+  position: relative;
+  z-index: 1;
 }
 
 .section {
