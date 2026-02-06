@@ -218,8 +218,7 @@ export default async function ProjectDetailPage({
     <>
       <Section
         id={`project-${project.id}-hero`}
-        className="section--projects project-section"
-        snap={false}
+        className={`section--projects project-section${project.id === "ice" ? " section--ice" : ""}`}
       >
         <section className="project-hero">
           <div className="project-hero-bg" aria-hidden="true" />
@@ -302,8 +301,7 @@ export default async function ProjectDetailPage({
 
       <Section
         id={`project-${project.id}-panel`}
-        className="section--projects project-section"
-        snap={false}
+        className={`section--projects project-section${project.id === "ice" ? " section--ice" : ""}`}
       >
         <section className="project-panel">
           <div className="project-panel-grid">
@@ -367,8 +365,7 @@ export default async function ProjectDetailPage({
 
       <Section
         id={`project-${project.id}-activity`}
-        className="section--projects project-section"
-        snap={false}
+        className={`section--projects project-section${project.id === "ice" ? " section--ice" : ""}`}
       >
         <section className="project-activity">
           <header className="project-activity-header">
@@ -450,9 +447,8 @@ export default async function ProjectDetailPage({
 
       <Section
         id={`project-${project.id}-footer`}
-        className="section--projects project-section"
+        className={`section--projects project-section${project.id === "ice" ? " section--ice" : ""}`}
         withFooter
-        snap={false}
       >
         <section className="project-footer">
           <div className="project-footer-links">
