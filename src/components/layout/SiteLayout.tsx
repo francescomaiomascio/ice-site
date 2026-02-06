@@ -7,8 +7,8 @@ import { PageBack } from "./PageBack";
 
 export function SiteLayout({ children }: { children: React.ReactNode }) {
   const mainRef = useRef<HTMLElement | null>(null);
-  const snapEnabled = true;
   const pathname = usePathname();
+  const snapEnabled = pathname !== "/about";
 
   useEffect(() => {
     const main = mainRef.current;
