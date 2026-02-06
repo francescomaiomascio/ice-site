@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { TopBar } from "./TopBar";
 import { PageBack } from "./PageBack";
@@ -45,10 +45,11 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const main = mainRef.current;
     if (!main) return;
     main.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    document.documentElement.classList.remove("preload");
   }, [pathname]);
 
   return (

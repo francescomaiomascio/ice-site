@@ -94,11 +94,53 @@ h2 {
 }
 
 .section--projects {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(11, 15, 20, 0.88),
+      rgba(15, 20, 28, 0.95)
+    ),
+    url("/hero/heic0406a.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  isolation: isolate;
+  margin-top: -1px;
+}
+
+.section--projects::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(11, 15, 20, 1),
-    rgba(15, 20, 28, 1)
+    rgba(11, 15, 20, 1) 0%,
+    rgba(11, 15, 20, 0.88) 6%,
+    rgba(11, 15, 20, 0.3) 12%,
+    rgba(11, 15, 20, 0) 18%
   );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section--projects::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 15, 20, 0) 82%,
+    rgba(11, 15, 20, 0.55) 92%,
+    rgba(11, 15, 20, 0.95) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section--projects > * {
+  position: relative;
+  z-index: 1;
 }
 
 .section--writing {
@@ -138,8 +180,11 @@ h2 {
 }
 
 .section-inner--with-footer {
-  min-height: 100%;
+  min-height: 100svh;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
 }
 
 .section-inner--with-footer .site-footer {
@@ -148,6 +193,7 @@ h2 {
 
 .section-inner--with-footer .preview-section {
   padding-bottom: 0;
+  flex: 1;
 }
 
 .preview-section {
@@ -260,10 +306,26 @@ li a {
   overflow-y: auto;
   overscroll-behavior-y: contain;
   overscroll-behavior-x: auto;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-main {
+    scroll-behavior: auto;
+  }
 }
 
 .site-main--snap {
   scroll-snap-type: y mandatory;
+}
+
+.preload .site-main {
+  overflow: hidden;
+  opacity: 0;
+}
+
+.preload .site-main--snap {
+  scroll-snap-type: none;
 }
 
 .signals-list {
