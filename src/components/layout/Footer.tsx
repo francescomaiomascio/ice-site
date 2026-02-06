@@ -7,7 +7,7 @@ export function Footer() {
         <span className="site-footer-meta">© {year} Francesco Maiomascio</span>
 
         <nav className="site-footer-links" aria-label="Footer">
-          <a href="/status">Status</a>
+          <a href="/status" className="footer-link-status">Status</a>
           <a href="/security">Security</a>
           <a href="/privacy">Privacy</a>
           <a href="/docs">Docs</a>
