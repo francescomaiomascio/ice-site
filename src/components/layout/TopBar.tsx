@@ -42,7 +42,21 @@ export function TopBar() {
             />
           </a>
           <a
-            href="https://www.linkedin.com/in/francesco-maiomascio/"
+            href="https://huggingface.co/francescomaiomascio"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Hugging Face"
+          >
+            <Image
+              src="https://readmecodegen.vercel.app/api/social-icon?name=huggingface&theme=dark&size=20"
+              alt=""
+              width={22}
+              height={22}
+              unoptimized
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/francescomaiomascio/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -56,7 +70,21 @@ export function TopBar() {
             />
           </a>
           <a
-            href="https://x.com/francescomaiom"
+            href="https://stackoverflow.com/users/30851581/francesco-maiomascio"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Stack Overflow"
+          >
+            <Image
+              src="https://readmecodegen.vercel.app/api/social-icon?name=stackoverflow&theme=dark&size=20"
+              alt=""
+              width={22}
+              height={22}
+              unoptimized
+            />
+          </a>
+          <a
+            href="https://x.com/framaiomascio"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="X"
@@ -70,35 +98,7 @@ export function TopBar() {
             />
           </a>
           <a
-            href="https://bsky.app/profile/francescomaiomascio.bsky.social"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Bluesky"
-          >
-            <Image
-              src="https://readmecodegen.vercel.app/api/social-icon?name=bluesky&theme=dark&size=20"
-              alt=""
-              width={22}
-              height={22}
-              unoptimized
-            />
-          </a>
-          <a
-            href="https://maiomascio.gumroad.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Gumroad"
-          >
-            <Image
-              src="https://readmecodegen.vercel.app/api/social-icon?name=gumroad&theme=dark&size=20"
-              alt=""
-              width={22}
-              height={22}
-              unoptimized
-            />
-          </a>
-          <a
-            href="https://www.youtube.com/@francescomaiomascio"
+            href="https://www.youtube.com/@francescomaiomascio_dev"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="YouTube"
@@ -112,13 +112,28 @@ export function TopBar() {
             />
           </a>
           <a
-            href="https://stackoverflow.com/users/21671654/francesco-maiomascio"
+            href="https://francescomaiomascio.gumroad.com"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Stack Overflow"
+            aria-label="Gumroad"
           >
             <Image
-              src="https://readmecodegen.vercel.app/api/social-icon?name=stackoverflow&theme=dark&size=20"
+              src="https://readmecodegen.vercel.app/api/social-icon?name=gumroad&theme=dark&size=20"
+              alt=""
+              width={22}
+              height={22}
+              unoptimized
+            />
+          </a>
+          <a
+            href="https://bsky.app/profile/maiomascio.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Bluesky"
+            className="site-nav-icon--bluesky"
+          >
+            <Image
+              src="https://readmecodegen.vercel.app/api/social-icon?name=bluesky&theme=dark&size=20"
               alt=""
               width={22}
               height={22}
