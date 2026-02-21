@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "setup:skin": "rm -rf src/styles/theme && mkdir -p src/styles/theme && cp -R ../yai-skin/base ../yai-skin/components ../yai-skin/tokens src/styles/theme/ && cp ../yai-skin/index.css src/styles/theme/index.css",
+    "setup:skin": "rm -rf src/styles/theme && mkdir -p src/styles/theme && cp -R node_modules/yai-skin/base node_modules/yai-skin/components node_modules/yai-skin/tokens src/styles/theme/ && cp node_modules/yai-skin/index.css src/styles/theme/index.css",
     "dev": "npm run setup:skin && next dev",
     "build": "npm run setup:skin && next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@yai-labs/yai-skin": "github:yai-labs/yai-skin#main",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3"
