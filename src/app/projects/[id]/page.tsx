@@ -177,29 +177,29 @@ export default async function ProjectDetailPage({
     whatLines.length > 0
       ? whatLines
       : [
-          `${project.name} is a system architecture initiative.`,
-          "It defines operational boundaries, invariants, and runtime signals as first-class.",
-          "It exists to make complex systems governable under change.",
-        ];
+        `${project.name} is a system architecture initiative.`,
+        "It defines operational boundaries, invariants, and runtime signals as first-class.",
+        "It exists to make complex systems governable under change.",
+      ];
   const whatItIsNot =
     project.copy?.not?.length
       ? project.copy.not
       : [
-          "Not a framework you drop into an app.",
-          "Not a single library or SDK.",
-          "Not a productized agent wrapper.",
-          "Not a marketing layer over GitHub.",
-        ];
+        "Not a framework you drop into an app.",
+        "Not a single library or SDK.",
+        "Not a productized agent wrapper.",
+        "Not a marketing layer over GitHub.",
+      ];
   const pillars =
     project.copy?.pillars?.length
       ? project.copy.pillars
       : [
-          "Authority boundaries.",
-          "Explicit handoffs.",
-          "Traceability surfaces.",
-          "Deterministic execution constraints.",
-          "Operational visibility.",
-        ];
+        "Authority boundaries.",
+        "Explicit handoffs.",
+        "Traceability surfaces.",
+        "Deterministic execution constraints.",
+        "Operational visibility.",
+      ];
   const snapshot = {
     phase: project.operational?.phase || "Bootstrap → Engine → Runtime",
     surfaces: project.operational?.surfaces || "Governance, Execution, Observability",
@@ -209,8 +209,8 @@ export default async function ProjectDetailPage({
   };
   const highlights = (project.highlights || []).slice(0, 6);
   const strapline =
-    project.id === "ice"
-      ? "ICE treats execution as authority: boundaries, handoffs, traceability."
+    project.id === "yai"
+      ? "YAI treats execution as authority: runtime-centric, deterministic, verifiable."
       : DEFAULT_STRAPLINE;
   const repoChips = getRepoChips(project.repos);
 
@@ -257,26 +257,26 @@ export default async function ProjectDetailPage({
             </div>
 
             <aside className="project-hero-right">
-                <div className="project-metrics">
-                  <div className="project-metric">
-                    <div className="project-metric-label">Signal</div>
-                    <div className="project-metric-value">
+              <div className="project-metrics">
+                <div className="project-metric">
+                  <div className="project-metric-label">Signal</div>
+                  <div className="project-metric-value">
                     {project.operational?.signal ?? "steady"}
-                    </div>
-                  </div>
-                  <div className="project-metric">
-                    <div className="project-metric-label">Risk</div>
-                    <div className="project-metric-value">
-                    {project.operational?.risk ?? "interface drift"}
-                    </div>
-                  </div>
-                  <div className="project-metric">
-                    <div className="project-metric-label">Next</div>
-                    <div className="project-metric-value">
-                    {project.operational?.next ?? "milestone definition"}
-                    </div>
                   </div>
                 </div>
+                <div className="project-metric">
+                  <div className="project-metric-label">Risk</div>
+                  <div className="project-metric-value">
+                    {project.operational?.risk ?? "interface drift"}
+                  </div>
+                </div>
+                <div className="project-metric">
+                  <div className="project-metric-label">Next</div>
+                  <div className="project-metric-value">
+                    {project.operational?.next ?? "milestone definition"}
+                  </div>
+                </div>
+              </div>
 
               <div className="project-snapshot project-snapshot--hero">
                 <div className="project-snapshot-title">System snapshot</div>

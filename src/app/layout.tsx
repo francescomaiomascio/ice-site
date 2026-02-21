@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import "@/styles/theme/index.css";
+import "@/styles/theme/tokens/themes/theme-yai.css";
 import "@/styles/globals.css";
 import "@/styles/components/navigation.css";
 import "@/styles/components/footer.css";

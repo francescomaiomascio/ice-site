@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "setup:skin": "cp -r ../yai-skin/base ../yai-skin/components ../yai-skin/tokens ../yai-skin/index.css src/styles/theme/ 2>/dev/null || true",
+    "dev": "npm run setup:skin && next dev",
+    "build": "npm run setup:skin && next build",
     "start": "next start",
     "lint": "eslint"
   },

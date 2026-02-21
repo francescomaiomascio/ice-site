@@ -36,52 +36,51 @@ function HeroSection() {
         <div className="hero-inner-wrap">
           <div className="hero-header">
             <div className="hero-title-row">
-              <h1>Governable software systems, built in public.</h1>
+              <h1>Authority and determinism in runtime systems.</h1>
             </div>
             <h2 className="hero-subhead">
-              A public workspace for designing, operating, and evolving software systems —
-              with explicit authority, identity, and traceability.
+              A public workspace for designing, operating, and evolving runtime-centric intelligent systems —
+              with explicit authority, identity, and verifiable execution.
             </h2>
           </div>
 
           <div className="hero-layout">
             <div className="hero-text">
-              <div className="hero-copy hero-copy--thesis">
+              <div className="hero-copy hero-thesis">
                 <p className="hero-thesis-title">Software systems are structures of authority.</p>
                 <div className="hero-thesis-body">
-                  <p>They define who can act, who decides, and how change propagates.</p>
+                  <p>They execute decisions. They hold state. They propagate change.</p>
                   <p>When authority is unclear, systems drift.</p>
                   <p>Responsibility dissolves.</p>
-                  <p>Failure is inevitable.</p>
+                  <p>Guarantees fail.</p>
                 </div>
               </div>
             </div>
 
             <div className="hero-visual">
               <div className="hero-visual-stack">
-                <div className="hero-visual-intro">What this space is built around</div>
+                <div className="hero-visual-intro">What YAI addresses</div>
                 <div
                   className={`hero-visual-panel hero-visual-panel--1 hero-visual-pos-${order[0] === 1 ? 1 : order[1] === 1 ? 2 : 3}`}
                   onPointerEnter={() => handleHover(1)}
                 >
-                  <div className="hero-visual-title">ARCHITECTURE</div>
-                  <div className="hero-visual-sub">Boundaries · Authority · System Design</div>
-                  <div className="hero-visual-sub">Governance · Interfaces · Constraints</div>
-                  <div className="hero-visual-sub">Execution · State · Evolution</div>
+                  <div className="hero-visual-title">KERNEL</div>
+                  <div className="hero-visual-sub">Law · Authority · Execution</div>
+                  <div className="hero-visual-sub">State · Determinism · Proof</div>
                 </div>
                 <div
                   className={`hero-visual-panel hero-visual-panel--2 hero-visual-pos-${order[0] === 2 ? 1 : order[1] === 2 ? 2 : 3}`}
                   onPointerEnter={() => handleHover(2)}
                 >
-                  <div className="hero-visual-title">GOVERNANCE</div>
-                  <div className="hero-visual-sub">Policies · Interfaces · Constraints</div>
+                  <div className="hero-visual-title">ENGINE</div>
+                  <div className="hero-visual-sub">Composition · Transformation · Observability</div>
                 </div>
                 <div
                   className={`hero-visual-panel hero-visual-panel--3 hero-visual-pos-${order[0] === 3 ? 1 : order[1] === 3 ? 2 : 3}`}
                   onPointerEnter={() => handleHover(3)}
                 >
-                  <div className="hero-visual-title">SIGNALS</div>
-                  <div className="hero-visual-sub">State · Health · Evolution</div>
+                  <div className="hero-visual-title">MIND</div>
+                  <div className="hero-visual-sub">Reasoning · Adaptation · Control</div>
                 </div>
               </div>
             </div>
