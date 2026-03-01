@@ -1,0 +1,16 @@
+/* src/styles/theme/components/cards.css
+   2026 surfaces: calm, enterprise, audit-artifact vibe
+*/
+
+.card {
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border-1);
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+}
+
+.card:hover {
+  border-color: rgba(143, 185, 255, 0.20);
+  background: var(--surface-2);
+}

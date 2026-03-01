@@ -1,0 +1,27 @@
+/* src/styles/theme/tokens/spacing.css
+   2026 spacing + layout primitives
+*/
+
+:root {
+  /* Containers */
+  --container-max: 1200px;
+  --gutter: clamp(1rem, 3.2vw, 2.25rem);
+
+  /* Vertical rhythm */
+  --section-pad-y: clamp(2.25rem, 6vh, 4.25rem);
+
+  /* Radius scale */
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 16px;
+  --r-xl: 18px;
+
+  /* Border */
+  --border-1: rgba(255, 255, 255, 0.10);
+  --border-2: rgba(255, 255, 255, 0.14);
+
+  /* Surfaces */
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-2: rgba(255, 255, 255, 0.055);
+  --surface-3: rgba(0, 0, 0, 0.22);
+}

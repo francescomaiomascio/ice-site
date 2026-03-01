@@ -1,0 +1,68 @@
+/* src/styles/theme/components/buttons.css
+   2026 buttons: consistent hierarchy across site
+*/
+
+.button,
+a.button,
+button.button {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(232, 238, 246, 0.95);
+  border-radius: 999px;
+  padding: 0.62rem 1.05rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-weight: 720;
+  font-size: 0.94rem;
+  letter-spacing: 0.005em;
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease,
+    opacity 160ms ease;
+  border-bottom: none;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.button:active {
+  transform: translateY(0);
+  opacity: 0.92;
+}
+
+.button--primary {
+  background: rgba(143, 185, 255, 0.16);
+  border-color: rgba(143, 185, 255, 0.55);
+  color: rgba(242, 247, 255, 0.98);
+}
+
+.button--primary:hover {
+  background: rgba(143, 185, 255, 0.22);
+  border-color: rgba(143, 185, 255, 0.7);
+}
+
+.button--ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.button--link {
+  background: transparent;
+  border-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-weight: 720;
+  color: rgba(232, 238, 246, 0.70);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.button--link:hover {
+  transform: none;
+  color: rgba(232, 238, 246, 0.92);
+  border-bottom-color: rgba(255, 255, 255, 0.28);
+}
