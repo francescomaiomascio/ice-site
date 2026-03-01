@@ -12,49 +12,51 @@ export interface SectionProps {
   className?: string;
   innerClassName?: string;
   withFooter?: boolean;
+  /**
+   * Opt-in scroll snapping. Default off to avoid "half viewport" bleed
+   * and trackpad weirdness.
+   */
   snap?: boolean;
   children: React.ReactNode;
+}
+
+function cx(...parts: Array<string | false | null | undefined>) {
+  return parts.filter(Boolean).join(" ");
 }
 
 export function Section({
   id,
   as: Component = "section",
-  width = "full",
+  width = "wide",
   variant = "default",
-  className = "",
-  innerClassName = "",
+  className,
+  innerClassName,
   withFooter = false,
-  snap = true,
+  snap = false,
   children,
 }: SectionProps) {
-  const classes = [
+  /**
+   * Width/variant are expressed at the Section level,
+   * but padding + container are always handled by .section-inner.
+   */
+  const sectionClass = cx(
     "section",
-    snap ? "snap-section" : "",
-    `section--${width}`,
-    `section--${variant}`,
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
+    snap && "snap-section",
+    width !== "wide" && `section--${width}`,
+    variant !== "default" && `section--${variant}`,
+    className
+  );
 
-  const innerClasses = [
+  const innerClass = cx(
     "section-inner",
-    innerClassName,
-    withFooter ? "section-inner--with-footer" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
+    withFooter && "section-inner--with-footer",
+    innerClassName
+  );
 
   return (
-    <Component id={id} className={classes}>
-      <div className={innerClasses}>
-        {variant === "hero" ? (
-          <div className="section-hero-content">
-            {children}
-          </div>
-        ) : (
-          children
-        )}
+    <Component id={id} className={sectionClass}>
+      <div className={innerClass}>
+        {children}
         {withFooter ? <Footer /> : null}
       </div>
     </Component>

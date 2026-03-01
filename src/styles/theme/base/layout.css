@@ -1,9 +1,9 @@
 /* src/styles/theme/base/layout.css
-   2026 layout shell: container + section rhythm
+   2026 layout shell: container + rhythm + section variants
+   + global background layer without breaking scroll
 */
 
 :root {
-  /* fallback if not set elsewhere */
   --topbar-h: 56px;
 
   --bg: #0b0f14;
@@ -11,13 +11,23 @@
   --fg-soft: rgba(232, 238, 246, 0.78);
   --muted: rgba(232, 238, 246, 0.62);
 
-  /* Accent (ICE) */
   --accent: rgba(143, 185, 255, 0.95);
   --accent-border: rgba(143, 185, 255, 0.35);
   --accent-surface: rgba(143, 185, 255, 0.08);
+
+  /* fallbacks */
+  --container-max: 1200px;
+  --gutter: clamp(1rem, 3.2vw, 2.25rem);
+  --section-pad-y: clamp(2.25rem, 6vh, 4.25rem);
+  --measure: 70ch;
+
+  /* background parallax vars */
+  --bg-y: 0px;
+  --bg-y-strong: 0px;
 }
 
-/* App shell */
+/* ===== App shell ===== */
+
 .app-surface {
   position: relative;
   height: 100svh;
@@ -26,12 +36,15 @@
   overflow: hidden;
 }
 
+/* main is the scroll container */
 .site-main {
   position: absolute;
   inset: 0;
   overflow-y: auto;
   overscroll-behavior-y: contain;
   scroll-behavior: smooth;
+  /* content above background layers */
+  z-index: 2;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -40,7 +53,50 @@
   }
 }
 
-/* Sections */
+/* Make sure topbar sits above everything */
+.topbar {
+  z-index: 3;
+}
+
+/* ===== Global background layer (safe) ===== */
+
+.app-surface--bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(1000px 650px at 22% 28%, rgba(143, 185, 255, 0.16), transparent 60%),
+    radial-gradient(900px 560px at 78% 20%, rgba(122, 92, 255, 0.10), transparent 62%),
+    url("/hero/hero-site.jpg");
+
+  background-size: cover;
+  background-position: center var(--bg-y);
+  background-repeat: no-repeat;
+
+  filter: saturate(1.04) contrast(1.02);
+  opacity: 0.85;
+}
+
+.app-surface--bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 15, 20, 0.55) 0%,
+    rgba(11, 15, 20, 0.78) 55%,
+    rgba(11, 15, 20, 0.92) 100%
+  );
+}
+
+/* ===== Sections ===== */
+
 .section {
   width: 100%;
 }
@@ -53,7 +109,28 @@
   padding-block: var(--section-pad-y);
 }
 
-/* When Section has footer behavior */
+.section--narrow .section-inner {
+  max-width: 920px;
+}
+
+.section--full .section-inner {
+  max-width: none;
+}
+
+.section--hero .section-inner {
+  padding-block: clamp(2.5rem, 7vh, 5rem);
+}
+
+.section--highlight .section-inner {
+  padding-block: clamp(2.1rem, 6vh, 4.25rem);
+}
+
+/* Snap (opt-in) */
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
 .section-inner--with-footer {
   min-height: 100svh;
   display: flex;
@@ -65,20 +142,32 @@
   margin-top: auto;
 }
 
-/* Typography defaults */
+/* ===== Minimal typographic defaults ===== */
+
 body {
   color: var(--fg);
   background: var(--bg);
 }
 
-/* Links default */
+p {
+  max-width: var(--measure);
+}
+
+.section-inner > * + * {
+  margin-top: 1.1rem;
+}
+
+/* Links / code */
 a {
   color: inherit;
   text-decoration: none;
   border-bottom: 1px solid transparent;
 }
 
-/* Utility: make long lines behave */
+a:hover {
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+}
+
 pre {
   overflow-x: auto;
 }

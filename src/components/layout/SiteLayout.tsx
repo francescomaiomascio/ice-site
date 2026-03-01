@@ -1,4 +1,3 @@
-// src/components/layout/SiteLayout.tsx
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -8,25 +7,25 @@ import { PageBack } from "./PageBack";
 
 export function SiteLayout({ children }: { children: React.ReactNode }) {
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const mainRef = useRef<HTMLElement | null>(null);
   const pathname = usePathname();
 
-  // Lightweight background parallax (optional sugar, not "app behavior")
   useEffect(() => {
     const root = rootRef.current;
-    if (!root) return;
+    const main = mainRef.current;
+    if (!root || !main) return;
 
     let raf = 0;
 
     const update = () => {
       raf = 0;
-      const y = window.scrollY || 0;
-      root.style.setProperty("--bg-y", `${-y * 0.12}px`);
-      root.style.setProperty("--bg-y-strong", `${-y * 0.2}px`);
+      const y = main.scrollTop || 0;
 
-      const atEnd =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 4;
+      // calm parallax
+      root.style.setProperty("--bg-y", `${-y * 0.10}px`);
+      root.style.setProperty("--bg-y-strong", `${-y * 0.16}px`);
 
+      const atEnd = y + main.clientHeight >= main.scrollHeight - 4;
       root.classList.toggle("is-at-end", atEnd);
     };
 
@@ -36,24 +35,26 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
     };
 
     update();
-    window.addEventListener("scroll", onScroll, { passive: true });
+    main.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      main.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", update);
       if (raf) window.cancelAnimationFrame(raf);
     };
   }, []);
 
-  // On route change, ensure we land at top (site behavior)
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    const main = mainRef.current;
+    if (!main) return;
+    main.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [pathname]);
 
   return (
-    <div ref={rootRef} className="app-surface">
+    <div ref={rootRef} className="app-surface app-surface--bg">
       <TopBar />
-
-      <main className="site-main" role="main">
+      <main ref={mainRef} className="site-main" role="main" id="scroll-root">
         <PageBack />
         {children}
       </main>
