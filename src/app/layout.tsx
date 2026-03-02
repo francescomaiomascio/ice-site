@@ -13,9 +13,30 @@ import "@/styles/components/navigation.css";
 import "@/styles/components/footer.css";
 
 // 4) Feature/page styles (scoped)
-// NOTE: Keep this list minimal. Avoid per-hero CSS.
-// import "@/styles/features/hero.css";
-import "@/styles/features/projects.css";
+import "@/styles/features/home-hero.css";
+import "@/styles/features/home-domains.css";
+import "@/styles/features/home-sections.css";
+
+import { Inter, Roboto_Condensed } from "next/font/google";
+
+/**
+ * Two-font system:
+ * - Inter: global UI/body (“Redis-like”)
+ * - Roboto Condensed: display only (hero H1)
+ */
+const yaiSans = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-sans",
+});
+
+const yaiDisplay = Roboto_Condensed({
+  subsets: ["latin"],
+  weight: ["700", "900"],
+  display: "swap",
+  variable: "--font-display",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yai.foundation"),
@@ -34,10 +55,7 @@ export const metadata: Metadata = {
     ],
     shortcut: [{ url: "/favicon.ico" }],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     siteName: "YAI",
@@ -56,7 +74,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${yaiSans.variable} ${yaiDisplay.variable}`}
+    >
       <body>
         <SiteLayout>{children}</SiteLayout>
       </body>

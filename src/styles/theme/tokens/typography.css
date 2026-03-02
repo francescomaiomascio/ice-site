@@ -1,73 +1,75 @@
 /* src/styles/theme/tokens/typography.css
-   2026 type system: Redis-style hierarchy, proof-friendly body.
-   Strategy:
-   - Display face for headings only
-   - System sans for body
-   - Stronger scale contrast + tighter tracking on H1
+   2026 type system: TWO fonts only.
+   - Sans (Inter) for everything UI/content
+   - Display (Roboto Condensed) for hero H1 only (scoped in hero.css)
+   Mono is for code only.
 */
 
-@font-face {
-  font-family: "YAI Display";
-  src: url("/fonts/BlogFoodDemo-Regular.otf") format("opentype");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
 :root {
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial,
-    "Apple Color Emoji", "Segoe UI Emoji";
+  /* These vars are provided by next/font in app/layout.tsx */
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+
+  /* Code/terminal only */
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-
-  /* Display used for headings only */
-  --font-display: "YAI Display", ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 
   /* Body scale */
   --text-xs: 0.82rem;
   --text-sm: 0.92rem;
   --text-md: 1rem;
-  --text-lg: 1.08rem;
+  --text-lg: 1.10rem;
 
-  /* Headline scale (more separation) */
-  --h1: clamp(2.9rem, 6.2vw, 4.35rem);
-  --h2: clamp(1.55rem, 2.9vw, 2.15rem);
-  --h3: 1.12rem;
+  /* Headline scale */
+  --h1: clamp(3.0rem, 6.0vw, 5.2rem);
+  --h2: clamp(1.45rem, 2.6vw, 2.05rem);
+  --h3: 1.08rem;
 
-  --lh-tight: 1.04;
-  --lh-title: 1.08;
-  --lh-body: 1.62;
+  --lh-tight: 1.02; /* keep global H1 sane; hero overrides anyway */
+  --lh-title: 1.14;
+  --lh-body: 1.64;
 
   --measure: 68ch;
+
+  /* optics */
+  --h1-shadow: 0 14px 44px rgba(0, 0, 0, 0.55);
 }
 
+/* Global font */
 html,
 body {
   font-family: var(--font-sans);
 }
 
-h1,
-h2,
-h3 {
+/* Base headings */
+h1, h2, h3 { margin: 0; color: var(--text-primary); }
+
+p {
   margin: 0;
+  color: var(--text-soft);
+  max-width: var(--measure);
+  font-size: var(--text-md);
+  line-height: var(--lh-body);
 }
 
-/* Display headings */
+/* IMPORTANT:
+   Do NOT force display font on global h1.
+   Hero H1 is styled in hero.css (.home-h1 uses --font-display).
+*/
 h1 {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: var(--h1);
   line-height: var(--lh-tight);
-  font-weight: 400;            /* BlogFoodDemo is regular; keep it clean */
-  letter-spacing: -0.04em;     /* stronger, Redis-like */
+  font-weight: 800;
+  letter-spacing: -0.03em;
 }
 
+/* H2/H3: Redis-like UI sans */
 h2 {
-  font-family: var(--font-sans); /* keep H2 readable/enterprise */
+  font-family: var(--font-sans);
   font-size: var(--h2);
   line-height: var(--lh-title);
-  font-weight: 680;
+  font-weight: 700;
   letter-spacing: -0.03em;
 }
 
@@ -79,19 +81,14 @@ h3 {
   letter-spacing: -0.02em;
 }
 
-p {
-  font-size: var(--text-md);
-  line-height: var(--lh-body);
-  max-width: var(--measure);
-  margin: 0;
-}
-
-/* Kicker / small caps helpers (optional but useful) */
+/* Kicker helper */
 .kicker {
+  font-family: var(--font-sans);
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: var(--text-xs);
   font-weight: 700;
+  color: var(--text-muted);
 }
 
 pre,

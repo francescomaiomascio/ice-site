@@ -1,0 +1,48 @@
+/* src/styles/theme/tokens/spacing.css
+   2026 spacing system: vertical rhythm + viewport-friendly sections.
+   One knob controls the whole “Redis-like” feel.
+*/
+
+:root {
+  /* Container */
+  --container-max: 1180px;
+  --container-narrow: 920px;
+  --gutter: clamp(1rem, 3.2vw, 2.25rem);
+
+  /* Vertical rhythm */
+  --stack-1: 0.55rem;
+  --stack-2: 0.85rem;
+  --stack-3: 1.10rem;
+  --stack-4: 1.50rem;
+  --stack-5: 2.05rem;
+  --stack-6: 2.75rem;
+
+  /* Section padding */
+  --section-pad-y: clamp(3.1rem, 7.4vh, 5.55rem);
+  --section-pad-y-hero: clamp(4.8rem, 14vh, 8.25rem);
+  --section-pad-y-tight: clamp(2.2rem, 5.2vh, 4.0rem);
+
+  /* Grid gaps */
+  --gap-1: 0.65rem;
+  --gap-2: 0.95rem;
+  --gap-3: 1.25rem;
+  --gap-4: 1.70rem;
+
+  /* Radii */
+  --r-sm: 10px;
+  --r-md: 12px;
+  --r-lg: 14px;
+
+  /* Touch targets */
+  --tap: 44px;
+}
+
+/* Optional helpers */
+.stack > * + * { margin-top: var(--stack-3); }
+.stack-tight > * + * { margin-top: var(--stack-2); }
+.stack-loose > * + * { margin-top: var(--stack-4); }
+
+.gap-1 { gap: var(--gap-1); }
+.gap-2 { gap: var(--gap-2); }
+.gap-3 { gap: var(--gap-3); }
+.gap-4 { gap: var(--gap-4); }

@@ -1,20 +1,22 @@
 /* src/styles/theme/base/layout.css
    2026 layout shell: single global canvas + no seams
    Professional: sober background, typography-led, no hero photography.
+
+   Uses tokens from:
+   - tokens/spacing.css  (container, gutters, section paddings, radii)
+   - tokens/colors.*     (surface colors)
 */
 
 :root {
   --topbar-h: 56px;
 
-  /* container + rhythm */
-  --container-max: 1180px;
-  --gutter: clamp(1rem, 3.2vw, 2.25rem);
-  --section-pad-y: clamp(2.6rem, 6.5vh, 4.75rem);
+  /* measure is typography-ish but used for layout widths too */
   --measure: 68ch;
 
-  /* parallax vars (set by SiteLayout) */
+  /* parallax var (set by SiteLayout) */
   --bg-y: 0px;
 
+  /* base background */
   --bg: var(--surface-bg, #0b0f14);
 }
 
@@ -43,9 +45,10 @@
 }
 
 /* ===== Global background canvas (fixed) =====
-   - Subtle fields only
-   - No repeating grain patterns (no stripes)
-   - Parallax is transform-based
+   - single YAI field (violet) from the top
+   - darker lower half (near-black)
+   - no “two spotlights”
+   - parallax is transform-based
 */
 
 .app-surface--bg::before {
@@ -56,10 +59,11 @@
   pointer-events: none;
 
   background-color: var(--bg);
+
+  /* ONE identity field + diagonal wash */
   background-image:
-    radial-gradient(1000px 650px at 18% 22%, rgba(122, 92, 255, 0.10), transparent 62%),
-    radial-gradient(900px 560px at 78% 20%, rgba(46, 213, 197, 0.08), transparent 64%),
-    radial-gradient(700px 420px at 52% 88%, rgba(255, 255, 255, 0.025), transparent 70%);
+    radial-gradient(1400px 860px at 50% 10%, rgba(122, 92, 255, 0.18), transparent 62%),
+    linear-gradient(135deg, rgba(122, 92, 255, 0.08) 0%, rgba(11, 15, 20, 0.00) 52%);
 
   background-size: cover;
   background-position: center;
@@ -69,10 +73,11 @@
   transform-origin: center;
   will-change: transform;
 
-  filter: saturate(1.02) contrast(1.01);
+  filter: saturate(1.03) contrast(1.01);
   opacity: 1;
 }
 
+/* Film + vignette (readability without killing hero) */
 .app-surface--bg::after {
   content: "";
   position: fixed;
@@ -80,13 +85,16 @@
   z-index: 1;
   pointer-events: none;
 
-  /* film only */
-  background: linear-gradient(
-    to bottom,
-    rgba(11, 15, 20, 0.60) 0%,
-    rgba(11, 15, 20, 0.80) 55%,
-    rgba(11, 15, 20, 0.93) 100%
-  );
+  /* keep top readable, make bottom decisively darker */
+  background:
+    radial-gradient(1200px 720px at 50% 12%, rgba(0, 0, 0, 0.18), transparent 62%),
+    linear-gradient(
+      to bottom,
+      rgba(11, 15, 20, 0.10) 0%,
+      rgba(11, 15, 20, 0.36) 40%,
+      rgba(11, 15, 20, 0.72) 72%,
+      rgba(11, 15, 20, 0.92) 100%
+    );
 }
 
 /* ===== Sections ===== */
@@ -101,18 +109,21 @@
   padding-block: var(--section-pad-y);
 }
 
-.section--narrow .section-inner { max-width: 920px; }
+.section--narrow .section-inner { max-width: var(--container-narrow); }
 .section--full .section-inner { max-width: none; }
 
+/* Hero spacing uses tokens (viewport-friendly) */
 .section--hero .section-inner {
-  padding-top: clamp(3.0rem, 9vh, 5.5rem);
-  padding-bottom: clamp(2.2rem, 6.5vh, 4.25rem);
+  padding-top: var(--section-pad-y-hero);
+  padding-bottom: var(--section-pad-y-tight);
 }
 
+/* Optional: highlight variant */
 .section--highlight .section-inner {
-  padding-block: clamp(2.3rem, 6vh, 4.5rem);
+  padding-block: var(--section-pad-y-tight);
 }
 
+/* withFooter behavior */
 .section-inner--with-footer {
   min-height: 100svh;
   display: flex;
@@ -122,6 +133,7 @@
 
 .section-inner--with-footer .site-footer { margin-top: auto; }
 
-.section-inner > * + * { margin-top: 1.05rem; }
+/* Minimal spacing rhythm inside each section */
+.section-inner > * + * { margin-top: var(--stack-3); }
 
 p { max-width: var(--measure); }
