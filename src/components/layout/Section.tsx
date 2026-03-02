@@ -1,3 +1,4 @@
+// src/components/layout/Section.tsx
 import React from "react";
 import { Footer } from "./Footer";
 
@@ -13,8 +14,7 @@ export interface SectionProps {
   innerClassName?: string;
   withFooter?: boolean;
   /**
-   * Opt-in scroll snapping. Default off to avoid "half viewport" bleed
-   * and trackpad weirdness.
+   * Opt-in scroll snapping. Default off to avoid trackpad weirdness.
    */
   snap?: boolean;
   children: React.ReactNode;
@@ -35,10 +35,6 @@ export function Section({
   snap = false,
   children,
 }: SectionProps) {
-  /**
-   * Width/variant are expressed at the Section level,
-   * but padding + container are always handled by .section-inner.
-   */
   const sectionClass = cx(
     "section",
     snap && "snap-section",

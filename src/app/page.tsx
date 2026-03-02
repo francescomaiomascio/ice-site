@@ -3,10 +3,8 @@
 import { Section } from "@/components/layout/Section";
 
 const PILOT_MAILTO =
-  "mailto:pilot@yai.foundation?subject=Book%20Pilot%20-%20YAI%2014-Day";
-
+  "mailto:pilot@yai.foundation?subject=YAI%20Pilot%20-%2014%20Days";
 const DOCS_URL = "https://github.com/yai-labs/yai/tree/main/docs";
-const PROOF_URL = "/#proof"; // se poi vuoi farlo bene: crea /proof page e metti "/proof"
 const GITHUB_URL = "https://github.com/yai-labs/yai";
 
 function ExternalAnchor(props: {
@@ -28,219 +26,227 @@ function ExternalAnchor(props: {
   );
 }
 
-function Hero() {
+function HomeHero() {
   return (
-    <section id="hero" className="hero2" aria-label="YAI Labs hero">
-      <div className="hero2-bg" aria-hidden="true">
-        <div className="hero2-bg-ice" />
-        <div className="hero2-bg-violet" />
-        <div className="hero2-bg-overlay" />
-      </div>
+    <Section id="top" variant="hero" className="home-hero">
+      <div className="home-hero-inner">
+        <h1 className="home-h1">Make execution predictable.</h1>
+        <p className="home-lede">
+          YAI is execution infrastructure for systems that act. Define actions,
+          enforce constraints, and preserve a verifiable decision history that
+          holds up months later.
+        </p>
 
-      <div className="hero2-inner">
-        <div className="hero2-head">
-          <h1>Governed AI execution for production systems.</h1>
-          <p className="hero2-subhead">
-            YAI Labs builds execution infrastructure where policy is enforced fail-closed,
-            decisions are reason-coded, and evidence is audit-ready.
-          </p>
-        </div>
-
-        <div className="hero2-grid">
-          <div className="hero2-left">
-            <p className="hero2-kicker">YAI Labs</p>
-
-            <p className="hero2-lead">
-              AI in production needs governance you can verify.
-            </p>
-
-            <div className="hero2-points" role="list" aria-label="Core principles">
-              <div className="hero2-point" role="listitem">
-                <div className="hero2-point-title">Fail-closed boundaries</div>
-                <div className="hero2-point-body">
-                  No hidden side-effects. External effects are explicitly allowed or denied.
-                </div>
-              </div>
-
-              <div className="hero2-point" role="listitem">
-                <div className="hero2-point-title">Deterministic paths</div>
-                <div className="hero2-point-body">
-                  Same inputs → same decisions, with reason codes and replayable evidence.
-                </div>
-              </div>
-
-              <div className="hero2-point" role="listitem">
-                <div className="hero2-point-title">Audit-ready artifacts</div>
-                <div className="hero2-point-body">
-                  Policy baselines, manifests, and runs packaged for verification.
-                </div>
-              </div>
-            </div>
-
-            <div className="hero2-cta" aria-label="Primary actions">
-              <a className="button button--primary" href={PILOT_MAILTO}>
-                Book Pilot
-              </a>
-              <a className="button button--ghost" href="#services">
-                Explore services
-              </a>
-              <ExternalAnchor className="button button--link" href={DOCS_URL} ariaLabel="Open docs">
-                Read docs
-              </ExternalAnchor>
-            </div>
-
-            <div className="hero2-mini">
-              <span className="hero2-mini-label">Open-source</span>
-              <ExternalAnchor href={GITHUB_URL} ariaLabel="Open GitHub repository">
-                GitHub repository →
-              </ExternalAnchor>
-            </div>
-          </div>
-
-          {/* Right side: “company strip” + not a bundle */}
-          <aside className="hero2-right" aria-label="Signals">
-            <div className="hero2-signal">
-              <div className="hero2-signal-title">Built for production</div>
-              <div className="hero2-signal-body">
-                Governed execution surfaces designed for CI/CD, audit, and operations.
-              </div>
-            </div>
-
-            <div className="hero2-signal">
-              <div className="hero2-signal-title">Proof-led</div>
-              <div className="hero2-signal-body">
-                Reproducible verification over claims. Evidence over screenshots.
-              </div>
-            </div>
-
-            <div className="hero2-partners">
-              <div className="hero2-partners-title">Compatibility / signals</div>
-              <div className="hero2-logos" aria-label="Partner logos placeholder">
-                <div className="hero2-logo">OTEL</div>
-                <div className="hero2-logo">S3</div>
-                <div className="hero2-logo">GitHub</div>
-                <div className="hero2-logo">K8s</div>
-              </div>
-              <div className="hero2-partners-note">
-                Replace with real partnerships / integrations when ready.
-              </div>
-            </div>
-          </aside>
-        </div>
-
-        <div className="hero2-hint">
-          <a href="#how" className="hero2-hint-link">
-            ↓ How it works
+        <div className="home-cta" aria-label="Primary actions">
+          <ExternalAnchor
+            className="button button--primary"
+            href={DOCS_URL}
+            ariaLabel="Try via docs"
+          >
+            Try YAI
+          </ExternalAnchor>
+          <a className="button button--ghost" href={PILOT_MAILTO}>
+            Book pilot
           </a>
         </div>
+
+        <div className="home-trust" aria-label="Trust placeholders">
+          <div className="home-trust-title">Trusted by</div>
+          <div className="home-trust-row">
+            <div className="home-trust-logo" aria-hidden="true" />
+            <div className="home-trust-logo" aria-hidden="true" />
+            <div className="home-trust-logo" aria-hidden="true" />
+            <div className="home-trust-logo" aria-hidden="true" />
+          </div>
+          <div className="home-trust-note">
+            Space reserved for partners / design partners. Until then:{" "}
+            <ExternalAnchor href={GITHUB_URL} ariaLabel="Open GitHub repository">
+              proof surfaces on GitHub
+            </ExternalAnchor>
+            .
+          </div>
+        </div>
       </div>
-    </section>
+    </Section>
+  );
+}
+
+function Split(props: {
+  kicker: string;
+  title: string;
+  subtitle: string;
+  children?: React.ReactNode;
+}) {
+  return (
+    <div className="home-split">
+      <div className="home-split-left">
+        <div className="home-kicker">{props.kicker}</div>
+        <h2 className="home-h2">{props.title}</h2>
+        <p className="home-sub">{props.subtitle}</p>
+      </div>
+      <div className="home-split-right">{props.children}</div>
+    </div>
+  );
+}
+
+function Tile(props: {
+  title: string;
+  body: string;
+  href?: string;
+  cta?: string;
+}) {
+  const inner = (
+    <>
+      <div className="home-tile-title">{props.title}</div>
+      <div className="home-tile-body">{props.body}</div>
+      {props.href && props.cta ? (
+        <div className="home-tile-cta">{props.cta} →</div>
+      ) : null}
+    </>
+  );
+
+  if (props.href) {
+    return (
+      <a className="home-tile" href={props.href}>
+        {inner}
+      </a>
+    );
+  }
+  return <div className="home-tile">{inner}</div>;
+}
+
+function Pills() {
+  const items = [
+    "OTEL",
+    "S3",
+    "GitHub",
+    "Kubernetes",
+    "Docker",
+    "Linux",
+    "CI/CD",
+    "UDS",
+  ];
+  return (
+    <div className="home-pills" aria-label="Integration surfaces">
+      {items.map((x) => (
+        <div key={x} className="home-pill">
+          {x}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Quickstart() {
+  return (
+    <div className="home-code" aria-label="Quickstart">
+      <div className="home-code-head">
+        <div className="home-code-title">Start building in minutes</div>
+        <ExternalAnchor
+          href={DOCS_URL}
+          className="button button--link"
+          ariaLabel="Open quickstart"
+        >
+          Explore docs
+        </ExternalAnchor>
+      </div>
+      <pre className="home-code-pre">
+        <code>{`# verify
+tools/bin/yai-verify list
+
+# run (example)
+yai ws create --id demo
+yai run --ws demo --plan ./plans/demo.yml
+
+# inspect proof surfaces
+yai proof --ws demo --latest`}</code>
+      </pre>
+    </div>
   );
 }
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      <HomeHero />
 
-      {/* HOW (no cards) */}
-      <Section id="how" className="section--projects project-section">
-        <section className="yai-launch">
-          <p className="yai-launch-kicker">How it works</p>
-          <h2>Contract → Decision → Evidence</h2>
-          <p className="yai-launch-subtitle">
-            A governed runtime flow where policy is pinned to contracts, enforced at execution,
-            and emitted as evidence you can replay.
-          </p>
-
-          <div className="howline" role="list" aria-label="Flow">
-            <div className="howline-item" role="listitem">
-              <div className="howline-title">Contract</div>
-              <div className="howline-body">Defines allowed effects and constraints.</div>
-            </div>
-            <div className="howline-arrow" aria-hidden="true">→</div>
-            <div className="howline-item" role="listitem">
-              <div className="howline-title">Decision</div>
-              <div className="howline-body">Enforces policy with reason codes.</div>
-            </div>
-            <div className="howline-arrow" aria-hidden="true">→</div>
-            <div className="howline-item" role="listitem">
-              <div className="howline-title">Evidence</div>
-              <div className="howline-body">Pins artifacts for replay and audit.</div>
-            </div>
+      <Section id="faster" className="home-block">
+        <Split
+          kicker="Move faster"
+          title="Think fast. Build safer."
+          subtitle="YAI makes action a controllable surface: enforcement at execution time, and a record you can verify afterward."
+        >
+          <div className="home-tiles">
+            <Tile
+              title="Deterministic outcomes"
+              body="Same inputs follow the same decision paths. Behavior is stable under constraints."
+            />
+            <Tile
+              title="Fail-closed boundaries"
+              body="External effects are explicit. When rules don’t match, execution stops or quarantines."
+            />
+            <Tile
+              title="Verifiable history"
+              body="Traces and artifacts are produced as part of delivery — replayable, not reconstructive."
+            />
           </div>
-        </section>
+        </Split>
       </Section>
 
-      {/* PROOF teaser ONLY (no bundle in homepage) */}
-      <Section id="proof" className="section--projects project-section">
-        <section className="yai-launch">
-          <p className="yai-launch-kicker">Proof</p>
-          <h2>Reproducible verification, not marketing claims.</h2>
-          <p className="yai-launch-subtitle">
-            We publish proof surfaces as versioned artifacts. If it can’t be verified, it doesn’t ship.
-          </p>
-
-          <div className="proof-teaser">
-            <div className="proof-teaser-left">
-              <div className="proof-teaser-title">Launch Proof</div>
-              <div className="proof-teaser-body">
-                A deterministic verification bundle demonstrating allow/deny outcomes on the same contract.
-              </div>
-            </div>
-            <div className="proof-teaser-actions">
-              <a className="button button--primary" href={PROOF_URL}>
-                View proof
-              </a>
-              <ExternalAnchor className="button button--ghost" href={DOCS_URL} ariaLabel="Open docs">
-                Read docs
-              </ExternalAnchor>
-            </div>
+      <Section id="deploy" className="home-block">
+        <Split
+          kicker="Deploy anywhere"
+          title="Fit into real environments."
+          subtitle="Start with one workflow and expand across domains. Deploy locally, in CI, or on edge systems — without rewriting your stack."
+        >
+          <div className="home-tiles home-tiles--3">
+            <Tile
+              title="Pilot in your environment"
+              body="One real workflow. Tight scope. Proof-led output your team can keep."
+              href={PILOT_MAILTO}
+              cta="Book pilot"
+            />
+            <Tile
+              title="Self-hosted by default"
+              body="Local-first execution surfaces designed for predictable behavior and traceability."
+              href={DOCS_URL}
+              cta="Read docs"
+            />
+            <Tile
+              title="Open-source foundation"
+              body="Specs, runbooks, milestone packs, and reproducible verification are public."
+              href={GITHUB_URL}
+              cta="View repository"
+            />
           </div>
-        </section>
+        </Split>
       </Section>
 
-      {/* SERVICES (still 3, but calmer) */}
-      <Section id="services" className="section--projects project-section">
-        <section className="yai-launch">
-          <p className="yai-launch-kicker">Services</p>
-          <h2>Proof-led delivery for production teams.</h2>
-          <p className="yai-launch-subtitle">
-            Short cycles focused on policy, enforcement, and evidence your org can keep.
-          </p>
-
-          <div className="service-list" role="list">
-            <div className="service-item" role="listitem">
-              <div className="service-title">14-Day Design Partner Pilot</div>
-              <div className="service-body">
-                One real workflow in your environment. Policy contract + enforcement + evidence report.
-              </div>
-              <a className="service-cta" href={PILOT_MAILTO}>Book Pilot →</a>
-            </div>
-
-            <div className="service-item" role="listitem">
-              <div className="service-title">Assurance Pack (Audit Readiness)</div>
-              <div className="service-body">
-                Evidence review, governance gap mapping, and remediation checklist aligned to controls.
-              </div>
-              <a className="service-cta" href={PILOT_MAILTO}>Request scope →</a>
-            </div>
-
-            <div className="service-item" role="listitem">
-              <div className="service-title">Production Change Guard</div>
-              <div className="service-body">
-                Guardrails for policy changes and effects: fail-closed enforcement with traceable outcomes.
-              </div>
-              <a className="service-cta" href={PILOT_MAILTO}>Discuss deployment →</a>
-            </div>
-          </div>
-        </section>
+      <Section id="stack" className="home-block">
+        <Split
+          kicker="Works with your tech stack"
+          title="Integrates where actions happen."
+          subtitle="YAI wraps workflows, not whitepapers. It sits around pipelines, scripts, automation tools, and device-side execution."
+        >
+          <Pills />
+        </Split>
       </Section>
 
-      {/* Footer block stays as you already have it in your Section with footer */}
-      <Section id="yai-launch-footer" className="section--projects project-section yai-launch-section" withFooter>
-        
+      <Section id="start" className="home-block">
+        <Split
+          kicker="Start building"
+          title="Proof-led by design."
+          subtitle="Documentation and verification surfaces are first-class. If it can’t be verified, it doesn’t ship."
+        >
+          <Quickstart />
+        </Split>
       </Section>
+
+      <Section
+        id="yai-launch-footer"
+        className="section--projects project-section yai-launch-section"
+        withFooter
+      />
     </>
   );
 }

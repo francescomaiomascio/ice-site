@@ -1,16 +1,33 @@
 /* src/styles/theme/components/cards.css
-   2026 surfaces: calm, enterprise, audit-artifact vibe
+   Surfaces: sober, infrastructure-grade
 */
 
+:root {
+  --card-radius: 14px;
+
+  /* fallbacks in case tokens are missing */
+  --card-border: var(--border-1, rgba(255, 255, 255, 0.10));
+  --card-bg: var(--surface, rgba(255, 255, 255, 0.03));
+  --card-bg-hover: var(--surface-2, rgba(255, 255, 255, 0.04));
+}
+
 .card {
-  border-radius: var(--r-lg);
-  border: 1px solid var(--border-1);
-  background: var(--surface);
-  backdrop-filter: blur(10px);
+  border-radius: var(--r-lg, var(--card-radius));
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+
+  /* keep blur optional: most pages should not rely on blur */
+  backdrop-filter: none;
+
   padding: 1rem;
 }
 
 .card:hover {
-  border-color: rgba(143, 185, 255, 0.20);
-  background: var(--surface-2);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: var(--card-bg-hover);
+}
+
+/* If you explicitly want glass, opt-in with .card--glass */
+.card--glass {
+  backdrop-filter: blur(10px);
 }

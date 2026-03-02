@@ -1,6 +1,18 @@
 /* src/styles/theme/tokens/typography.css
-   2026 type system: enterprise, readable, proof-friendly.
+   2026 type system: Redis-style hierarchy, proof-friendly body.
+   Strategy:
+   - Display face for headings only
+   - System sans for body
+   - Stronger scale contrast + tighter tracking on H1
 */
+
+@font-face {
+  font-family: "YAI Display";
+  src: url("/fonts/BlogFoodDemo-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
 
 :root {
   --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -9,21 +21,26 @@
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
 
-  /* Scale */
+  /* Display used for headings only */
+  --font-display: "YAI Display", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+  /* Body scale */
   --text-xs: 0.82rem;
   --text-sm: 0.92rem;
   --text-md: 1rem;
   --text-lg: 1.08rem;
 
-  --h1: clamp(2.25rem, 4.8vw, 3.35rem);
-  --h2: clamp(1.5rem, 2.6vw, 2.05rem);
+  /* Headline scale (more separation) */
+  --h1: clamp(2.9rem, 6.2vw, 4.35rem);
+  --h2: clamp(1.55rem, 2.9vw, 2.15rem);
   --h3: 1.12rem;
 
-  --lh-tight: 1.12;
-  --lh-title: 1.18;
+  --lh-tight: 1.04;
+  --lh-title: 1.08;
   --lh-body: 1.62;
 
-  --measure: 70ch;
+  --measure: 68ch;
 }
 
 html,
@@ -34,28 +51,32 @@ body {
 h1,
 h2,
 h3 {
-  letter-spacing: -0.02em;
+  margin: 0;
 }
 
+/* Display headings */
 h1 {
+  font-family: var(--font-display);
   font-size: var(--h1);
-  line-height: var(--lh-title);
-  font-weight: 680;
-  margin: 0;
+  line-height: var(--lh-tight);
+  font-weight: 400;            /* BlogFoodDemo is regular; keep it clean */
+  letter-spacing: -0.04em;     /* stronger, Redis-like */
 }
 
 h2 {
+  font-family: var(--font-sans); /* keep H2 readable/enterprise */
   font-size: var(--h2);
   line-height: var(--lh-title);
-  font-weight: 660;
-  margin: 0;
+  font-weight: 680;
+  letter-spacing: -0.03em;
 }
 
 h3 {
+  font-family: var(--font-sans);
   font-size: var(--h3);
   line-height: 1.24;
   font-weight: 650;
-  margin: 0;
+  letter-spacing: -0.02em;
 }
 
 p {
@@ -63,6 +84,14 @@ p {
   line-height: var(--lh-body);
   max-width: var(--measure);
   margin: 0;
+}
+
+/* Kicker / small caps helpers (optional but useful) */
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: var(--text-xs);
+  font-weight: 700;
 }
 
 pre,

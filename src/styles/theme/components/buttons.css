@@ -1,68 +1,125 @@
 /* src/styles/theme/components/buttons.css
-   2026 buttons: consistent hierarchy across site
+   Buttons: sober, infrastructure-grade (Redis-like)
 */
+
+:root {
+  /* button tokens (keep local; can be moved to tokens later) */
+  --btn-radius: 12px;
+  --btn-pad-y: 0.62rem;
+  --btn-pad-x: 1.05rem;
+
+  --btn-bg: rgba(255, 255, 255, 0.04);
+  --btn-bg-hover: rgba(255, 255, 255, 0.06);
+  --btn-border: rgba(255, 255, 255, 0.14);
+  --btn-border-hover: rgba(255, 255, 255, 0.20);
+
+  --btn-fg: rgba(232, 238, 246, 0.92);
+
+  --btn-primary-bg: rgba(143, 185, 255, 0.18);
+  --btn-primary-bg-hover: rgba(143, 185, 255, 0.24);
+  --btn-primary-border: rgba(143, 185, 255, 0.52);
+  --btn-primary-border-hover: rgba(143, 185, 255, 0.68);
+  --btn-primary-fg: rgba(242, 247, 255, 0.98);
+
+  --focus-ring: 0 0 0 3px rgba(143, 185, 255, 0.18);
+}
 
 .button,
 a.button,
 button.button {
   appearance: none;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(232, 238, 246, 0.95);
-  border-radius: 999px;
-  padding: 0.62rem 1.05rem;
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border-radius: var(--btn-radius);
+
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  font-weight: 720;
-  font-size: 0.94rem;
-  letter-spacing: 0.005em;
+
+  font-weight: 650;
+  font-size: 0.95rem;
+  letter-spacing: 0.002em;
+
   cursor: pointer;
-  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease,
-    opacity 160ms ease;
+
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease,
+    opacity 140ms ease,
+    box-shadow 140ms ease;
   border-bottom: none;
 }
 
 .button:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(255, 255, 255, 0.22);
+  background: var(--btn-bg-hover);
+  border-color: var(--btn-border-hover);
 }
 
 .button:active {
-  transform: translateY(0);
   opacity: 0.92;
 }
 
+.button:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Primary */
 .button--primary {
-  background: rgba(143, 185, 255, 0.16);
-  border-color: rgba(143, 185, 255, 0.55);
-  color: rgba(242, 247, 255, 0.98);
+  background: var(--btn-primary-bg);
+  border-color: var(--btn-primary-border);
+  color: var(--btn-primary-fg);
 }
 
 .button--primary:hover {
-  background: rgba(143, 185, 255, 0.22);
-  border-color: rgba(143, 185, 255, 0.7);
+  background: var(--btn-primary-bg-hover);
+  border-color: var(--btn-primary-border-hover);
 }
 
+/* Ghost: looks like a button but stays quiet */
 .button--ghost {
   background: transparent;
   border-color: rgba(255, 255, 255, 0.12);
 }
 
+.button--ghost:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Link-style: behaves like a link, not a button */
 .button--link {
   background: transparent;
   border-color: transparent;
   padding: 0;
   border-radius: 0;
-  font-weight: 720;
-  color: rgba(232, 238, 246, 0.70);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+
+  font-weight: 650;
+  color: rgba(232, 238, 246, 0.72);
+
+  border-bottom: 1px solid rgba(232, 238, 246, 0.20);
 }
 
 .button--link:hover {
-  transform: none;
+  background: transparent;
+  border-color: transparent;
   color: rgba(232, 238, 246, 0.92);
-  border-bottom-color: rgba(255, 255, 255, 0.28);
+  border-bottom-color: rgba(232, 238, 246, 0.34);
+}
+
+.button--link:focus-visible {
+  box-shadow: none;
+  outline: none;
+}
+
+/* Disabled */
+.button[disabled],
+button.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
 }
