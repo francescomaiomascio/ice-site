@@ -18,7 +18,6 @@ type RiveDomainIllustrationProps = {
   className?: string;
   lazy?: boolean;
   ariaHidden?: boolean;
-  missingLabel?: string;
 };
 
 type AssetStatus = "idle" | "loading" | "ready" | "invalid";
@@ -106,7 +105,6 @@ export function RiveDomainIllustration({
   className,
   lazy = true,
   ariaHidden = true,
-  missingLabel,
 }: RiveDomainIllustrationProps) {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const inView = useInViewport(hostRef);
@@ -180,9 +178,9 @@ export function RiveDomainIllustration({
       {shouldMount && assetStatus === "ready" ? (
         <RiveDomainCanvas spec={spec} active={active} />
       ) : shouldMount && assetStatus === "invalid" ? (
-        <RivePlaceholder label={missingLabel ? `${missingLabel} art missing` : "Art missing"} />
+        <RivePlaceholder />
       ) : (
-        <RivePlaceholder label={missingLabel ? `${missingLabel} art loading` : "Art loading"} />
+        <RivePlaceholder />
       )}
     </div>
   );

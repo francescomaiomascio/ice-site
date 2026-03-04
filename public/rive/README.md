@@ -4,15 +4,17 @@ This folder hosts `.riv` assets used by the domains cards runtime.
 
 ## Path and naming
 
-Put files in `public/rive/domains/` with these names:
+Put files in `public/rive/domains/` with slug-based names:
 
-- `yai_physical.riv`
-- `yai_digital.riv`
-- `yai_biological.riv`
-- `yai_economic.riv`
-- `yai_operational.riv`
-- `yai_institutional.riv`
-- `yai_scientific.riv`
+- `physical-actuators.riv`
+- `digital-egress.riv`
+- `biological-custody.riv`
+- `economic-transactions.riv`
+- `operational-response.riv`
+- `institutional-authority.riv`
+- `scientific-reproducibility.riv`
+- `cognitive-publishing.riv`
+- `environmental-telemetry.riv`
 
 ## Required file contract
 

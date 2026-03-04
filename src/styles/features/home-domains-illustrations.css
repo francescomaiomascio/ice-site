@@ -11,8 +11,7 @@
 
 .domain-rive-shell,
 .domain-rive-canvas,
-.domain-rive-placeholder,
-.domain-rive-placeholder-label {
+.domain-rive-placeholder {
   width: 100%;
   display: block;
 }
@@ -50,16 +49,6 @@
 .domain-rive-placeholder::after {
   top: 64%;
   opacity: 0.78;
-}
-
-.domain-rive-placeholder-label {
-  position: absolute;
-  bottom: 10px;
-  left: 12px;
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(180, 200, 228, 0.62);
 }
 
 .domains-card--hero .domain-illustration-shell--physical {

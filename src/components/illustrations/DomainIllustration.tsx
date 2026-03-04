@@ -33,14 +33,14 @@ export function DomainIllustration({ slug, kind, active, className }: DomainIllu
 
     return (
       <div className={`domain-illustration-shell domain-illustration-shell--${kind} ${className ?? ""}`.trim()} aria-hidden="true">
-        <RivePlaceholder label={`${slug} mapping missing`} />
+        <RivePlaceholder />
       </div>
     );
   }
 
   return (
     <div className={`domain-illustration-shell domain-illustration-shell--${kind} ${className ?? ""}`.trim()} aria-hidden="true">
-      <RiveDomainIllustration spec={spec} active={active} lazy missingLabel={slug} />
+      <RiveDomainIllustration spec={spec} active={active} lazy />
     </div>
   );
 }
