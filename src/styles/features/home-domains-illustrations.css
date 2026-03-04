@@ -8,6 +8,24 @@
   z-index: 1;
 }
 
+.domains-card--hero .domain-illustration-shell--physical {
+  left: 40%;
+  top: 0;
+  bottom: 0;
+  width: 60%;
+  height: 100%;
+  right: 0;
+  transform: none;
+  opacity: 0.95;
+  position: absolute;
+  overflow: hidden;
+}
+
+.domains-card--hero .domain-illustration-shell--physical .domain-ill {
+  width: 100%;
+  height: 100%;
+}
+
 .domain-ill {
   width: 100%;
   height: auto;
@@ -46,15 +64,320 @@
   opacity: 0;
 }
 
+.domain-ill--physical {
+  --domain-accent: #b9f93c;
+  --domain-accent-2: #6ab30f;
+  --domain-accent-hi: rgba(241, 255, 211, 0.92);
+}
+
+.domain-ill--digital {
+  --domain-accent: #b86bff;
+  --domain-accent-2: #6a2bff;
+  --domain-accent-hi: rgba(255, 255, 255, 0.55);
+}
+
+.domain-ill--biological {
+  --domain-accent: #8b5cff;
+  --domain-accent-2: #4b1bff;
+  --domain-accent-hi: rgba(255, 255, 255, 0.55);
+  --domain-ink: rgba(210, 226, 246, 0.38);
+}
+
+.domain-ill--biological .domain-ill-grid {
+  stroke: rgba(214, 226, 244, 0.12);
+  stroke-width: 1;
+}
+
+.domain-ill--biological .domain-ill-line {
+  stroke: rgba(198, 216, 240, 0.3);
+  stroke-width: 1.24;
+}
+
+.domain-ill-chain-base {
+  fill: none;
+  stroke: var(--domain-ink);
+  stroke-width: 1.44;
+  stroke-linecap: round;
+}
+
+.domain-ill-chain-hi {
+  fill: none;
+  stroke-width: 0.98;
+  stroke-linecap: round;
+  opacity: 0.84;
+}
+
+.domain-ill-biological-shadow {
+  fill: none;
+  stroke: rgba(18, 26, 41, 0.24);
+  stroke-width: 2.8;
+  stroke-linecap: round;
+}
+
+.domain-ill-biological-node {
+  fill: color-mix(in srgb, var(--domain-accent) 66%, rgba(244, 248, 255, 0.88));
+  stroke: rgba(243, 247, 255, 0.2);
+  stroke-width: 0.88;
+}
+
+.domain-ill-seal-fill {
+  stroke: rgba(243, 247, 255, 0.2);
+  stroke-width: 0.9;
+}
+
+.domain-ill-seal-ring {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.46);
+  stroke-width: 1.1;
+}
+
+.domain-ill-biological-seal-shadow {
+  fill: rgba(0, 0, 0, 0.2);
+  opacity: 0.44;
+}
+
+.domain-ill-custody-sweep {
+  fill: none;
+  stroke: var(--domain-accent);
+  stroke-width: 1.42;
+  stroke-dasharray: 13 16;
+  stroke-dashoffset: 0;
+  opacity: 0.08;
+  animation: illCustodySweep 1.8s linear infinite;
+  animation-play-state: paused;
+}
+
+.domain-ill--biological .domain-ill-seal {
+  transform-origin: 500px 176px;
+  animation: illBioSealPulse 1.8s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.domain-ill-biological-node--end {
+  animation: illBioNodeTick 1.8s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+/* Digital small-card pass notes:
+   - added accent-hi/accent-2 + ambient shadow tokens for stronger depth
+   - small-card readability needs slightly thicker main pipes than big-card visuals */
+.domain-ill--digital .domain-ill-grid {
+  stroke: rgba(214, 224, 245, 0.12);
+  stroke-width: 1;
+}
+
+.domain-ill-digital-ambient {
+  fill: none;
+  stroke: rgba(20, 26, 42, 0.28);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.domain-ill-pipe-base {
+  fill: none;
+  stroke: rgba(194, 210, 238, 0.38);
+  stroke-width: 1.42;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.domain-ill-pipe-hi {
+  fill: none;
+  stroke-width: 0.98;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.82;
+}
+
+.domain-ill-digital-node {
+  fill: color-mix(in srgb, var(--domain-accent) 72%, rgba(242, 248, 255, 0.86));
+  stroke: rgba(242, 247, 255, 0.28);
+  stroke-width: 0.8;
+}
+
+.domain-ill-digital-flow {
+  stroke-width: 1.35;
+  stroke-dasharray: 10 18;
+  stroke-dashoffset: 0;
+  opacity: 0;
+  animation: illDigitalFlow 1.62s linear infinite;
+  animation-play-state: paused;
+}
+
+.domain-ill-digital-pulse {
+  fill: none;
+  stroke: color-mix(in srgb, var(--domain-accent) 62%, rgba(255, 255, 255, 0.12));
+  stroke-width: 1.1;
+  opacity: 0;
+  animation: illDigitalNodePulse 1.72s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.domain-ill--physical .domain-ill-grid {
+  stroke: rgba(201, 245, 154, 0.08);
+  stroke-width: 1;
+}
+
+.domain-ill--physical .phy-rail {
+  fill: none;
+  stroke: rgba(198, 241, 152, 0.2);
+  stroke-width: 1.02;
+  stroke-linecap: round;
+}
+
+.domain-ill--physical .phy-outline {
+  fill: none;
+  stroke: color-mix(in srgb, var(--domain-accent) 64%, rgba(210, 245, 170, 0.82));
+  stroke-width: 0.86;
+}
+
+.domain-ill--physical .phy-edge-near {
+  fill: none;
+  stroke: color-mix(in srgb, var(--domain-accent) 74%, rgba(216, 247, 178, 0.84));
+  stroke-width: 0.88;
+  opacity: 0.84;
+}
+
+.domain-ill--physical .phy-edge-far {
+  fill: none;
+  stroke: color-mix(in srgb, var(--domain-accent) 52%, rgba(178, 221, 132, 0.56));
+  stroke-width: 0.78;
+  opacity: 0.26;
+}
+
+.domain-ill--physical .phy-plate-top {
+  stroke: color-mix(in srgb, var(--domain-accent) 72%, rgba(218, 248, 180, 0.84));
+  stroke-width: 0.84;
+}
+
+.domain-ill--physical .phy-plate-front {
+  stroke: color-mix(in srgb, var(--domain-accent) 46%, rgba(154, 204, 111, 0.46));
+  stroke-width: 0.72;
+}
+
+.domain-ill--physical .phy-plate-side {
+  fill: rgba(10, 38, 17, 0.84);
+  stroke: color-mix(in srgb, var(--domain-accent) 36%, rgba(118, 164, 78, 0.48));
+  stroke-width: 0.72;
+}
+
+.domain-ill--physical .phy-plate-edge-hi {
+  fill: none;
+  stroke: color-mix(in srgb, var(--domain-accent-hi) 78%, rgba(225, 252, 190, 0.76));
+  stroke-width: 0.92;
+  opacity: 0.44;
+}
+
+.domain-ill--physical .phy-gate-edge {
+  fill: none;
+  stroke: rgba(224, 245, 248, 0.24);
+  stroke-width: 0.78;
+}
+
+.domain-ill--physical .phy-gate-inner {
+  fill: none;
+  stroke: color-mix(in srgb, var(--domain-accent) 42%, rgba(182, 222, 229, 0.36));
+  stroke-width: 0.7;
+}
+
+.domain-ill--physical .phy-gate-shadow {
+  fill: none;
+  stroke: rgba(58, 108, 24, 0.2);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+.domain-ill--physical .phy-gate-leaf-shape {
+  fill: rgba(24, 196, 184, 0.34);
+  stroke: rgba(224, 246, 244, 0.18);
+  stroke-width: 0.7;
+}
+
+.domain-ill--physical .phy-actuator-top {
+  stroke: rgba(234, 255, 252, 0.26);
+  stroke-width: 0.64;
+}
+
+.domain-ill--physical .phy-actuator-front {
+  stroke: rgba(226, 247, 244, 0.14);
+  stroke-width: 0.64;
+}
+
+.domain-ill--physical .phy-actuator-side {
+  fill: rgba(12, 162, 152, 0.7);
+  stroke: rgba(226, 247, 244, 0.13);
+  stroke-width: 0.62;
+}
+
+.domain-ill--physical .phy-command-path {
+  fill: none;
+  stroke: var(--domain-accent);
+  stroke-width: 1.48;
+  stroke-dasharray: 10 12;
+  stroke-dashoffset: 0;
+  opacity: 0.12;
+  animation: illPhysicalCommand 2s linear infinite;
+  animation-play-state: paused;
+}
+
+.domain-ill--physical .phy-command-port {
+  fill: rgba(36, 232, 218, 0.62);
+}
+
+.domain-ill--physical .phy-proof-ring {
+  fill: none;
+  stroke: color-mix(in srgb, var(--domain-accent) 76%, rgba(255, 255, 255, 0.18));
+  stroke-width: 1.45;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: illPhysicalProof 2s ease-out infinite;
+  animation-play-state: paused;
+}
+
+.domain-ill--physical .phy-gate-leaf {
+  --phy-gate-tx: 10px;
+  --phy-gate-ty: -1.26px;
+  animation: illPhysicalLeaf 2s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.domain-ill--physical .phy-actuator-press {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: illPhysicalPress 2s cubic-bezier(0.22, 0.78, 0.16, 1) infinite;
+  animation-play-state: paused;
+}
+
+.domain-ill--physical .phy-rail,
+.domain-ill--physical .phy-outline,
+.domain-ill--physical .phy-edge-near,
+.domain-ill--physical .phy-edge-far,
+.domain-ill--physical .phy-plate-top,
+.domain-ill--physical .phy-plate-front,
+.domain-ill--physical .phy-plate-side,
+.domain-ill--physical .phy-gate-edge,
+.domain-ill--physical .phy-gate-inner,
+.domain-ill--physical .phy-gate-shadow,
+.domain-ill--physical .phy-gate-leaf-shape,
+.domain-ill--physical .phy-actuator-top,
+.domain-ill--physical .phy-actuator-front,
+.domain-ill--physical .phy-actuator-side,
+.domain-ill--physical .phy-command-path,
+.domain-ill--physical .phy-proof-ring {
+  vector-effect: non-scaling-stroke;
+}
+
+.domain-ill-physical-shadow {
+  fill: rgba(12, 36, 18, 0.32);
+  opacity: 0.42;
+}
+
 .domain-ill-trace {
   stroke-dasharray: 8 7;
   stroke-dashoffset: 0;
   animation: illTraceFlow 1.2s linear infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill-physical-slider {
-  animation: illSliderTravel 1s ease-in-out infinite;
   animation-play-state: paused;
 }
 
@@ -104,7 +427,6 @@
 }
 
 .domains-card:is(:hover, :focus-within) .domain-ill-trace,
-.domains-card:is(:hover, :focus-within) .domain-ill-physical-slider,
 .domains-card:is(:hover, :focus-within) .domain-ill-packet-travel,
 .domains-card:is(:hover, :focus-within) .domain-ill-seal,
 .domains-card:is(:hover, :focus-within) .domain-ill-ledger-marker,
@@ -113,8 +435,24 @@
 .domains-card:is(:hover, :focus-within) .domain-ill-gate-open,
 .domains-card:is(:hover, :focus-within) .domain-ill-lock-click,
 .domains-card:is(:hover, :focus-within) .domain-ill-pulse,
-.domains-card:is(:hover, :focus-within) .domain-ill-incident-pulse {
+.domains-card:is(:hover, :focus-within) .domain-ill-incident-pulse,
+.domains-card:is(:hover, :focus-within) .phy-actuator-press,
+.domains-card:is(:hover, :focus-within) .phy-gate-leaf,
+.domains-card:is(:hover, :focus-within) .phy-command-path,
+.domains-card:is(:hover, :focus-within) .phy-proof-ring,
+.domains-card:is(:hover, :focus-within) .domain-ill-digital-flow,
+.domains-card:is(:hover, :focus-within) .domain-ill-digital-pulse,
+.domains-card:is(:hover, :focus-within) .domain-ill-custody-sweep,
+.domains-card:is(:hover, :focus-within) .domain-ill-biological-node--end {
   animation-play-state: running;
+}
+
+.domains-card:is(:hover, :focus-within) .domain-ill-digital-flow {
+  opacity: 1;
+}
+
+.domains-card:is(:hover, :focus-within) .domain-ill-custody-sweep {
+  opacity: 0.92;
 }
 
 @keyframes illTraceFlow {
@@ -124,11 +462,11 @@
 }
 
 @keyframes illSliderTravel {
-  0%, 100% {
+  0%, 20%, 100% {
     transform: translateX(0);
   }
-  50% {
-    transform: translateX(10px);
+  55%, 75% {
+    transform: translateX(7px);
   }
 }
 
@@ -217,12 +555,131 @@
   }
 }
 
+@keyframes illPhysicalPress {
+  0%, 100% {
+    transform: scale(1);
+  }
+  0%, 54% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(0.975);
+  }
+  82% {
+    transform: scale(1.01);
+  }
+}
+
+@keyframes illPhysicalLeaf {
+  0%, 24%, 100% {
+    transform: translate(0, 0);
+  }
+  45%, 70% {
+    transform: translate(var(--phy-gate-tx), var(--phy-gate-ty));
+  }
+}
+
+@keyframes illPhysicalCommand {
+  0% {
+    opacity: 0.16;
+    stroke-dashoffset: 0;
+  }
+  45% {
+    opacity: 0.95;
+    stroke-dashoffset: -42;
+  }
+  60% {
+    opacity: 0.22;
+    stroke-dashoffset: -52;
+  }
+  100% {
+    opacity: 0.1;
+    stroke-dashoffset: -68;
+  }
+}
+
+@keyframes illPhysicalProof {
+  0%, 68% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  84% {
+    opacity: 0.34;
+    transform: scale(1.18);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+
+@keyframes illDigitalFlow {
+  to {
+    stroke-dashoffset: -84;
+  }
+}
+
+@keyframes illDigitalNodePulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  46% {
+    opacity: 0.32;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.16);
+  }
+}
+
+@keyframes illCustodySweep {
+  to {
+    stroke-dashoffset: -88;
+  }
+}
+
+@keyframes illBioSealPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+@keyframes illBioNodeTick {
+  0%, 68%, 100% {
+    opacity: 0.86;
+  }
+  82% {
+    opacity: 1;
+  }
+}
+
+.domains-card--tall .domain-ill--biological {
+  transform: translateY(-4px);
+}
+
 @media (max-width: 1023px) {
   .domain-illustration-shell {
     width: min(56%, 250px);
     right: 14px;
     bottom: 10px;
     opacity: 0.84;
+  }
+
+  .domains-card--hero .domain-illustration-shell--physical {
+    left: 38%;
+    top: 0;
+    bottom: 0;
+    width: 62%;
+    height: 100%;
+    right: 0;
+    transform: none;
+    opacity: 0.9;
   }
 }
 
@@ -232,6 +689,17 @@
     right: 10px;
     bottom: 10px;
     opacity: 0.72;
+  }
+
+  .domains-card--hero .domain-illustration-shell--physical {
+    left: 35%;
+    top: 0;
+    bottom: 0;
+    width: 65%;
+    height: 100%;
+    right: 0;
+    transform: none;
+    opacity: 0.86;
   }
 
   .domain-ill-grid,

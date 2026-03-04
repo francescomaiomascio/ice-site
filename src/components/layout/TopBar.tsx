@@ -3,6 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
+import { MobileDrawer } from "@/components/nav/MobileDrawer";
+import { NAV_ACTIONS, NAV_PRIMARY } from "@/config/nav";
 
 const PILOT_MAILTO =
   "mailto:pilot@yai.foundation?subject=Book%20Pilot%20-%20YAI%2014-Day";
@@ -59,6 +61,39 @@ function ChevronDownIcon(props: { className?: string }) {
   );
 }
 
+function MenuIcon(props: { className?: string }) {
+  return (
+    <svg
+      className={props.className}
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path d="M3 6h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M3 12h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M3 18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function CloseIcon(props: { className?: string }) {
+  return (
+    <svg
+      className={props.className}
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path d="M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 function useDropdownController() {
   const [openMenu, setOpenMenu] = useState<MenuKey>(null);
   const rootRef = useRef<HTMLElement | null>(null);
@@ -102,9 +137,22 @@ function useDropdownController() {
 export function TopBar() {
   const { openMenu, rootRef, open, requestClose, clearClose } =
     useDropdownController();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [focusSearchInDrawer, setFocusSearchInDrawer] = useState(false);
 
   const productsId = useId();
   const resourcesId = useId();
+
+  const openDrawer = (focusSearch = false) => {
+    setFocusSearchInDrawer(focusSearch);
+    setDrawerOpen(true);
+  };
+
+  const onSearchClick = () => {
+    if (typeof window !== "undefined" && window.matchMedia("(max-width: 1024px)").matches) {
+      openDrawer(true);
+    }
+  };
 
   return (
     <header ref={rootRef} className="topbar" role="banner">
@@ -360,7 +408,7 @@ export function TopBar() {
         </div>
 
         <div className="topbar-actions" aria-label="Actions">
-          <button className="topbar-search" type="button" aria-label="Search">
+          <button className="topbar-search" type="button" aria-label="Search" onClick={onSearchClick}>
             <SearchIcon />
           </button>
 
@@ -376,8 +424,26 @@ export function TopBar() {
           >
             Try YAI
           </a>
+
+          <button
+            className="topbar-hamburger"
+            type="button"
+            aria-label={drawerOpen ? "Close menu" : "Open menu"}
+            aria-expanded={drawerOpen}
+            onClick={() => setDrawerOpen((v) => !v)}
+          >
+            {drawerOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
         </div>
       </nav>
+
+      <MobileDrawer
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        focusSearch={focusSearchInDrawer}
+        items={NAV_PRIMARY}
+        actions={NAV_ACTIONS}
+      />
     </header>
   );
 }

@@ -2,12 +2,20 @@
 
 import Link from "next/link";
 import Image from "next/image";
-
-const ORG_URL = "https://github.com/yai-labs";
-const GITHUB_PROFILE = "https://github.com/framaiomascio";
-const X_URL = "https://x.com/framaiomascio";
-const LINKEDIN_URL = "https://www.linkedin.com/";
-const MEDIUM_URL = "https://medium.com/";
+import { useEffect, useMemo, useState, type ReactElement } from "react";
+import {
+  FOOTER_COLUMNS,
+  FOOTER_COPY,
+  FOOTER_CTA,
+  FOOTER_LANGUAGE_KEY,
+  FOOTER_LEGAL_LINKS,
+  FOOTER_LOCALES,
+  FOOTER_SOCIALS,
+  type FooterLinkItem,
+  type FooterLocale,
+  type FooterLocalized,
+  type FooterSocial,
+} from "@/config/footer";
 
 function IconGithub() {
   return (
@@ -54,111 +62,189 @@ function IconMedium() {
   );
 }
 
+const SOCIAL_ICON_BY_ID: Record<FooterSocial["id"], () => ReactElement> = {
+  github: IconGithub,
+  x: IconX,
+  linkedin: IconLinkedIn,
+  medium: IconMedium,
+};
+
+function translate(locale: FooterLocale, value: FooterLocalized) {
+  return value[locale] ?? value.en;
+}
+
+function FooterLink({ item, locale }: { item: FooterLinkItem; locale: FooterLocale }) {
+  const label = translate(locale, item.label);
+  if (item.external || item.href.startsWith("mailto:")) {
+    return (
+      <a href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noreferrer" : undefined}>
+        {label}
+      </a>
+    );
+  }
+  return <Link href={item.href}>{label}</Link>;
+}
+
 export function Footer() {
+  const [locale, setLocale] = useState<FooterLocale>(() => {
+    if (typeof window === "undefined") return "en";
+    const stored = window.localStorage.getItem(FOOTER_LANGUAGE_KEY);
+    return stored === "it" || stored === "en" ? stored : "en";
+  });
+
+  useEffect(() => {
+    document.documentElement.lang = locale;
+    window.localStorage.setItem(FOOTER_LANGUAGE_KEY, locale);
+  }, [locale]);
+
+  const ui = useMemo(
+    () => ({
+      getStartedTitle: translate(locale, FOOTER_COPY.getStartedTitle),
+      getStartedSub: translate(locale, FOOTER_COPY.getStartedSub),
+      brandLabel: translate(locale, FOOTER_COPY.brandLabel),
+      socialLabel: translate(locale, FOOTER_COPY.socialLabel),
+      columnsLabel: translate(locale, FOOTER_COPY.columnsLabel),
+      legalLabel: translate(locale, FOOTER_COPY.legalLabel),
+      languageLabel: translate(locale, FOOTER_COPY.languageLabel),
+    }),
+    [locale]
+  );
+
+  const columnById = useMemo(() => {
+    return new Map(FOOTER_COLUMNS.map((col) => [col.id, col] as const));
+  }, []);
+
+  const mobileLeft = ["use-cases", "company", "connect"];
+  const mobileRight = ["industries", "compare", "partners", "support"];
+
+  const renderCol = (colId: string) => {
+    const col = columnById.get(colId);
+    if (!col) return null;
+    return (
+      <nav key={col.id} className={`yai-footer-col yai-footer-col--${col.id}`} aria-label={translate(locale, col.title)}>
+        <h3 className="yai-footer-col-title">{translate(locale, col.title)}</h3>
+        <div className="yai-footer-col-items">
+          {col.items.map((item) => (
+            <FooterLink key={item.id} item={item} locale={locale} />
+          ))}
+        </div>
+      </nav>
+    );
+  };
+
   return (
     <footer className="yai-footer" aria-label="Site footer">
-      {/* Main grid */}
+      <section className="yai-footer-get-started" aria-label={ui.getStartedTitle}>
+        <div className="yai-footer-shell yai-container">
+          <h2 className="yai-footer-cta-title">{ui.getStartedTitle}</h2>
+          <p className="yai-footer-cta-sub">{ui.getStartedSub}</p>
+          <div className="yai-footer-cta-row" role="group" aria-label={ui.getStartedTitle}>
+            {FOOTER_CTA.map((cta) => {
+              const label = translate(locale, cta.label);
+              const className =
+                cta.variant === "primary"
+                  ? "button button--primary yai-footer-cta-btn"
+                  : "button button--ghost yai-footer-cta-btn";
+              if (cta.href.startsWith("mailto:")) {
+                return (
+                  <a key={cta.id} href={cta.href} className={className}>
+                    {label}
+                  </a>
+                );
+              }
+              return (
+                <Link key={cta.id} href={cta.href} className={className}>
+                  {label}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       <section className="yai-footer-main">
-        <div className="yai-footer-shell yai-footer-grid yai-container">
-          {/* Left rail */}
-          <div className="yai-footer-rail">
-            <Link href="/" className="yai-footer-logo" aria-label="YAI Labs home">
-              <Image
-                src="/yai.png"
-                alt="YAI"
-                width={26}
-                height={26}
-                className="yai-footer-logo-icon"
-              />
+        <div className="yai-footer-shell yai-container yai-footer-grid">
+          <div className="yai-footer-brand-block">
+            <Link href="/" className="yai-footer-logo" aria-label={ui.brandLabel}>
+              <Image src="/yai.png" alt="YAI" width={30} height={30} className="yai-footer-logo-icon" />
               <span className="yai-footer-logo-mark">YAI</span>
               <span className="yai-footer-logo-sub">Labs</span>
             </Link>
 
-            <div className="yai-footer-social" aria-label="Social">
-              <a className="yai-footer-social-btn" href={GITHUB_PROFILE} target="_blank" rel="noreferrer" aria-label="GitHub">
-                <IconGithub />
-              </a>
-              <a className="yai-footer-social-btn" href={X_URL} target="_blank" rel="noreferrer" aria-label="X">
-                <IconX />
-              </a>
-              <a className="yai-footer-social-btn" href={LINKEDIN_URL} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                <IconLinkedIn />
-              </a>
-              <a className="yai-footer-social-btn" href={MEDIUM_URL} target="_blank" rel="noreferrer" aria-label="Medium">
-                <IconMedium />
-              </a>
+            <div className="yai-footer-social" aria-label={ui.socialLabel}>
+              {FOOTER_SOCIALS.map((social) => {
+                const Icon = SOCIAL_ICON_BY_ID[social.id];
+                return (
+                  <a key={social.id} className="yai-footer-social-btn" href={social.href} target="_blank" rel="noreferrer" aria-label={social.label}>
+                    <Icon />
+                  </a>
+                );
+              })}
             </div>
 
-            <nav className="yai-footer-rail-links" aria-label="Trust links">
-              <Link href="/status">Status</Link>
-              <Link href="/privacy">Privacy</Link>
-              <Link href="/security">Security</Link>
-              <Link href="/terms">Terms</Link>
-              <Link href="/legal">Legal notices</Link>
+            <nav className="yai-footer-rail-links" aria-label={ui.legalLabel}>
+              {FOOTER_LEGAL_LINKS.map((item) => (
+                <FooterLink key={item.id} item={item} locale={locale} />
+              ))}
             </nav>
 
-            <div className="yai-footer-lang">
-              <select className="yai-footer-lang-select" defaultValue="en" aria-label="Language">
-                <option value="en">English</option>
-                <option value="it">Italiano</option>
+            <div className="yai-footer-lang-wrap yai-footer-lang-wrap--rail">
+              <select
+                id="yai-footer-lang-rail"
+                className="yai-footer-lang-select"
+                value={locale}
+                aria-label={ui.languageLabel}
+                onChange={(event) => {
+                  const next = event.target.value as FooterLocale;
+                  setLocale(next);
+                }}
+              >
+                {FOOTER_LOCALES.map((entry) => (
+                  <option key={entry.value} value={entry.value}>
+                    {translate(locale, entry.label)}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
 
-          {/* Right columns */}
-          <div className="yai-footer-cols">
-            <div className="yai-footer-col">
-              <div className="yai-footer-col-title">Use cases</div>
-              <Link href="/#domains">Domains</Link>
-              <Link href="/#proof">Proof surfaces</Link>
-              <Link href="/#services">Pilot delivery</Link>
-              <Link href="/#pricing">Pricing</Link>
-            </div>
-
-            <div className="yai-footer-col">
-              <div className="yai-footer-col-title">Industries</div>
-              <span className="yai-footer-muted">Financial Services</span>
-              <span className="yai-footer-muted">Manufacturing</span>
-              <span className="yai-footer-muted">Healthcare</span>
-              <span className="yai-footer-muted">All industries</span>
-            </div>
-
-            <div className="yai-footer-col">
-              <div className="yai-footer-col-title">Company</div>
-              <Link href="/writing">Writing</Link>
-              <Link href="/status">News</Link>
-              <a href={ORG_URL} target="_blank" rel="noreferrer">Open source</a>
-            </div>
-
-            <div className="yai-footer-col">
-              <div className="yai-footer-col-title">Partners</div>
-              <span className="yai-footer-muted">Coming soon</span>
-              <span className="yai-footer-muted">Cloud</span>
-              <span className="yai-footer-muted">Security</span>
-              <span className="yai-footer-muted">All partners</span>
-            </div>
-
-            <div className="yai-footer-col yai-footer-col--bottom yai-footer-col--compare">
-              <div className="yai-footer-col-title">Compare</div>
-              <span className="yai-footer-muted">YAI vs. Agents</span>
-              <span className="yai-footer-muted">YAI vs. AI apps</span>
-              <span className="yai-footer-muted">YAI vs. Workflow tools</span>
-            </div>
-
-            <div className="yai-footer-col yai-footer-col--bottom yai-footer-col--connect">
-              <div className="yai-footer-col-title">Connect</div>
-              <a href="mailto:pilot@yai.foundation">Email</a>
-              <a href={X_URL} target="_blank" rel="noreferrer">X</a>
-              <a href={LINKEDIN_URL} target="_blank" rel="noreferrer">LinkedIn</a>
-            </div>
-
-            <div className="yai-footer-col yai-footer-col--bottom yai-footer-col--support">
-              <div className="yai-footer-col-title">Support</div>
-              <Link href="/docs">Docs</Link>
-              <Link href="/security">Security</Link>
-              <Link href="/privacy">Privacy</Link>
-            </div>
+          <div className="yai-footer-cols yai-footer-cols--desktop" aria-label={ui.columnsLabel}>
+            {FOOTER_COLUMNS.map((col) => renderCol(col.id))}
           </div>
+
+          <div className="yai-footer-cols-mobile" aria-label={ui.columnsLabel}>
+            <div className="yai-footer-col-stack">{mobileLeft.map((id) => renderCol(id))}</div>
+            <div className="yai-footer-col-stack">{mobileRight.map((id) => renderCol(id))}</div>
+          </div>
+        </div>
+
+        <div className="yai-footer-shell yai-container yai-footer-lang-mobile">
+          <div className="yai-footer-lang-wrap">
+            <select
+              id="yai-footer-lang"
+              className="yai-footer-lang-select"
+              value={locale}
+              aria-label={ui.languageLabel}
+              onChange={(event) => {
+                const next = event.target.value as FooterLocale;
+                setLocale(next);
+              }}
+            >
+              {FOOTER_LOCALES.map((entry) => (
+                <option key={entry.value} value={entry.value}>
+                  {translate(locale, entry.label)}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className="yai-footer-shell yai-container yai-footer-bottom yai-footer-bottom--mobile">
+          <nav className="yai-footer-legal" aria-label={ui.legalLabel}>
+            {FOOTER_LEGAL_LINKS.map((item) => (
+              <FooterLink key={item.id} item={item} locale={locale} />
+            ))}
+          </nav>
         </div>
       </section>
     </footer>

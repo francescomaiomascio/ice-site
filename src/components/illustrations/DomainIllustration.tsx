@@ -19,7 +19,7 @@ export type DomainIllustrationKind =
 
 export function DomainIllustration({ kind, className }: { kind: DomainIllustrationKind; className?: string }) {
   return (
-    <div className={`domain-illustration-shell ${className ?? ""}`.trim()} aria-hidden="true">
+    <div className={`domain-illustration-shell domain-illustration-shell--${kind} ${className ?? ""}`.trim()} aria-hidden="true">
       {kind === "physical" ? <PhysicalDevicesIllustration /> : null}
       {kind === "digital" ? <DigitalEgressIllustration /> : null}
       {kind === "biological" ? <BiologicalChainIllustration /> : null}

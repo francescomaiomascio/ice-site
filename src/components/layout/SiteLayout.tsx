@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { TopBar } from "./TopBar";
 import { PageBack } from "./PageBack";
 import { Footer } from "./Footer";
-import { CTASection } from "./CTASection";
 
 export function SiteLayout({ children }: { children: React.ReactNode }) {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -25,7 +24,6 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
       <main ref={mainRef} className="site-main" role="main" id="scroll-root">
         <PageBack />
         {children}
-        {pathname === "/" ? <CTASection /> : null}
         <Footer />
       </main>
     </div>
