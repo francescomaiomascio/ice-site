@@ -6,9 +6,10 @@
   opacity: 0.9;
   pointer-events: none;
   z-index: 1;
+  overflow: hidden;
 }
 
-.domain-rive,
+.domain-rive-shell,
 .domain-rive-canvas,
 .domain-rive-placeholder,
 .domain-illustration-legacy,
@@ -18,650 +19,44 @@
   display: block;
 }
 
-.domain-rive {
+.domain-rive-shell,
+.domain-rive-canvas,
+.domain-rive-placeholder,
+.domain-illustration-legacy {
   pointer-events: none;
 }
 
 .domain-rive-placeholder {
-  background: linear-gradient(
-    135deg,
-    rgba(7, 22, 38, 0.18) 0%,
-    rgba(7, 22, 38, 0.06) 48%,
-    rgba(7, 22, 38, 0.18) 100%
-  );
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 72% 72%, rgba(83, 132, 196, 0.12) 0%, rgba(83, 132, 196, 0) 62%),
+    linear-gradient(135deg, rgba(7, 22, 38, 0.18) 0%, rgba(7, 22, 38, 0.08) 52%, rgba(7, 22, 38, 0.18) 100%);
+}
+
+/* Legacy fallback remains static and de-emphasized while Rive assets are being rolled out. */
+.domain-illustration-legacy {
+  opacity: 0.72;
+  filter: saturate(0.92) contrast(0.96);
 }
 
 .domains-card--hero .domain-illustration-shell--physical {
-  left: 46%;
+  left: 43%;
   top: 0;
   bottom: 0;
-  width: 54%;
+  width: 57%;
   height: 100%;
   right: 0;
-  transform: none;
   opacity: 0.95;
   position: absolute;
   overflow: hidden;
-}
-
-.domains-card--hero .domain-illustration-shell--physical .domain-ill {
-  width: 100%;
-  height: 100%;
-}
-
-.domain-ill {
-  width: 100%;
-  height: auto;
-}
-
-.domain-ill-grid,
-.domain-ill-line,
-.domain-ill-frame,
-.domain-ill-trace,
-.domain-ill-quarantine,
-.domain-ill-hash {
-  fill: none;
-  stroke: rgba(232, 238, 246, 0.26);
-  stroke-width: 1.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.domain-ill-node {
-  fill: color-mix(in srgb, var(--domain-accent, rgba(143, 185, 255, 0.85)) 76%, rgba(231, 241, 250, 0.94));
-}
-
-.domain-ill-check {
-  fill: none;
-  stroke: color-mix(in srgb, var(--domain-accent, rgba(143, 185, 255, 0.85)) 82%, rgba(243, 246, 251, 0.95));
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.domain-ill-pulse,
-.domain-ill-incident-pulse {
-  fill: none;
-  stroke: color-mix(in srgb, var(--domain-accent, rgba(143, 185, 255, 0.85)) 60%, transparent);
-  stroke-width: 1.4;
-  opacity: 0;
-}
-
-.domain-ill--physical {
-  --domain-accent: #b9f93c;
-  --domain-accent-2: #6ab30f;
-  --domain-accent-hi: rgba(241, 255, 211, 0.92);
-  --phy-hue-ink: rgba(16, 40, 22, 0.92);
-  --phy-hue-ink-2: rgba(10, 28, 16, 0.94);
-  --phy-edge: rgba(196, 255, 98, 0.85);
-  --phy-edge-far: rgba(196, 255, 98, 0.28);
-}
-
-.domain-ill--digital {
-  --domain-accent: #b86bff;
-  --domain-accent-2: #6a2bff;
-  --domain-accent-hi: rgba(255, 255, 255, 0.55);
-}
-
-.domain-ill--biological {
-  --domain-accent: #8b5cff;
-  --domain-accent-2: #4b1bff;
-  --domain-accent-hi: rgba(255, 255, 255, 0.55);
-  --domain-ink: rgba(210, 226, 246, 0.38);
-}
-
-.domain-ill--biological .domain-ill-grid {
-  stroke: rgba(214, 226, 244, 0.12);
-  stroke-width: 1;
-}
-
-.domain-ill--biological .domain-ill-line {
-  stroke: rgba(198, 216, 240, 0.3);
-  stroke-width: 1.24;
-}
-
-.domain-ill-chain-base {
-  fill: none;
-  stroke: var(--domain-ink);
-  stroke-width: 1.44;
-  stroke-linecap: round;
-}
-
-.domain-ill-chain-hi {
-  fill: none;
-  stroke-width: 0.98;
-  stroke-linecap: round;
-  opacity: 0.84;
-}
-
-.domain-ill-biological-shadow {
-  fill: none;
-  stroke: rgba(18, 26, 41, 0.24);
-  stroke-width: 2.8;
-  stroke-linecap: round;
-}
-
-.domain-ill-biological-node {
-  fill: color-mix(in srgb, var(--domain-accent) 66%, rgba(244, 248, 255, 0.88));
-  stroke: rgba(243, 247, 255, 0.2);
-  stroke-width: 0.88;
-}
-
-.domain-ill-seal-fill {
-  stroke: rgba(243, 247, 255, 0.2);
-  stroke-width: 0.9;
-}
-
-.domain-ill-seal-ring {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.46);
-  stroke-width: 1.1;
-}
-
-.domain-ill-biological-seal-shadow {
-  fill: rgba(0, 0, 0, 0.2);
-  opacity: 0.44;
-}
-
-.domain-ill-custody-sweep {
-  fill: none;
-  stroke: var(--domain-accent);
-  stroke-width: 1.42;
-  stroke-dasharray: 13 16;
-  stroke-dashoffset: 0;
-  opacity: 0.08;
-  animation: illCustodySweep 1.8s linear infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill--biological .domain-ill-seal {
-  transform-origin: 500px 176px;
-  animation: illBioSealPulse 1.8s ease-in-out infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill-biological-node--end {
-  animation: illBioNodeTick 1.8s ease-in-out infinite;
-  animation-play-state: paused;
-}
-
-/* Digital small-card pass notes:
-   - added accent-hi/accent-2 + ambient shadow tokens for stronger depth
-   - small-card readability needs slightly thicker main pipes than big-card visuals */
-.domain-ill--digital .domain-ill-grid {
-  stroke: rgba(214, 224, 245, 0.12);
-  stroke-width: 1;
-}
-
-.domain-ill-digital-ambient {
-  fill: none;
-  stroke: rgba(20, 26, 42, 0.28);
-  stroke-width: 2.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.domain-ill-pipe-base {
-  fill: none;
-  stroke: rgba(194, 210, 238, 0.38);
-  stroke-width: 1.42;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.domain-ill-pipe-hi {
-  fill: none;
-  stroke-width: 0.98;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: 0.82;
-}
-
-.domain-ill-digital-node {
-  fill: color-mix(in srgb, var(--domain-accent) 72%, rgba(242, 248, 255, 0.86));
-  stroke: rgba(242, 247, 255, 0.28);
-  stroke-width: 0.8;
-}
-
-.domain-ill-digital-flow {
-  stroke-width: 1.35;
-  stroke-dasharray: 10 18;
-  stroke-dashoffset: 0;
-  opacity: 0;
-  animation: illDigitalFlow 1.62s linear infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill-digital-pulse {
-  fill: none;
-  stroke: color-mix(in srgb, var(--domain-accent) 62%, rgba(255, 255, 255, 0.12));
-  stroke-width: 1.1;
-  opacity: 0;
-  animation: illDigitalNodePulse 1.72s ease-in-out infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill--physical .domain-ill-grid {
-  stroke: rgba(201, 245, 154, 0.08);
-  stroke-width: 1;
-}
-
-.domain-ill--physical .phy-rail {
-  fill: none;
-  stroke: rgba(198, 241, 152, 0.24);
-  stroke-width: 0.98;
-  stroke-linecap: round;
-}
-
-.domain-ill--physical .phy-outline {
-  fill: none;
-  stroke: color-mix(in srgb, var(--domain-accent) 64%, rgba(210, 245, 170, 0.82));
-  stroke-width: 0.86;
-}
-
-.domain-ill--physical .phy-edge-near {
-  fill: none;
-  stroke: var(--phy-edge);
-  stroke-width: 0.96;
-  opacity: 0.82;
-}
-
-.domain-ill--physical .phy-edge-far {
-  fill: none;
-  stroke: var(--phy-edge-far);
-  stroke-width: 0.9;
-  opacity: 0.26;
-}
-
-.domain-ill--physical .phy-plate-top {
-  stroke: color-mix(in srgb, var(--domain-accent) 72%, rgba(218, 248, 180, 0.84));
-  stroke-width: 0.84;
-}
-
-.domain-ill--physical .phy-plate-front {
-  stroke: color-mix(in srgb, var(--phy-edge) 46%, rgba(154, 204, 111, 0.46));
-  stroke-width: 0.72;
-}
-
-.domain-ill--physical .phy-plate-side {
-  fill: rgba(11, 33, 18, 0.9);
-  stroke: color-mix(in srgb, var(--phy-edge) 36%, rgba(118, 164, 78, 0.48));
-  stroke-width: 0.72;
-}
-
-.domain-ill--physical .phy-plate-right {
-  stroke: color-mix(in srgb, var(--phy-edge) 30%, rgba(122, 172, 76, 0.44));
-  stroke-width: 0.72;
-}
-
-.domain-ill--physical .phy-plate-edge-hi {
-  fill: none;
-  stroke: rgba(240, 255, 220, 0.3);
-  stroke-width: 0.9;
-  opacity: 0.34;
-}
-
-.domain-ill--physical .phy-gate-edge {
-  fill: none;
-  stroke: rgba(203, 247, 146, 0.36);
-  stroke-width: 0.72;
-}
-
-.domain-ill--physical .phy-gate-frame-fill {
-  fill: rgba(120, 184, 68, 0.14);
-}
-
-.domain-ill--physical .phy-gate-inner {
-  fill: none;
-  stroke: rgba(188, 236, 138, 0.28);
-  stroke-width: 0.66;
-}
-
-.domain-ill--physical .phy-gate-shadow {
-  fill: none;
-  stroke: rgba(50, 92, 28, 0.22);
-  stroke-width: 1.6;
-  stroke-linecap: round;
-}
-
-.domain-ill--physical .phy-gate-leaf-shape {
-  fill: rgba(129, 214, 44, 0.52);
-  stroke: rgba(220, 252, 176, 0.24);
-  stroke-width: 0.66;
-}
-
-.domain-ill--physical .phy-actuator-top {
-  stroke: rgba(234, 255, 252, 0.26);
-  stroke-width: 0.64;
-}
-
-.domain-ill--physical .phy-actuator-front {
-  stroke: rgba(226, 247, 244, 0.14);
-  stroke-width: 0.64;
-}
-
-.domain-ill--physical .phy-actuator-side {
-  fill: rgba(97, 176, 24, 0.78);
-  stroke: rgba(220, 250, 176, 0.18);
-  stroke-width: 0.62;
-}
-
-.domain-ill--physical .phy-command-path {
-  fill: none;
-  stroke: var(--domain-accent);
-  stroke-width: 1.24;
-  stroke-dasharray: 10 10;
-  stroke-dashoffset: 0;
-  opacity: 0.12;
-  animation: phyCommandFlow 2s linear infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill--physical .phy-command-port {
-  fill: rgba(36, 232, 218, 0.62);
-}
-
-.domain-ill--physical .phy-proof-ring {
-  fill: none;
-  stroke: color-mix(in srgb, var(--domain-accent) 76%, rgba(255, 255, 255, 0.18));
-  stroke-width: 1.36;
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: phyProofPulse 2s ease-out infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill--physical .phy-gate-leaf {
-  --phy-gate-tx: 6px;
-  --phy-gate-ty: -0.8px;
-  animation: phyGateBreath 2s ease-in-out infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill--physical .phy-actuator-press {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: phyPress 2s cubic-bezier(0.22, 0.78, 0.16, 1) infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill--physical .phy-rail,
-.domain-ill--physical .phy-outline,
-.domain-ill--physical .phy-edge-near,
-.domain-ill--physical .phy-edge-far,
-.domain-ill--physical .phy-plate-top,
-.domain-ill--physical .phy-plate-front,
-.domain-ill--physical .phy-plate-side,
-.domain-ill--physical .phy-plate-right,
-.domain-ill--physical .phy-gate-edge,
-.domain-ill--physical .phy-gate-frame-fill,
-.domain-ill--physical .phy-gate-inner,
-.domain-ill--physical .phy-gate-shadow,
-.domain-ill--physical .phy-gate-leaf-shape,
-.domain-ill--physical .phy-actuator-top,
-.domain-ill--physical .phy-actuator-front,
-.domain-ill--physical .phy-actuator-side,
-.domain-ill--physical .phy-command-path,
-.domain-ill--physical .phy-proof-ring {
-  vector-effect: non-scaling-stroke;
-}
-
-.domain-ill-physical-shadow {
-  fill: rgba(12, 32, 18, 0.38);
-  opacity: 0.42;
-}
-
-.domain-ill-trace {
-  stroke-dasharray: 8 7;
-  stroke-dashoffset: 0;
-  animation: illTraceFlow 1.2s linear infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill-packet-travel {
-  animation: illPacketTravel 1.1s ease-in-out infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill-seal {
-  animation: illSealPulse 1.1s ease-in-out infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill-ledger-marker {
-  animation: illMarkerSlide 1s ease-in-out infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill-quarantine {
-  stroke-dasharray: 6 6;
-  animation: illDashMarch 1.1s linear infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill-authority-path {
-  opacity: 0.3;
-  animation: illPathGlow 1s ease-in-out infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill-gate-open {
-  transform-origin: 300px 184px;
-  animation: illGateOpen 1s ease-in-out infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill-lock-click {
-  transform-origin: 300px 178px;
-  animation: illLockClick 0.9s ease-in-out infinite;
-  animation-play-state: paused;
-}
-
-.domain-ill-pulse,
-.domain-ill-incident-pulse {
-  animation: illRingPulse 1.2s ease-out infinite;
-  animation-play-state: paused;
-}
-
-@keyframes illTraceFlow {
-  to {
-    stroke-dashoffset: -52;
-  }
-}
-
-@keyframes illSliderTravel {
-  0%, 20%, 100% {
-    transform: translateX(0);
-  }
-  55%, 75% {
-    transform: translateX(7px);
-  }
-}
-
-@keyframes illPacketTravel {
-  0% {
-    transform: translateX(0);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translateX(20px);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(40px);
-    opacity: 0.3;
-  }
-}
-
-@keyframes illSealPulse {
-  0%, 100% {
-    opacity: 0.55;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes illMarkerSlide {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(140px);
-  }
-}
-
-@keyframes illDashMarch {
-  to {
-    stroke-dashoffset: -24;
-  }
-}
-
-@keyframes illPathGlow {
-  0%, 100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes illGateOpen {
-  0%, 100% {
-    transform: scaleX(1);
-  }
-  50% {
-    transform: scaleX(0.72);
-  }
-}
-
-@keyframes illLockClick {
-  0%, 100% {
-    transform: scale(1);
-  }
-  45% {
-    transform: scale(0.88);
-  }
-  70% {
-    transform: scale(1.03);
-  }
-}
-
-@keyframes illRingPulse {
-  0% {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-  40% {
-    opacity: 0.7;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.2);
-  }
-}
-
-@keyframes phyCommandFlow {
-  0% {
-    opacity: 0.12;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    opacity: 0.9;
-    stroke-dashoffset: -38;
-  }
-  100% {
-    opacity: 0.14;
-    stroke-dashoffset: -60;
-  }
-}
-
-@keyframes phyGateBreath {
-  0%, 100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(var(--phy-gate-tx), var(--phy-gate-ty));
-  }
-}
-
-@keyframes phyPress {
-  0%, 100% {
-    transform: scale(1);
-  }
-  40% {
-    transform: scale(0.965);
-  }
-  70% {
-    transform: scale(1.015);
-  }
-}
-
-@keyframes phyProofPulse {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  45% {
-    opacity: 0.28;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.25);
-  }
-}
-
-@keyframes illDigitalFlow {
-  to {
-    stroke-dashoffset: -84;
-  }
-}
-
-@keyframes illDigitalNodePulse {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  46% {
-    opacity: 0.32;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.16);
-  }
-}
-
-@keyframes illCustodySweep {
-  to {
-    stroke-dashoffset: -88;
-  }
-}
-
-@keyframes illBioSealPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.7;
-  }
-  50% {
-    transform: scale(1.04);
-    opacity: 1;
-  }
-}
-
-@keyframes illBioNodeTick {
-  0%, 68%, 100% {
-    opacity: 0.86;
-  }
-  82% {
-    opacity: 1;
-  }
-}
-
-.domains-card--tall .domain-ill--biological {
-  transform: translateY(-4px);
+  -webkit-mask-image:
+    linear-gradient(to right, #000 0 87%, transparent 100%),
+    linear-gradient(to bottom, #000 0 92%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, #000 0 87%, transparent 100%),
+    linear-gradient(to bottom, #000 0 92%, transparent 100%);
+  mask-composite: intersect;
 }
 
 @media (max-width: 1023px) {
@@ -674,12 +69,7 @@
 
   .domains-card--hero .domain-illustration-shell--physical {
     left: 44%;
-    top: 0;
-    bottom: 0;
     width: 56%;
-    height: 100%;
-    right: 0;
-    transform: none;
     opacity: 0.9;
   }
 }
@@ -694,28 +84,15 @@
 
   .domains-card--hero .domain-illustration-shell--physical {
     left: 43%;
-    top: 0;
-    bottom: 0;
     width: 57%;
-    height: 100%;
-    right: 0;
-    transform: none;
     opacity: 0.86;
-  }
-
-  .domain-ill-grid,
-  .domain-ill-line,
-  .domain-ill-frame,
-  .domain-ill-trace,
-  .domain-ill-quarantine,
-  .domain-ill-hash {
-    stroke-width: 1;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .domain-illustration-shell,
-  .domain-illustration-shell * {
+  .domain-rive-canvas,
+  .domain-illustration-legacy,
+  .domain-illustration-legacy * {
     animation: none !important;
     transition: none !important;
   }

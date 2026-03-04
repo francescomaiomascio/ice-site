@@ -1,10 +1,10 @@
-# Rive Domain Assets
+# Rive Domain Assets Contract
 
-This folder hosts `.riv` assets for the domains grid runtime.
+This folder hosts `.riv` assets used by the domains cards runtime.
 
-## Naming convention
+## Path and naming
 
-Put files in `public/rive/domains/` using these names:
+Put files in `public/rive/domains/` with these names:
 
 - `yai_physical.riv`
 - `yai_digital.riv`
@@ -14,26 +14,32 @@ Put files in `public/rive/domains/` using these names:
 - `yai_institutional.riv`
 - `yai_scientific.riv`
 
-## Rive file contract
+## Required file contract
 
-Each domain file must include:
+Every domain `.riv` file must contain:
 
 - Artboard: `Main`
 - State Machine: `Hover`
-- Input: boolean `active` (default `false`)
+- Input: boolean `active`
 
-Behavior contract:
+Runtime behavior:
 
-- `active = false` -> idle/static frame
-- `active = true` -> hover loop playback
+- `active = false` -> idle/poster state (must be presentation-ready)
+- `active = true` -> hover loop
 
-## Runtime expectations
+## Canvas and quality
 
-- Canvas is mounted lazily when card enters viewport.
-- Playback is controlled from the parent card hover/focus state.
-- `prefers-reduced-motion: reduce` keeps assets static.
+- Runtime uses canvas with device-pixel-ratio support (retina-safe).
+- Keep art optimized for 300 CSS px cards while looking crisp at higher DPR.
 
-## Palette guidance
+## Motion constraints
 
-Keep each domain mostly mono-hue with strong highlights/shadows inside the asset.
-Avoid relying on page CSS for material/lighting; encode that in Rive.
+- No autoplay at page load.
+- Motion starts only on card hover/focus.
+- With `prefers-reduced-motion: reduce`, cards stay static.
+
+## Palette and material
+
+- Use 1 dominant hue per domain + 2 tonal steps + 1 highlight.
+- Avoid pure black shadows; tint shadows with domain hue.
+- Keep geometry and edge hierarchy inside the asset, not in page CSS.
