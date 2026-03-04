@@ -5,6 +5,7 @@ export type RiveDomainSpec = {
   src: string;
   artboard: string;
   stateMachine: string;
+  inputName?: string;
   fit?: RiveDomainFit;
   alignment?: RiveDomainAlignment;
   version?: number;
@@ -13,8 +14,9 @@ export type RiveDomainSpec = {
 export const RIVE_DOMAINS: Record<string, RiveDomainSpec> = {
   "physical-actuators": {
     src: "/rive/domains/physical-actuators.riv",
-    artboard: "Main",
-    stateMachine: "Hover",
+    artboard: "PhysicalActuators",
+    stateMachine: "DomainHover",
+    inputName: "hover",
     fit: "cover",
     alignment: "center",
     version: 1,

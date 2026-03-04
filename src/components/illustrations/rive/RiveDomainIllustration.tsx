@@ -65,11 +65,12 @@ function RiveDomainCanvas({ spec, active }: Pick<RiveDomainIllustrationProps, "s
 
   const setActiveInput = useCallback((value: boolean) => {
     if (!rive) return false;
-    const input = rive.stateMachineInputs(spec.stateMachine).find((item) => item.name === "active");
+    const inputName = spec.inputName ?? "active";
+    const input = rive.stateMachineInputs(spec.stateMachine).find((item) => item.name === inputName);
     if (!input || typeof input !== "object" || !("value" in input)) return false;
     (input as { value: boolean }).value = value;
     return true;
-  }, [rive, spec.stateMachine]);
+  }, [rive, spec.inputName, spec.stateMachine]);
 
   useEffect(() => {
     if (!rive) return;

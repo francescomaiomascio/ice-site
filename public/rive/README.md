@@ -20,9 +20,10 @@ Put files in `public/rive/domains/` with slug-based names:
 
 Every domain `.riv` file must contain:
 
-- Artboard: `Main`
-- State Machine: `Hover`
-- Input: boolean `active`
+- Artboard and state machine names as defined in `src/config/rive.domains.ts`.
+- Input boolean:
+  - default convention: `active`
+  - physical gold contract: `hover` (state machine `DomainHover`, artboard `PhysicalActuators`)
 
 Runtime behavior:
 
