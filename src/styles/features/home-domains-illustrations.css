@@ -8,6 +8,29 @@
   z-index: 1;
 }
 
+.domain-rive,
+.domain-rive-canvas,
+.domain-rive-placeholder,
+.domain-illustration-legacy,
+.domain-illustration-legacy .domain-ill {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.domain-rive {
+  pointer-events: none;
+}
+
+.domain-rive-placeholder {
+  background: linear-gradient(
+    135deg,
+    rgba(7, 22, 38, 0.18) 0%,
+    rgba(7, 22, 38, 0.06) 48%,
+    rgba(7, 22, 38, 0.18) 100%
+  );
+}
+
 .domains-card--hero .domain-illustration-shell--physical {
   left: 46%;
   top: 0;
@@ -439,35 +462,6 @@
 .domain-ill-incident-pulse {
   animation: illRingPulse 1.2s ease-out infinite;
   animation-play-state: paused;
-}
-
-.domains-card:is(:hover, :focus-within) .domain-ill-trace,
-.domains-card:is(:hover, :focus-within) .domain-ill-packet-travel,
-.domains-card:is(:hover, :focus-within) .domain-ill-seal,
-.domains-card:is(:hover, :focus-within) .domain-ill-ledger-marker,
-.domains-card:is(:hover, :focus-within) .domain-ill-quarantine,
-.domains-card:is(:hover, :focus-within) .domain-ill-authority-path,
-.domains-card:is(:hover, :focus-within) .domain-ill-gate-open,
-.domains-card:is(:hover, :focus-within) .domain-ill-lock-click,
-.domains-card:is(:hover, :focus-within) .domain-ill-pulse,
-.domains-card:is(:hover, :focus-within) .domain-ill-incident-pulse,
-.domains-card:is(:hover, :focus-within) .phy-actuator-press,
-.domains-card:is(:hover, :focus-within) .phy-gate-leaf,
-.domains-card:is(:hover, :focus-within) .phy-command-path,
-.domains-card:is(:hover, :focus-within) .phy-proof-ring,
-.domains-card:is(:hover, :focus-within) .domain-ill-digital-flow,
-.domains-card:is(:hover, :focus-within) .domain-ill-digital-pulse,
-.domains-card:is(:hover, :focus-within) .domain-ill-custody-sweep,
-.domains-card:is(:hover, :focus-within) .domain-ill-biological-node--end {
-  animation-play-state: running;
-}
-
-.domains-card:is(:hover, :focus-within) .domain-ill-digital-flow {
-  opacity: 1;
-}
-
-.domains-card:is(:hover, :focus-within) .domain-ill-custody-sweep {
-  opacity: 0.92;
 }
 
 @keyframes illTraceFlow {

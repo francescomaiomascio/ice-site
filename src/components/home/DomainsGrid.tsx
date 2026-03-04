@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, type FocusEvent } from "react";
 import Link from "next/link";
 import { DOMAINS, type DomainCard } from "@/content/domains";
 import { DomainIllustration, type DomainIllustrationKind } from "@/components/illustrations/DomainIllustration";
@@ -45,16 +48,46 @@ function DomainMark({ slug }: { slug: string }) {
   );
 }
 
-function DomainCardTile({ card }: { card: DomainCard }) {
+type DomainCardTileProps = {
+  card: DomainCard;
+  active: boolean;
+  onActivate: (slug: string) => void;
+  onDeactivate: (slug: string) => void;
+};
+
+function DomainCardTile({ card, active, onActivate, onDeactivate }: DomainCardTileProps) {
+  const handleMouseEnter = () => {
+    onActivate(card.slug);
+  };
+
+  const handleMouseLeave = () => {
+    onDeactivate(card.slug);
+  };
+
+  const handleFocusCapture = () => {
+    onActivate(card.slug);
+  };
+
+  const handleBlurCapture = (event: FocusEvent<HTMLAnchorElement>) => {
+    const next = event.relatedTarget as Node | null;
+    if (!next || !event.currentTarget.contains(next)) {
+      onDeactivate(card.slug);
+    }
+  };
+
   return (
     <Link
       href={card.href}
       className={`domains-card domains-card--${card.variant}`}
       data-accent={card.accent}
       data-variant={card.variant}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onFocusCapture={handleFocusCapture}
+      onBlurCapture={handleBlurCapture}
     >
       <span className="domains-card-affordance" aria-hidden="true">↗</span>
-      <DomainIllustration kind={illustrationKindFromSlug(card.slug)} />
+      <DomainIllustration slug={card.slug} kind={illustrationKindFromSlug(card.slug)} active={active} />
       <div className="domains-card-copy">
         <div className="domains-card-top domain-card__header">
           <span className="domain-card__icon" aria-hidden="true">
@@ -87,6 +120,7 @@ type DomainsGridSectionProps = {
 
 export function DomainsGridSection(props: DomainsGridSectionProps = {}) {
   const { featuredOnly = true, showAllLink = true } = props;
+  const [activeCardSlug, setActiveCardSlug] = useState<string | null>(null);
   const cards = featuredOnly
     ? (() => {
         const featured = DOMAINS.filter((card) => card.featured);
@@ -111,7 +145,15 @@ export function DomainsGridSection(props: DomainsGridSectionProps = {}) {
     <div className="domains-grid-wrap">
       <div className={gridClass} aria-label="Domain cards">
         {cards.map((card) => (
-          <DomainCardTile key={card.slug} card={card} />
+          <DomainCardTile
+            key={card.slug}
+            card={card}
+            active={activeCardSlug === card.slug}
+            onActivate={setActiveCardSlug}
+            onDeactivate={(slug) => {
+              setActiveCardSlug((current) => (current === slug ? null : current));
+            }}
+          />
         ))}
       </div>
       {showAllLink ? (
