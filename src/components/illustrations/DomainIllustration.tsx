@@ -2,15 +2,7 @@
 
 import { RIVE_DOMAINS } from "@/config/rive.domains";
 import { RiveDomainIllustration } from "@/components/illustrations/rive/RiveDomainIllustration";
-import {
-  BiologicalChainIllustration,
-  DigitalEgressIllustration,
-  EconomicTransactionsIllustration,
-  InstitutionalProceduresIllustration,
-  OperationalIncidentsIllustration,
-  PhysicalDevicesIllustration,
-  ScientificReproIllustration,
-} from "@/components/illustrations/domains";
+import { RivePlaceholder } from "@/components/illustrations/rive/RivePlaceholder";
 
 export type DomainIllustrationKind =
   | "physical"
@@ -28,31 +20,27 @@ type DomainIllustrationProps = {
   className?: string;
 };
 
-function renderLegacyIllustration(kind: DomainIllustrationKind) {
-  if (kind === "physical") return <PhysicalDevicesIllustration />;
-  if (kind === "digital") return <DigitalEgressIllustration />;
-  if (kind === "biological") return <BiologicalChainIllustration />;
-  if (kind === "economic") return <EconomicTransactionsIllustration />;
-  if (kind === "operational") return <OperationalIncidentsIllustration />;
-  if (kind === "institutional") return <InstitutionalProceduresIllustration />;
-  return <ScientificReproIllustration />;
-}
+const warnedMissingSpecs = new Set<string>();
 
 export function DomainIllustration({ slug, kind, active, className }: DomainIllustrationProps) {
   const spec = RIVE_DOMAINS[slug];
 
+  if (!spec) {
+    if (process.env.NODE_ENV !== "production" && !warnedMissingSpecs.has(slug)) {
+      warnedMissingSpecs.add(slug);
+      console.warn(`[RiveDomains] Missing mapping for slug: ${slug}`);
+    }
+
+    return (
+      <div className={`domain-illustration-shell domain-illustration-shell--${kind} ${className ?? ""}`.trim()} aria-hidden="true">
+        <RivePlaceholder label={`${slug} mapping missing`} />
+      </div>
+    );
+  }
+
   return (
     <div className={`domain-illustration-shell domain-illustration-shell--${kind} ${className ?? ""}`.trim()} aria-hidden="true">
-      {spec ? (
-        <RiveDomainIllustration
-          spec={spec}
-          active={active}
-          lazy
-          fallback={<div className="domain-illustration-legacy">{renderLegacyIllustration(kind)}</div>}
-        />
-      ) : (
-        <div className="domain-illustration-legacy">{renderLegacyIllustration(kind)}</div>
-      )}
+      <RiveDomainIllustration spec={spec} active={active} lazy missingLabel={slug} />
     </div>
   );
 }

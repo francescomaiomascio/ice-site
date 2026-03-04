@@ -12,31 +12,54 @@
 .domain-rive-shell,
 .domain-rive-canvas,
 .domain-rive-placeholder,
-.domain-illustration-legacy,
-.domain-illustration-legacy .domain-ill {
+.domain-rive-placeholder-label {
   width: 100%;
-  height: 100%;
   display: block;
 }
 
 .domain-rive-shell,
 .domain-rive-canvas,
-.domain-rive-placeholder,
-.domain-illustration-legacy {
+.domain-rive-placeholder {
+  height: 100%;
   pointer-events: none;
 }
 
 .domain-rive-placeholder {
+  position: relative;
+  overflow: hidden;
   border-radius: inherit;
   background:
     radial-gradient(circle at 72% 72%, rgba(83, 132, 196, 0.12) 0%, rgba(83, 132, 196, 0) 62%),
     linear-gradient(135deg, rgba(7, 22, 38, 0.18) 0%, rgba(7, 22, 38, 0.08) 52%, rgba(7, 22, 38, 0.18) 100%);
 }
 
-/* Legacy fallback remains static and de-emphasized while Rive assets are being rolled out. */
-.domain-illustration-legacy {
-  opacity: 0.72;
-  filter: saturate(0.92) contrast(0.96);
+.domain-rive-placeholder::before,
+.domain-rive-placeholder::after {
+  content: "";
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  height: 1px;
+  background: rgba(182, 207, 236, 0.18);
+}
+
+.domain-rive-placeholder::before {
+  top: 58%;
+}
+
+.domain-rive-placeholder::after {
+  top: 64%;
+  opacity: 0.78;
+}
+
+.domain-rive-placeholder-label {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(180, 200, 228, 0.62);
 }
 
 .domains-card--hero .domain-illustration-shell--physical {
@@ -90,9 +113,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .domain-rive-canvas,
-  .domain-illustration-legacy,
-  .domain-illustration-legacy * {
+  .domain-rive-canvas {
     animation: none !important;
     transition: none !important;
   }

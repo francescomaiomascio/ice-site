@@ -6,10 +6,11 @@ import {
   Layout,
   useRive,
 } from "@rive-app/react-canvas-lite";
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { RiveDomainAlignment, RiveDomainFit, RiveDomainSpec } from "@/config/rive.domains";
 import { useInViewport } from "@/components/illustrations/rive/useInViewport";
 import { usePrefersReducedMotion } from "@/components/illustrations/rive/usePrefersReducedMotion";
+import { RivePlaceholder } from "@/components/illustrations/rive/RivePlaceholder";
 
 type RiveDomainIllustrationProps = {
   spec: RiveDomainSpec;
@@ -17,7 +18,7 @@ type RiveDomainIllustrationProps = {
   className?: string;
   lazy?: boolean;
   ariaHidden?: boolean;
-  fallback?: ReactNode;
+  missingLabel?: string;
 };
 
 type AssetStatus = "idle" | "loading" | "ready" | "invalid";
@@ -35,7 +36,7 @@ function mapAlignment(alignment: RiveDomainAlignment | undefined) {
   return Alignment.Center;
 }
 
-function RiveDomainCanvas({ spec, active, fallback }: Pick<RiveDomainIllustrationProps, "spec" | "active" | "fallback">) {
+function RiveDomainCanvas({ spec, active }: Pick<RiveDomainIllustrationProps, "spec" | "active">) {
   const [hasError, setHasError] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -93,7 +94,7 @@ function RiveDomainCanvas({ spec, active, fallback }: Pick<RiveDomainIllustratio
   }, [active, prefersReducedMotion, rive, setActiveInput]);
 
   if (hasError) {
-    return fallback ? <>{fallback}</> : null;
+    return <RivePlaceholder label="Art error" />;
   }
 
   return <RiveComponent className="domain-rive-canvas" />;
@@ -105,7 +106,7 @@ export function RiveDomainIllustration({
   className,
   lazy = true,
   ariaHidden = true,
-  fallback,
+  missingLabel,
 }: RiveDomainIllustrationProps) {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const inView = useInViewport(hostRef);
@@ -177,11 +178,11 @@ export function RiveDomainIllustration({
   return (
     <div ref={hostRef} className={`domain-rive-shell ${className ?? ""}`.trim()} aria-hidden={ariaHidden}>
       {shouldMount && assetStatus === "ready" ? (
-        <RiveDomainCanvas spec={spec} active={active} fallback={fallback} />
+        <RiveDomainCanvas spec={spec} active={active} />
       ) : shouldMount && assetStatus === "invalid" ? (
-        fallback ? <>{fallback}</> : null
+        <RivePlaceholder label={missingLabel ? `${missingLabel} art missing` : "Art missing"} />
       ) : (
-        <span className="domain-rive-placeholder" aria-hidden="true" />
+        <RivePlaceholder label={missingLabel ? `${missingLabel} art loading` : "Art loading"} />
       )}
     </div>
   );
