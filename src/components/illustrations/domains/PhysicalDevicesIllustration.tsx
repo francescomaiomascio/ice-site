@@ -25,7 +25,7 @@ export function PhysicalDevicesIllustration() {
   const Vref = pt(132, 96);
   const W = pt(0, 46);
   const Lu = 1;
-  const Lv = 0.72;
+  const Lv = 0.92;
   const Hw = 1;
   const P = (u: number, v: number, w = 0) => add(add(add(O, mul(Uref, u)), mul(Vref, v)), mul(W, w));
 
@@ -35,6 +35,7 @@ export function PhysicalDevicesIllustration() {
   const D = P(0, Lv);
   const C2 = add(C, mul(W, Hw));
   const D2 = add(D, mul(W, Hw));
+  const B2 = add(B, mul(W, Hw));
 
   const railInsetU = 0.12;
   const railV1 = 0.55;
@@ -103,12 +104,13 @@ export function PhysicalDevicesIllustration() {
       {/* Physical is the style reference for other domains. */}
       <defs>
         <linearGradient id={plateTopGradId} x1="194" y1="146" x2="434" y2="170" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="rgba(26, 56, 31, 0.94)" />
-          <stop offset="100%" stopColor="rgba(12, 36, 18, 0.96)" />
+          <stop offset="0%" stopColor="var(--phy-hue-ink)" />
+          <stop offset="55%" stopColor="rgba(22, 54, 30, 0.93)" />
+          <stop offset="100%" stopColor="var(--phy-hue-ink-2)" />
         </linearGradient>
         <linearGradient id={plateSideGradId} x1="254" y1="182" x2="434" y2="196" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="rgba(16, 42, 21, 0.94)" />
-          <stop offset="100%" stopColor="rgba(8, 28, 14, 0.96)" />
+          <stop offset="0%" stopColor="rgba(16, 42, 22, 0.94)" />
+          <stop offset="100%" stopColor="var(--phy-hue-ink-2)" />
         </linearGradient>
         <linearGradient id={actuatorTopGradId} x1={AT0.x} y1={AT0.y} x2={AT2.x} y2={AT2.y} gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="var(--domain-accent-hi)" />
@@ -116,22 +118,23 @@ export function PhysicalDevicesIllustration() {
           <stop offset="100%" stopColor="var(--domain-accent-2)" />
         </linearGradient>
         <linearGradient id={actuatorFrontGradId} x1={AT3.x} y1={AT3.y} x2={AF2.x} y2={AF2.y} gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="rgba(163, 238, 82, 0.8)" />
-          <stop offset="100%" stopColor="rgba(94, 176, 24, 0.82)" />
+          <stop offset="0%" stopColor="rgba(178, 244, 108, 0.82)" />
+          <stop offset="100%" stopColor="rgba(95, 176, 28, 0.84)" />
         </linearGradient>
         <filter id={actuatorShadowId} x="-50%" y="-50%" width="200%" height="200%">
-          <feDropShadow dx="0" dy="2" stdDeviation="2.2" floodColor="#000000" floodOpacity="0.3" />
+          <feDropShadow dx="0" dy="2" stdDeviation="2.2" floodColor="rgba(8, 28, 14, 0.55)" floodOpacity="0.42" />
         </filter>
         <filter id={ambientShadowId} x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="3.6" />
         </filter>
       </defs>
 
-      <g className="domain-ill-scene" transform="translate(-210 -118) scale(2.08)">
+      <g className="domain-ill-scene" transform="translate(-246 -104) scale(2.24)">
         <g className="domain-ill-depth">
           <ellipse cx={330} cy={218} rx={144} ry={20} className="domain-ill-physical-shadow" filter={`url(#${ambientShadowId})`} />
           <path d={poly([A, B, C, D])} className="phy-plate-top" fill={`url(#${plateTopGradId})`} />
           <path d={poly([D, C, C2, D2])} className="phy-plate-front" fill={`url(#${plateSideGradId})`} />
+          <path d={poly([B, C, C2, B2])} className="phy-plate-right" fill={`url(#${plateSideGradId})`} />
           <path d={poly([A, D, D2, add(A, W)])} className="phy-plate-side" />
           <path d={line(D, C)} className="phy-plate-edge-hi" />
         </g>
@@ -156,6 +159,7 @@ export function PhysicalDevicesIllustration() {
           </g>
 
           <g className="phy-gate">
+            <path d={poly([G0, G1, G2, G3])} className="phy-gate-frame-fill" />
             <path d={line(G0, G1)} className="phy-gate-edge" />
             <path d={line(G1, G2)} className="phy-gate-edge" />
             <path d={line(G2, G3)} className="phy-gate-edge" />

@@ -9,10 +9,10 @@
 }
 
 .domains-card--hero .domain-illustration-shell--physical {
-  left: 40%;
+  left: 46%;
   top: 0;
   bottom: 0;
-  width: 60%;
+  width: 54%;
   height: 100%;
   right: 0;
   transform: none;
@@ -68,6 +68,10 @@
   --domain-accent: #b9f93c;
   --domain-accent-2: #6ab30f;
   --domain-accent-hi: rgba(241, 255, 211, 0.92);
+  --phy-hue-ink: rgba(16, 40, 22, 0.92);
+  --phy-hue-ink-2: rgba(10, 28, 16, 0.94);
+  --phy-edge: rgba(196, 255, 98, 0.85);
+  --phy-edge-far: rgba(196, 255, 98, 0.28);
 }
 
 .domain-ill--digital {
@@ -221,8 +225,8 @@
 
 .domain-ill--physical .phy-rail {
   fill: none;
-  stroke: rgba(198, 241, 152, 0.2);
-  stroke-width: 1.02;
+  stroke: rgba(198, 241, 152, 0.24);
+  stroke-width: 0.98;
   stroke-linecap: round;
 }
 
@@ -234,15 +238,15 @@
 
 .domain-ill--physical .phy-edge-near {
   fill: none;
-  stroke: color-mix(in srgb, var(--domain-accent) 74%, rgba(216, 247, 178, 0.84));
-  stroke-width: 0.88;
-  opacity: 0.84;
+  stroke: var(--phy-edge);
+  stroke-width: 0.96;
+  opacity: 0.82;
 }
 
 .domain-ill--physical .phy-edge-far {
   fill: none;
-  stroke: color-mix(in srgb, var(--domain-accent) 52%, rgba(178, 221, 132, 0.56));
-  stroke-width: 0.78;
+  stroke: var(--phy-edge-far);
+  stroke-width: 0.9;
   opacity: 0.26;
 }
 
@@ -252,46 +256,55 @@
 }
 
 .domain-ill--physical .phy-plate-front {
-  stroke: color-mix(in srgb, var(--domain-accent) 46%, rgba(154, 204, 111, 0.46));
+  stroke: color-mix(in srgb, var(--phy-edge) 46%, rgba(154, 204, 111, 0.46));
   stroke-width: 0.72;
 }
 
 .domain-ill--physical .phy-plate-side {
-  fill: rgba(10, 38, 17, 0.84);
-  stroke: color-mix(in srgb, var(--domain-accent) 36%, rgba(118, 164, 78, 0.48));
+  fill: rgba(11, 33, 18, 0.9);
+  stroke: color-mix(in srgb, var(--phy-edge) 36%, rgba(118, 164, 78, 0.48));
+  stroke-width: 0.72;
+}
+
+.domain-ill--physical .phy-plate-right {
+  stroke: color-mix(in srgb, var(--phy-edge) 30%, rgba(122, 172, 76, 0.44));
   stroke-width: 0.72;
 }
 
 .domain-ill--physical .phy-plate-edge-hi {
   fill: none;
-  stroke: color-mix(in srgb, var(--domain-accent-hi) 78%, rgba(225, 252, 190, 0.76));
-  stroke-width: 0.92;
-  opacity: 0.44;
+  stroke: rgba(240, 255, 220, 0.3);
+  stroke-width: 0.9;
+  opacity: 0.34;
 }
 
 .domain-ill--physical .phy-gate-edge {
   fill: none;
-  stroke: rgba(224, 245, 248, 0.24);
-  stroke-width: 0.78;
+  stroke: rgba(203, 247, 146, 0.36);
+  stroke-width: 0.72;
+}
+
+.domain-ill--physical .phy-gate-frame-fill {
+  fill: rgba(120, 184, 68, 0.14);
 }
 
 .domain-ill--physical .phy-gate-inner {
   fill: none;
-  stroke: color-mix(in srgb, var(--domain-accent) 42%, rgba(182, 222, 229, 0.36));
-  stroke-width: 0.7;
+  stroke: rgba(188, 236, 138, 0.28);
+  stroke-width: 0.66;
 }
 
 .domain-ill--physical .phy-gate-shadow {
   fill: none;
-  stroke: rgba(58, 108, 24, 0.2);
+  stroke: rgba(50, 92, 28, 0.22);
   stroke-width: 1.6;
   stroke-linecap: round;
 }
 
 .domain-ill--physical .phy-gate-leaf-shape {
-  fill: rgba(24, 196, 184, 0.34);
-  stroke: rgba(224, 246, 244, 0.18);
-  stroke-width: 0.7;
+  fill: rgba(129, 214, 44, 0.52);
+  stroke: rgba(220, 252, 176, 0.24);
+  stroke-width: 0.66;
 }
 
 .domain-ill--physical .phy-actuator-top {
@@ -305,19 +318,19 @@
 }
 
 .domain-ill--physical .phy-actuator-side {
-  fill: rgba(12, 162, 152, 0.7);
-  stroke: rgba(226, 247, 244, 0.13);
+  fill: rgba(97, 176, 24, 0.78);
+  stroke: rgba(220, 250, 176, 0.18);
   stroke-width: 0.62;
 }
 
 .domain-ill--physical .phy-command-path {
   fill: none;
   stroke: var(--domain-accent);
-  stroke-width: 1.48;
-  stroke-dasharray: 10 12;
+  stroke-width: 1.24;
+  stroke-dasharray: 10 10;
   stroke-dashoffset: 0;
   opacity: 0.12;
-  animation: illPhysicalCommand 2s linear infinite;
+  animation: phyCommandFlow 2s linear infinite;
   animation-play-state: paused;
 }
 
@@ -328,25 +341,25 @@
 .domain-ill--physical .phy-proof-ring {
   fill: none;
   stroke: color-mix(in srgb, var(--domain-accent) 76%, rgba(255, 255, 255, 0.18));
-  stroke-width: 1.45;
+  stroke-width: 1.36;
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
-  animation: illPhysicalProof 2s ease-out infinite;
+  animation: phyProofPulse 2s ease-out infinite;
   animation-play-state: paused;
 }
 
 .domain-ill--physical .phy-gate-leaf {
-  --phy-gate-tx: 10px;
-  --phy-gate-ty: -1.26px;
-  animation: illPhysicalLeaf 2s ease-in-out infinite;
+  --phy-gate-tx: 6px;
+  --phy-gate-ty: -0.8px;
+  animation: phyGateBreath 2s ease-in-out infinite;
   animation-play-state: paused;
 }
 
 .domain-ill--physical .phy-actuator-press {
   transform-box: fill-box;
   transform-origin: center;
-  animation: illPhysicalPress 2s cubic-bezier(0.22, 0.78, 0.16, 1) infinite;
+  animation: phyPress 2s cubic-bezier(0.22, 0.78, 0.16, 1) infinite;
   animation-play-state: paused;
 }
 
@@ -357,7 +370,9 @@
 .domain-ill--physical .phy-plate-top,
 .domain-ill--physical .phy-plate-front,
 .domain-ill--physical .phy-plate-side,
+.domain-ill--physical .phy-plate-right,
 .domain-ill--physical .phy-gate-edge,
+.domain-ill--physical .phy-gate-frame-fill,
 .domain-ill--physical .phy-gate-inner,
 .domain-ill--physical .phy-gate-shadow,
 .domain-ill--physical .phy-gate-leaf-shape,
@@ -370,7 +385,7 @@
 }
 
 .domain-ill-physical-shadow {
-  fill: rgba(12, 36, 18, 0.32);
+  fill: rgba(12, 32, 18, 0.38);
   opacity: 0.42;
 }
 
@@ -555,57 +570,49 @@
   }
 }
 
-@keyframes illPhysicalPress {
-  0%, 100% {
-    transform: scale(1);
+@keyframes phyCommandFlow {
+  0% {
+    opacity: 0.12;
+    stroke-dashoffset: 0;
   }
-  0%, 54% {
-    transform: scale(1);
+  50% {
+    opacity: 0.9;
+    stroke-dashoffset: -38;
   }
-  70% {
-    transform: scale(0.975);
-  }
-  82% {
-    transform: scale(1.01);
+  100% {
+    opacity: 0.14;
+    stroke-dashoffset: -60;
   }
 }
 
-@keyframes illPhysicalLeaf {
-  0%, 24%, 100% {
+@keyframes phyGateBreath {
+  0%, 100% {
     transform: translate(0, 0);
   }
-  45%, 70% {
+  50% {
     transform: translate(var(--phy-gate-tx), var(--phy-gate-ty));
   }
 }
 
-@keyframes illPhysicalCommand {
-  0% {
-    opacity: 0.16;
-    stroke-dashoffset: 0;
+@keyframes phyPress {
+  0%, 100% {
+    transform: scale(1);
   }
-  45% {
-    opacity: 0.95;
-    stroke-dashoffset: -42;
+  40% {
+    transform: scale(0.965);
   }
-  60% {
-    opacity: 0.22;
-    stroke-dashoffset: -52;
-  }
-  100% {
-    opacity: 0.1;
-    stroke-dashoffset: -68;
+  70% {
+    transform: scale(1.015);
   }
 }
 
-@keyframes illPhysicalProof {
-  0%, 68% {
+@keyframes phyProofPulse {
+  0% {
     opacity: 0;
     transform: scale(0.9);
   }
-  84% {
-    opacity: 0.34;
-    transform: scale(1.18);
+  45% {
+    opacity: 0.28;
   }
   100% {
     opacity: 0;
@@ -672,10 +679,10 @@
   }
 
   .domains-card--hero .domain-illustration-shell--physical {
-    left: 38%;
+    left: 44%;
     top: 0;
     bottom: 0;
-    width: 62%;
+    width: 56%;
     height: 100%;
     right: 0;
     transform: none;
@@ -692,10 +699,10 @@
   }
 
   .domains-card--hero .domain-illustration-shell--physical {
-    left: 35%;
+    left: 43%;
     top: 0;
     bottom: 0;
-    width: 65%;
+    width: 57%;
     height: 100%;
     right: 0;
     transform: none;
