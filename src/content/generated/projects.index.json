@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T12:23:19.327Z",
+  "generated_at": "2026-03-07T18:18:22.623Z",
   "projects": [
     {
       "id": "yai",
@@ -27,7 +27,7 @@
           "type": "milestone_closed",
           "title": "PHASE: infra-cutover@0.1.0",
           "summary": "Cross-repo cutover to yai-infra reusable workflows and project governance alignment.",
-          "url": "https://github.com/yai-labs/yai/milestone/3",
+          "url": "https://github.com/yailabs/yai/milestone/3",
           "date": "2026-02-25T09:41:28Z",
           "labels": [
             "milestone"
@@ -39,7 +39,7 @@
           "type": "milestone_closed",
           "title": "PHASE: contract-baseline-lock@0.1.1",
           "summary": "CI Parity Enforcement on Contract Surfaces Runbook anchor: docs/runbooks/contract-baseline-lock.md#phase-0-1-1-ci-parity",
-          "url": "https://github.com/yai-labs/yai/milestone/2",
+          "url": "https://github.com/yailabs/yai/milestone/2",
           "date": "2026-02-25T09:41:15Z",
           "labels": [
             "milestone"
@@ -51,7 +51,7 @@
           "type": "milestone_closed",
           "title": "PHASE: contract-baseline-lock@0.1.0",
           "summary": "Objective Formal baseline lock of canonical contract surface. Freeze contract invariants and establish governance closure model. Runbook anchor docs/runbooks/contract-baseline-lock.md#0.1.0 Done when: - All baseline con…",
-          "url": "https://github.com/yai-labs/yai/milestone/1",
+          "url": "https://github.com/yailabs/yai/milestone/1",
           "date": "2026-02-19T23:59:54Z",
           "labels": [
             "milestone"
